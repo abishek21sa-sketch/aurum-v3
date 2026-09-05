@@ -30,6 +30,7 @@ from src.institutional.deployment_preflight import build_deployment_preflight  #
 
 
 ARTIFACT = ROOT / "artifacts" / "product_runtime" / "latest_product_evidence.json"
+PREFLIGHT_ARTIFACT = ROOT / "artifacts" / "compliance" / "deployment_preflight.json"
 
 
 def prepare_demo() -> dict:
@@ -50,6 +51,16 @@ def prepare_demo() -> dict:
     print(f"{ALGORITHM}_PRODUCT_DEMO_PREPARED=PASS")
     print(f"DECISION_ID={decision['decision_id']}")
     return payload
+
+
+def load_preflight() -> dict:
+    """Load the verified preflight artifact without rescanning the repository per request."""
+    if PREFLIGHT_ARTIFACT.exists():
+        try:
+            return json.loads(PREFLIGHT_ARTIFACT.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            pass
+    return build_deployment_preflight(ROOT)
 
 
 def _html() -> str:
@@ -75,7 +86,7 @@ class Handler(BaseHTTPRequestHandler):
                 payload = json.loads(ARTIFACT.read_text(encoding="utf-8")) if ARTIFACT.exists() else prepare_demo()
                 return self._send(200, json.dumps(payload, default=str).encode())
             if parsed.path == "/api/preflight":
-                return self._send(200, json.dumps(build_deployment_preflight(ROOT), default=str).encode())
+                return self._send(200, json.dumps(load_preflight(), default=str).encode())
             if parsed.path == "/api/decision":
                 query = parse_qs(parsed.query)
                 params = {c["key"]: float(query.get(c["key"], [c["default"]])[0]) for c in CONTROLS}
