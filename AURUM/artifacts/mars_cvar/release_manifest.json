@@ -46,8 +46,8 @@
       "bytes": 1107
     },
     "scripts/rc3_windows_acceptance.py": {
-      "sha256": "76b69d90ebcd987b93949086b2bc44d7611b2f11acb1cdcddbb464a0919e8878",
-      "bytes": 2313
+      "sha256": "878b2b24fb585ae42e616db9cdb1f765ab045ae28c40ef2c24855934f6126f36",
+      "bytes": 2435
     },
     "scripts/run_mars_cvar_institutional.py": {
       "sha256": "03d3ed6b05c22b5d73afa521353ec2f98a82710424518ee0fad5cf7d3ca3a816",
@@ -110,8 +110,8 @@
       "bytes": 6064
     },
     "artifacts/mars_cvar/governance_evidence.json": {
-      "sha256": "78dc604d699fc1c1f56bfff7bd70c0399f29390f5d20b0ba7ffbecda6a6f9ff3",
-      "bytes": 4766
+      "sha256": "da273679ce483a785bbfad8368e1e7c85a04b3cdda55432deda7d77c52441cb3",
+      "bytes": 4767
     },
     "artifacts/mars_cvar/turnover_sensitivity.csv": {
       "sha256": "285e04273f1969d49550a42bdcf731534c548bc0acc3b878d996a0231eed735a",

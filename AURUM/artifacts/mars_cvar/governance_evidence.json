@@ -158,7 +158,7 @@
       }
     }
   },
-  "runtime_seconds": 0.03648149996297434,
+  "runtime_seconds": 0.051459999987855554,
   "checks": {
     "calibration_contains_blocked_low_penalty": true,
     "selected_penalty_passes_turnover_gate": true,
