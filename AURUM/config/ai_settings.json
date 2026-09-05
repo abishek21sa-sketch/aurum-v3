@@ -1,0 +1,22 @@
+{
+  "ai_enabled": true,
+  "fallback_to_cached_artifacts": true,
+  "fallback_to_rules": true,
+  "max_llm_calls_per_run": 2,
+  "default_model": "gpt-4o-mini",
+  "low_cost_model": "gpt-4o-mini",
+  "phase5b": {
+    "enabled": true,
+    "committee_mode": "single_call",
+    "use_compressed_context": true,
+    "use_cached_on_quota_error": true,
+    "portfolio_manager_mode": "included",
+    "max_agent_count": 5,
+    "run_rebuttals": true,
+    "run_votes": true
+  },
+  "phase5c": {
+    "enabled": true,
+    "use_llm": false
+  }
+}

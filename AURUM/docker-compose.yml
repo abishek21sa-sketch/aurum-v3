@@ -1,0 +1,136 @@
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: aurum-redis
+    ports:
+      - "6379:6379"
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  timescaledb:
+    image: timescale/timescaledb:latest-pg16
+    container_name: aurum-timescaledb
+    environment:
+      POSTGRES_USER: aurum
+      POSTGRES_PASSWORD: aurum
+      POSTGRES_DB: aurum
+    ports:
+      - "5434:5432"
+    volumes:
+      - aurum_timescale_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U aurum -d aurum"]
+      interval: 10s
+      timeout: 5s
+      retries: 8
+    restart: unless-stopped
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: aurum-api
+    ports:
+      - "8000:8000"
+    environment:
+      - AURUM_ENV=development
+      - TIMESCALE_DATABASE_URL=postgresql://aurum:aurum@timescaledb:5432/aurum
+      - REDIS_URL=redis://redis:6379/0
+    volumes:
+      - .:/app
+    depends_on:
+      redis:
+        condition: service_healthy
+      timescaledb:
+        condition: service_healthy
+    restart: unless-stopped
+
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile.dashboard
+    container_name: aurum-dashboard
+    ports:
+      - "8501:8501"
+    environment:
+      - AURUM_ENV=development
+      - TIMESCALE_DATABASE_URL=postgresql://aurum:aurum@timescaledb:5432/aurum
+      - REDIS_URL=redis://redis:6379/0
+    volumes:
+      - .:/app
+    depends_on:
+      api:
+        condition: service_started
+      timescaledb:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+
+  portfolio_os:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: aurum-portfolio-os
+    environment:
+      - AURUM_ENV=development
+      - TIMESCALE_DATABASE_URL=postgresql://aurum:aurum@timescaledb:5432/aurum
+      - REDIS_URL=redis://redis:6379/0
+    volumes:
+      - .:/app
+    depends_on:
+      timescaledb:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    command: ["python", "-m", "src.portfolio_os.portfolio_operating_system"]
+    restart: "no"
+
+  reliability:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: aurum-reliability
+    environment:
+      - AURUM_ENV=development
+      - TIMESCALE_DATABASE_URL=postgresql://aurum:aurum@timescaledb:5432/aurum
+      - REDIS_URL=redis://redis:6379/0
+    volumes:
+      - .:/app
+    depends_on:
+      timescaledb:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    command: ["python", "-m", "scripts.validate_phase6a5_reliability_layer"]
+    restart: "no"
+
+  research_firm:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: aurum-research-firm
+    environment:
+      - AURUM_ENV=development
+      - TIMESCALE_DATABASE_URL=postgresql://aurum:aurum@timescaledb:5432/aurum
+      - REDIS_URL=redis://redis:6379/0
+    volumes:
+      - .:/app
+    depends_on:
+      redis:
+        condition: service_healthy
+      timescaledb:
+        condition: service_healthy
+    command: ["python", "-m", "src.research_firm.ai_research_firm_mode"]
+    restart: "no"
+
+volumes:
+  redis_data:
+  aurum_timescale_data:

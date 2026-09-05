@@ -1,0 +1,2 @@
+transaction_cost_bps,observations,avg_daily_turnover,avg_daily_transaction_cost,gross_avg_daily_return,net_avg_daily_return,gross_sharpe_like,net_sharpe_like,gross_max_drawdown,net_max_drawdown,total_cost_drag,gross_terminal_equity,net_terminal_equity
+10.0,437,0.5080091533180779,0.0005080091533180779,-0.0027578795675721806,-0.0032658887208902596,-0.8518688580337265,-1.0098010402260018,-0.8597826097628298,-0.8861240997138476,0.03326814403821293,0.16713109914628818,0.13386295510807525

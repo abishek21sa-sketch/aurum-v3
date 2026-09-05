@@ -1,0 +1,11 @@
+allocation,scenario,stress_return
+probabilistic_regime,equity_crash,-0.04570837192962343
+probabilistic_regime,volatility_spike,-0.015053365232552667
+probabilistic_regime,rates_shock,-0.041184697495309425
+probabilistic_regime,crypto_collapse,-0.0069832966356211225
+probabilistic_regime,risk_on_rally,0.021666967949157165
+confidence_adjusted,equity_crash,0.01724085195536728
+confidence_adjusted,volatility_spike,0.023330256746302323
+confidence_adjusted,rates_shock,-0.043035206449978367
+confidence_adjusted,crypto_collapse,0.0050831675545825955
+confidence_adjusted,risk_on_rally,-0.009813341472489481

@@ -1,0 +1,2 @@
+observations,gross_total_return,net_total_return,gross_volatility,net_volatility,gross_sharpe_like,net_sharpe_like,gross_max_drawdown,net_max_drawdown,avg_turnover,total_transaction_cost
+312,0.3562813284241175,0.33509550527883425,0.1902615211735941,0.19026767850955212,1.3884073349971986,1.3214766591055873,-0.09661880999119177,-0.09895827786977696,0.05050077818202677,0.015756242792792353

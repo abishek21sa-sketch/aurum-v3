@@ -1,0 +1,13 @@
+# AURUM v1.0 Presentation Package
+
+Generated at: 2026-06-06T16:59:51.358943+00:00
+
+Files:
+
+- README_DRAFT.md
+- ARCHITECTURE_DIAGRAM.md
+- AURUM_WHITEPAPER_DRAFT.md
+- RESUME_SUMMARY.md
+- PACKAGE_INDEX.md
+
+Status: generated

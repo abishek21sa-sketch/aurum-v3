@@ -1,0 +1,2 @@
+observations,transaction_cost_bps,gross_avg_daily_return,net_avg_daily_return,gross_volatility,net_volatility,gross_sharpe_like,net_sharpe_like,gross_max_drawdown,net_max_drawdown,avg_turnover,avg_cash_weight,gross_terminal_equity,net_terminal_equity
+653,10.0,8.885145791882239e-05,-3.898929737214978e-05,0.004835492024867153,0.004824645482049289,0.2916917576161442,-0.12828629795535137,-0.09930547825401959,-0.12551608641464662,0.12784075529097216,0.3187805212094755,1.0516684031495103,0.9674729171329027

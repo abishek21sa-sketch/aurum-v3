@@ -1,0 +1,19 @@
+{
+  "null_hypothesis": "MARS-CVaR does not improve out-of-sample risk-adjusted performance relative to static-CVaR/equal-weight/mean-variance after turnover costs.",
+  "evidence_class": "historical observational walk-forward backtest",
+  "summary": {
+    "periods": 1701,
+    "start": "2018-01-02",
+    "end": "2024-10-04",
+    "mars_sharpe": 0.8605559697719435,
+    "static_cvar_sharpe": 0.8605559697719435,
+    "equal_weight_sharpe": 0.8393535440490786,
+    "mean_variance_sharpe": 0.2872144280489228,
+    "mars_cumulative_return": 0.6014374867196388,
+    "best_baseline_sharpe": 0.8605559697719435,
+    "bonferroni_psr": 0.0,
+    "promotion_gate": "RESEARCH_ONLY",
+    "no_lookahead": true
+  },
+  "claim_boundary": "Historical walk-forward evidence is not realized future performance and does not establish investment alpha."
+}

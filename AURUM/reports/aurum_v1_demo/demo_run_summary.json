@@ -1,0 +1,37 @@
+{
+    "timestamp": "2026-06-06T17:54:11.268145+00:00",
+    "steps": [
+        {
+            "step": "Live Market Refresh",
+            "status": "success",
+            "stdout": "================================================================================\nAURUM LIVE MARKET SNAPSHOT GENERATOR\n================================================================================\nGenerated At: 2026-06-06T17:53:53.866119+00:00\nRecords: 8\nSaved: results\\realtime\\live_market_snapshot.json\nSPY      | price=754.190002 | timestamp=2026-06-03T19:59:00+00:00 | source=yfinance\nQQQ      | price=744.254211 | timestamp=2026-06-03T19:59:00+00:00 | source=yfinance\nDIA      | price=508.200012 | timestamp=2026-06-03T19:59:00+00:00 | source=yfinance\nTLT      | price=85.32 | timestamp=2026-06-03T19:59:00+00:00 | source=yfinance\nGLD      | price=407.899994 | timestamp=2026-06-03T19:59:00+00:00 | source=yfinance\nBTC-USD  | price=63946.648438 | timestamp=2026-06-04T03:15:00+00:00 | source=yfinance\nETH-USD  | price=1793.400024 | timestamp=2026-06-04T03:15:00+00:00 | source=yfinance\nVIX      | price=16.1 | timestamp=2026-06-03T20:14:00+00:00 | source=yfinance\n"
+        },
+        {
+            "step": "Regime Intelligence",
+            "status": "success",
+            "stdout": "================================================================================\nAURUM CLEAN HMM REGIME ENGINE\n================================================================================\nCurrent Regime:          state_2\nLive Probability Type:   filtered\n--------------------------------------------------------------------------------\nFiltered Probabilities\nstate_0    0.0000\nstate_1    0.0000\nstate_2    1.0000\n--------------------------------------------------------------------------------\nSmoothed Probabilities\nstate_0    0.0000\nstate_1    0.0000\nstate_2    1.0000\n--------------------------------------------------------------------------------\nUse filtered probabilities for live decisions. Smoothed probabilities use full-sample hindsight and should only be used retrospectively.\n================================================================================\n"
+        },
+        {
+            "step": "Institutional Anomaly Detector",
+            "status": "success",
+            "stdout": "================================================================================\nAURUM INSTITUTIONAL ANOMALY DETECTOR\n================================================================================\nMethod:                rolling_z_score + isolation_forest\nLatest Timestamp:      2025-11-14 00:00:00\nLatest Return:         -0.0137\nRolling Z-Score:       -0.8741\nIsolation Score:       -0.1158\nCombined Score:        0.3066\nLatest Is Anomaly:     False\nLatest Severity:       normal\nAnomaly Count:         21\nAnomaly Rate:          0.0304\n================================================================================\n"
+        },
+        {
+            "step": "CVaR LP Optimizer",
+            "status": "success",
+            "stdout": "================================================================================\nAURUM CVaR LP OPTIMIZER\n================================================================================\nStatus:          optimal\nMethod:          Rockafellar-Uryasev CVaR LP via cvxpy\nBeta:            0.95\nVaR Alpha:       0.006038\nCVaR Objective:  0.007523\nExpected Return: 0.0728\nVolatility:      0.0619\nSharpe:          1.1757\n--------------------------------------------------------------------------------\nSPY        0.1498\nQQQ        0.1111\nDIA        0.1966\nTLT        0.3011\nGLD        0.2102\nBTC-USD    0.0201\nETH-USD    0.0111\n================================================================================\n"
+        },
+        {
+            "step": "Portfolio Operating System",
+            "status": "success",
+            "stdout": "================================================================================\nAURUM PHASE 6A PORTFOLIO OPERATING SYSTEM\n================================================================================\nOS ID:                 aurum_portfolio_os_20260606_175410\nStatus:                COMPLETE\nPortfolio Posture:     defensive\nPortfolio Action:      prepare_reduce_equity_but_do_not_execute\nExecution Permission:  blocked\nConfidence:            0.85\nSaved JSON:            results\\portfolio_os\\portfolio_operating_system.json\nSaved TXT:             results\\portfolio_os\\portfolio_operating_system_report.txt\n================================================================================\n"
+        },
+        {
+            "step": "AI Research Firm",
+            "status": "success",
+            "stdout": "================================================================================\nAURUM PHASE 6B.10 AI RESEARCH FIRM MODE\n================================================================================\nStatus:              complete\nStages:              10\nUniverse Size:       23\nBest Alpha:          ALPHA_MOMENTUM_001\nHypotheses:          4\nWorst Scenario:      Rates Rise 100 bps\nCIO Action:          prepare_defensive_rebalance\nCIO Risk Posture:    defensive\nTop Research Entity: ALPHA_MOMENTUM_001\n--------------------------------------------------------------------------------\nAURUM is operating as an AI Research Firm: it maintains a multi-asset universe, maps cross-asset relationships, ranks factors and alphas, generates hypotheses, runs autonomous research loops, stress-tests the portfolio, and synthesizes a CIO directive.\n================================================================================\n"
+        }
+    ],
+    "successful_steps": 6,
+    "total_steps": 6
+}

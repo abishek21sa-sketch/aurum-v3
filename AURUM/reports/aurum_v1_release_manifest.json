@@ -1,0 +1,36 @@
+{
+    "release": "AURUM v1.0",
+    "timestamp": "2026-06-06T17:02:06.034043+00:00",
+    "status": "passed",
+    "validators": {
+        "scripts.validate_core_quant": "pass",
+        "scripts.validate_realtime_stack": "pass",
+        "scripts.validate_portfolio_os": "pass",
+        "scripts.validate_ai_research_firm": "pass",
+        "scripts.validate_platform_complete": "pass",
+        "scripts.validate_sprint3a_provider_abstraction": "pass",
+        "scripts.validate_sprint3b_live_refresh_orchestrator": "pass",
+        "scripts.validate_sprint3c_scheduled_refresh_runner": "pass",
+        "scripts.validate_sprint3d_dashboard_auto_refresh": "pass",
+        "scripts.validate_sprint4_presentation_layer": "pass"
+    },
+    "artifacts": {
+        "results/optimization/cvar_lp_optimizer_result.json": "present",
+        "results/regime/hmm_regime_engine_clean_result.json": "present",
+        "results/intelligence/institutional_anomaly_summary.json": "present",
+        "results/sprint3/provider_abstraction_validation.json": "present",
+        "results/sprint3/live_market_refresh_result.json": "present",
+        "results/sprint3/scheduled_refresh_summary.json": "present",
+        "results/sprint3/live_refresh_dashboard_state.json": "present",
+        "reports/aurum_v1_presentation_package/README_DRAFT.md": "present",
+        "reports/aurum_v1_presentation_package/AURUM_WHITEPAPER_DRAFT.md": "present",
+        "reports/aurum_v1_presentation_package/RESUME_SUMMARY.md": "present"
+    },
+    "official_dashboard": "src/dashboard/institutional_command_center.py",
+    "platform_summary": {
+        "quant_core": "CVaR LP, HMM filtered probabilities, anomaly detection",
+        "architecture": "central paths, dashboard consolidation, validator consolidation",
+        "live_market": "provider abstraction, refresh orchestrator, scheduled runner",
+        "presentation": "README, architecture diagram, whitepaper, resume summary"
+    }
+}

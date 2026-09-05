@@ -1,0 +1,15 @@
+.venv
+__pycache__
+.pytest_cache
+*.pyc
+*.pyo
+*.pyd
+.env
+.git
+.gitignore
+data/raw
+results/runtime/logs
+results/runtime/state
+*.log
+.DS_Store
+.ipynb_checkpoints

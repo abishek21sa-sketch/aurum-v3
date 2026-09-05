@@ -1,0 +1,6 @@
+metric,value
+mean_terminal_return,0.03539098385081889
+median_terminal_return,0.03452292910375143
+p05_terminal_return,-0.01937222052660856
+p95_terminal_return,0.09157251501233661
+probability_loss,0.141

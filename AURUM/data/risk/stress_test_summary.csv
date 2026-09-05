@@ -1,0 +1,17 @@
+portfolio,scenario,scenario_return
+minimum_variance,equity_crash,-0.027469280992935993
+minimum_variance,rates_shock,-0.045299975095788064
+minimum_variance,crypto_crash,-0.004390919507385494
+minimum_variance,risk_on_rally,0.010583617054370085
+risk_parity,equity_crash,-0.03915342594274142
+risk_parity,rates_shock,-0.04489738362363449
+risk_parity,crypto_crash,-0.033131814174780075
+risk_parity,risk_on_rally,0.024212549854388
+max_sharpe,equity_crash,-0.05562030353087542
+max_sharpe,rates_shock,-0.026708041453444038
+max_sharpe,crypto_crash,-0.013393033697009163
+max_sharpe,risk_on_rally,0.03215402359612761
+cvar,equity_crash,-0.04440047157152672
+cvar,rates_shock,-0.03668470538389673
+cvar,crypto_crash,-0.012168149341618027
+cvar,risk_on_rally,0.02293561062637795

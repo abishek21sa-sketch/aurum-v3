@@ -1,0 +1,171 @@
+{
+  "algorithm": "MARS-CVaR",
+  "null_hypothesis": "In strict walk-forward evaluation, next-regime weighting does not improve tail/risk-adjusted performance relative to static CVaR, equal-weight, and mean-variance baselines after turnover costs.",
+  "evidence_class": "deterministic synthetic formulation/behavior evidence",
+  "claim_boundary": "Does not establish investment alpha, calibrated regime forecasts, or realized performance.",
+  "parameters": {
+    "alpha": 0.95,
+    "risk_aversion": 0.35,
+    "max_turnover": 0.4,
+    "min_cash": 0.1
+  },
+  "selected_turnover_penalty": 0.05,
+  "governed_decision": {
+    "algorithm": "MARS-CVaR",
+    "status": "OPTIMAL",
+    "assets": [
+      "SPY",
+      "TLT",
+      "GLD",
+      "CASH"
+    ],
+    "current_weights": {
+      "SPY": 0.35,
+      "TLT": 0.25,
+      "GLD": 0.2,
+      "CASH": 0.2
+    },
+    "target_weights": {
+      "SPY": 0.168125,
+      "TLT": 0.25,
+      "GLD": 0.381875,
+      "CASH": 0.2
+    },
+    "weight_changes": {
+      "SPY": -0.181875,
+      "TLT": 0.0,
+      "GLD": 0.181875,
+      "CASH": 0.0
+    },
+    "objective": 0.012276208333333333,
+    "expected_return": 0.004573854166666668,
+    "cvar_loss": -0.00382125,
+    "cvar_loss_convention": "signed loss = negative portfolio return; negative values indicate the modeled tail return is positive",
+    "turnover": 0.36375,
+    "regime_probabilities": {
+      "calm": 0.5,
+      "stress": 0.5
+    },
+    "scenario_count": 6,
+    "solver": {
+      "backend": "scipy.optimize.linprog",
+      "method": "highs",
+      "status": "OPTIMAL",
+      "objective": 0.012276208333333333
+    },
+    "parameters": {
+      "alpha": 0.95,
+      "risk_aversion_lambda": 0.35,
+      "turnover_penalty_tau": 0.05,
+      "max_weights": [
+        0.6,
+        0.6,
+        0.6,
+        1.0
+      ],
+      "min_cash": 0.1,
+      "cash_asset": "CASH",
+      "max_cvar_loss_gate": 0.03,
+      "max_turnover_gate": 0.4
+    },
+    "claim_boundary": "Optimization evidence only; not a forecast of realized investment performance.",
+    "feasibility": {
+      "status": "FEASIBLE",
+      "portfolio_sum_residual": 0.0,
+      "max_position_cap_violation": 0.0,
+      "minimum_cash_slack": 0.1
+    },
+    "gates": {
+      "cvar": {
+        "limit": 0.03,
+        "observed": -0.00382125,
+        "passed": true
+      },
+      "turnover": {
+        "limit": 0.4,
+        "observed": 0.36375,
+        "passed": true
+      }
+    },
+    "authorized": true,
+    "risk_gate": "AUTHORIZED",
+    "blocked_reasons": [],
+    "decision_id": "MARS-812FA013EB90FFA1"
+  },
+  "baselines": {
+    "static_cvar": {
+      "expected_return": 0.004573854166666668,
+      "cvar_loss": -0.00382125,
+      "turnover": 0.36375,
+      "weights": {
+        "SPY": 0.168125,
+        "TLT": 0.25,
+        "GLD": 0.3818750000000001,
+        "CASH": 0.2
+      }
+    },
+    "equal_weight": {
+      "name": "equal_weight",
+      "weights": {
+        "SPY": 0.25,
+        "TLT": 0.25,
+        "GLD": 0.25,
+        "CASH": 0.25
+      },
+      "expected_return": -0.0003250000000000003,
+      "cvar_loss": 0.010450000000000001,
+      "turnover": 0.19999999999999996
+    },
+    "mean_variance": {
+      "name": "mean_variance",
+      "weights": {
+        "SPY": 0.0,
+        "TLT": 0.30000000000000043,
+        "GLD": 0.6,
+        "CASH": 0.09999999999999935
+      },
+      "expected_return": 0.014320000000000005,
+      "cvar_loss": -0.002119999999999999,
+      "turnover": 0.900000000000001
+    }
+  },
+  "ablation": {
+    "component_removed": "institutional turnover calibration/gate",
+    "low_penalty": {
+      "turnover_penalty": 0.0002,
+      "expected_return": 0.01432,
+      "cvar_loss": -0.00212,
+      "turnover": 0.9,
+      "passes_turnover_gate": false,
+      "weights": {
+        "SPY": 0.0,
+        "TLT": 0.30000000000000004,
+        "GLD": 0.6,
+        "CASH": 0.1
+      }
+    },
+    "selected_calibrated": {
+      "turnover_penalty": 0.05,
+      "expected_return": 0.004573854166666668,
+      "cvar_loss": -0.00382125,
+      "turnover": 0.36375,
+      "passes_turnover_gate": true,
+      "weights": {
+        "SPY": 0.168125,
+        "TLT": 0.25,
+        "GLD": 0.3818750000000001,
+        "CASH": 0.2
+      }
+    }
+  },
+  "runtime_seconds": 0.03648149996297434,
+  "checks": {
+    "calibration_contains_blocked_low_penalty": true,
+    "selected_penalty_passes_turnover_gate": true,
+    "governed_decision_authorized": true,
+    "governed_decision_turnover_within_limit": true,
+    "static_cvar_baseline_optimal": true,
+    "equal_weight_baseline_sums_to_one": true,
+    "mean_variance_baseline_sums_to_one": true
+  }
+}

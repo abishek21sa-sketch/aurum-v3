@@ -1,0 +1,2 @@
+strategy,observations,strategy_total_return,strategy_volatility,avg_abs_factor_correlation,factor_diversification_score,dominant_factor
+meta_strategy,294,0.17640791641768194,0.05586348192740613,0.332563573889627,0.667436426110373,gold_hedge

@@ -1,0 +1,18 @@
+# Local Python/runtime state
+AURUM/.venv/
+AURUM-v2/.venv/
+**/__pycache__/
+**/*.py[cod]
+**/.pytest_cache/
+**/.pytest_acceptance_tmp/
+
+# Local secrets and editor state
+**/.env
+**/.env.*
+!.env.example
+.vscode/
+.idea/
+
+# Local launch/log noise
+*.log
+*.pid

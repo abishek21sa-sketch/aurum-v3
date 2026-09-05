@@ -1,0 +1,2 @@
+walk_forward_periods,prediction_days,avg_long_short_return,long_short_volatility,walk_forward_sharpe_like,max_drawdown,avg_train_ic,avg_realized_ic
+15,300,0.0019715457671225125,0.06227055153986666,0.5026022415923571,-0.5942927130270543,-0.04063675424567354,-0.013813200747403276

@@ -1,0 +1,37 @@
+runtime:
+  output_dir: results/runtime
+  halt_on_failure: true
+  max_retries: 2
+  retry_delay_seconds: 3
+
+governance:
+  min_pass_rate: 1.0
+  allow_stderr: false
+  require_all_checkpoints: true
+
+checkpoints:
+  required_outputs:
+    - data/regimes/market_regimes.csv
+    - data/regimes/market_regime_summary.csv
+    - data/regimes/regime_transition_counts.csv
+    - data/regimes/regime_transition_matrix.csv
+    - data/regimes/regime_persistence.csv
+    - data/regimes/next_regime_forecast.csv
+    - data/optimization/probabilistic_regime_weights.csv
+    - data/risk/live_scenario_shock_results.csv
+    - results/risk/live_scenario_shock_report.txt
+    - results/runtime/runtime_health_summary.csv
+    - results/runtime/runtime_health_report.txt
+    - results/runtime/runtime_manifest.json
+    - results/runtime/runtime_manifest.txt
+
+scheduler:
+  interval_minutes: 60
+  timezone: UTC
+  run_immediately: true
+
+cache:
+  host: localhost
+  port: 6379
+  db: 0
+  default_ttl_seconds: 3600

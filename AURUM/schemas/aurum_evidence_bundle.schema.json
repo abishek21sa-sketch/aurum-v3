@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aurum.local/schemas/aurum_evidence_bundle.schema.json",
+  "title": "AURUM Enterprise Evidence Bundle",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "bundle_type",
+    "generated_at_utc",
+    "run_id",
+    "decision_id",
+    "algorithm",
+    "bundle_evidence_hash",
+    "lineage_root_hash",
+    "governance",
+    "provenance",
+    "readiness",
+    "retention_policy",
+    "evidence",
+    "claim_boundary",
+    "bundle_sha256"
+  ],
+  "properties": {
+    "schema_version": {"type": "string"},
+    "bundle_type": {"const": "AURUM_ENTERPRISE_EVIDENCE_BUNDLE"},
+    "generated_at_utc": {"type": "string"},
+    "run_id": {"type": "string", "minLength": 1},
+    "decision_id": {"type": "string", "minLength": 1},
+    "algorithm": {"const": "MARS-CVaR"},
+    "bundle_evidence_hash": {"type": "string", "minLength": 64, "maxLength": 64},
+    "lineage_root_hash": {"type": "string", "minLength": 1},
+    "governance": {"type": "object"},
+    "provenance": {"type": "object"},
+    "readiness": {"type": "object"},
+    "retention_policy": {
+      "type": "object",
+      "required": ["record_class", "retention_period", "retention_owner_role", "immutable_storage_required", "access_logging_required", "destruction_requires_approval"],
+      "properties": {
+        "record_class": {"type": "string"},
+        "retention_period": {"type": "string"},
+        "retention_owner_role": {"type": "string"},
+        "immutable_storage_required": {"const": true},
+        "access_logging_required": {"const": true},
+        "destruction_requires_approval": {"const": true}
+      }
+    },
+    "evidence": {"type": "object"},
+    "claim_boundary": {"type": "string", "minLength": 1},
+    "bundle_sha256": {"type": "string", "minLength": 64, "maxLength": 64}
+  },
+  "additionalProperties": true
+}

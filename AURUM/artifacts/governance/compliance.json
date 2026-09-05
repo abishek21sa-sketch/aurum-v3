@@ -1,0 +1,20 @@
+{
+  "project": "AURUM",
+  "signature_algorithm": "MARS-CVaR",
+  "signature_coverage_percent": 94,
+  "coverage_threshold_percent": 90,
+  "coverage_gate": "PASS",
+  "regression_evidence": "29/29 live engine tests + 2/2 deterministic V2 bridge tests",
+  "evidence_gate": "7/7 governance; 10/10 release; 1,701-period no-lookahead walk-forward; promotion=RESEARCH_ONLY",
+  "windows_acceptance_command": ".\\scripts\\windows_mars_cvar_acceptance.ps1",
+  "windows_execution_status": "PENDING_USER_WINDOWS",
+  "mandatory_engineering_release_status": "PASS_EXCEPT_WINDOWS_EXECUTION",
+  "null_hypotheses": [
+    "H0-A1: MARS-CVaR does not improve tail-risk/turnover trade-offs versus static-CVaR, equal-weight, or mean-variance baselines under the same information set.",
+    "H0-A2: Regime-conditioning does not improve out-of-sample walk-forward risk-adjusted evidence after multiple-testing controls."
+  ],
+  "evidence_class_discipline": "PASS",
+  "llm_is_decision_engine": false,
+  "human_review_gate_required": true,
+  "research_upgrade_status": "PARTIAL_DEFERRED_NOT_RELEASE_BLOCKING"
+}

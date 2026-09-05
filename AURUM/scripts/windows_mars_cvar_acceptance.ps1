@@ -1,0 +1,36 @@
+$ErrorActionPreference = "Stop"
+Write-Host "AURUM MARS-CVaR Windows Acceptance"
+$root = Split-Path -Parent $PSScriptRoot
+Set-Location $root
+$pyCandidate = Join-Path $root ".venv\Scripts\python.exe"
+$py = if (Test-Path $pyCandidate) { $pyCandidate } else { "python" }
+$env:PYTHONPATH = $root
+$acceptanceBase = Join-Path ([System.IO.Path]::GetTempPath()) "aurum_rc3_pytest_acceptance_ps"
+& $py scripts/mars_cvar_governance_evidence.py
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+& $py scripts/mars_cvar_walk_forward_evidence.py
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+& $py scripts/run_mars_cvar_institutional.py
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+& $py scripts/generate_sbom.py
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+& $py scripts/build_mars_cvar_release_evidence.py
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+& $py scripts/export_enterprise_evidence.py
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+& $py scripts/verify_enterprise_release.py
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+& $py -m pytest --basetemp $acceptanceBase tests/test_signature_algorithm.py tests/test_mars_cvar_institutional_bridge.py tests/test_mars_cvar_validation.py tests/test_mars_cvar_api_ui.py tests/test_mars_cvar_walk_forward.py tests/test_mars_cvar_product.py tests/test_enterprise_readiness.py tests/test_release_verifier.py tests/test_evidence_bundle.py tests/test_sbom.py -q
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+& $py -m py_compile src/optimization/signature_algorithm.py src/institutional/mars_cvar_decision_bridge.py src/institutional/mars_cvar_product.py src/institutional/enterprise_readiness.py src/api/main.py scripts/verify_enterprise_release.py scripts/export_enterprise_evidence.py scripts/generate_sbom.py dashboard/official_dashboard.py
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+$v2 = Join-Path (Split-Path $root -Parent) "AURUM-v2"
+if (Test-Path $v2) {
+    Push-Location $v2
+    $env:PYTHONPATH = $v2
+    & $py -m pytest --basetemp (Join-Path ([System.IO.Path]::GetTempPath()) "aurum_v2_rc3_pytest_acceptance_ps") tests/test_mars_cvar_engine_bridge.py -q
+    $bridgeExit = $LASTEXITCODE
+    Pop-Location
+    if ($bridgeExit -ne 0) { exit $bridgeExit }
+}
+Write-Host "MARS_CVAR_WINDOWS_ACCEPTANCE=PASS"

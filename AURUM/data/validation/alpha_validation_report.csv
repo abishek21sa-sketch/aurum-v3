@@ -1,0 +1,2 @@
+observations,avg_long_short_return_1d,long_short_volatility,long_short_sharpe_like,max_drawdown,hit_ratio,avg_top_book_turnover,avg_rolling_rank_ic_20d,avg_rolling_pearson_ic_20d
+437,-0.002757879567572186,0.0513928646141925,-0.8518688580337278,-0.85978260976283,0.49971395881006864,0.25342465753424664,-0.015966051492367263,-0.030507029717541337

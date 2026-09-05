@@ -1,0 +1,5 @@
+current_regime,next_regime,probability
+normal,bull,0.234375
+normal,crisis,0.078125
+normal,high_volatility,0.0
+normal,normal,0.6875

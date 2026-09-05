@@ -1,0 +1,161 @@
+{
+  "algorithm": "MARS-CVaR",
+  "files": {
+    "src/optimization/signature_algorithm.py": {
+      "sha256": "db1359559800193e277584343e569a1d936d7303dcf1cc23f3d3dfe663928a83",
+      "bytes": 5565
+    },
+    "src/institutional/mars_cvar_decision_bridge.py": {
+      "sha256": "62309d0bc42346c6353ba72c221b6d19a01cb6bd5ac363fad4e55136cf8d5113",
+      "bytes": 4959
+    },
+    "src/institutional/mars_cvar_product.py": {
+      "sha256": "6a37d70f0afb0946521971b4fe9df70ef5681161d73887986af3fb6ced3ab910",
+      "bytes": 17839
+    },
+    "src/institutional/enterprise_readiness.py": {
+      "sha256": "dbb69c8561fc9db85054cdc847af2225ca2f9d42ff53709c421ae95219e81f4a",
+      "bytes": 15951
+    },
+    "scripts/product_adapter.py": {
+      "sha256": "edd67cdc28f62e85a654d6286c144e9baa47127033ed21a9868d8fbe735ecf33",
+      "bytes": 4132
+    },
+    "scripts/product_runtime.py": {
+      "sha256": "03df559c5226d59dec0b5dab631b21ebfd228bcc52ed059a36e14e4802aacde5",
+      "bytes": 20499
+    },
+    "scripts/verify_enterprise_release.py": {
+      "sha256": "c0f9a8b9ba0c791342ec10704c26629a9f4d4e3d077f4d7df0de29ef23454884",
+      "bytes": 8544
+    },
+    "scripts/export_enterprise_evidence.py": {
+      "sha256": "19dfbdef74f3072114aae23d3f2ec1c3e469f66d7adc026fcde2da8280f85d35",
+      "bytes": 1149
+    },
+    "scripts/generate_sbom.py": {
+      "sha256": "4e4fc322ab07cfd308dcaa8fc4776ee9725130ac0cd5f96c49b3aaaaee21db0d",
+      "bytes": 2797
+    },
+    "src/api/main.py": {
+      "sha256": "8c2f586d9264ffcd78f9209fdfc452836ea7a03ef09ea4190ecb42b26b92305e",
+      "bytes": 3889
+    },
+    "src/institutional/mars_cvar_reference.py": {
+      "sha256": "51daf1841c44c5ae350a3a2365ae92b4d341dc57559cab580b628327e50c1241",
+      "bytes": 1107
+    },
+    "scripts/rc3_windows_acceptance.py": {
+      "sha256": "76b69d90ebcd987b93949086b2bc44d7611b2f11acb1cdcddbb464a0919e8878",
+      "bytes": 2313
+    },
+    "scripts/run_mars_cvar_institutional.py": {
+      "sha256": "03d3ed6b05c22b5d73afa521353ec2f98a82710424518ee0fad5cf7d3ca3a816",
+      "bytes": 1056
+    },
+    "scripts/mars_cvar_governance_evidence.py": {
+      "sha256": "9c380ec4b1f3bce1e8aadedc3ec3de713edded733763987529307ebe998d1152",
+      "bytes": 6842
+    },
+    "scripts/mars_cvar_walk_forward_evidence.py": {
+      "sha256": "8cecc1cee4966a70b99eceac76403782b5e23a670ae57dc9f3961255f5980c25",
+      "bytes": 1112
+    },
+    "results/institutional/mars_cvar_decision.json": {
+      "sha256": "81cd4a3099e0a8bc3ad4eadaebf6efa77fb7ccda090546ecc7d3c02b074566c6",
+      "bytes": 1861
+    },
+    "tests/test_signature_algorithm.py": {
+      "sha256": "72f8db7eec930d655ac692a5d0b9d918d1f0aad46c60d7f57a5fc9d529255bae",
+      "bytes": 1365
+    },
+    "tests/test_mars_cvar_institutional_bridge.py": {
+      "sha256": "7eb72021d2389d81528adf4ff481ac4b2d9a701214779942cfa33346347eb646",
+      "bytes": 1343
+    },
+    "tests/test_mars_cvar_product.py": {
+      "sha256": "d7a0c8ee1493db78819f8ece2255cab33e86bf9d926d465b63e5b5993b87ecc9",
+      "bytes": 2144
+    },
+    "tests/test_mars_cvar_validation.py": {
+      "sha256": "c004d20065fb999e37dc9c4188abad9673ccf9143ca4f86eb59cb6666959afac",
+      "bytes": 1405
+    },
+    "tests/test_mars_cvar_api_ui.py": {
+      "sha256": "10a70fbfd18243cd9dd0e32e4f69dddc877b555c26255e7635dbaab35f703ef6",
+      "bytes": 1188
+    },
+    "tests/test_enterprise_readiness.py": {
+      "sha256": "a2e441bfd654de87e44719dea9b5e058aa50884cabe42350cbae79e67f63949b",
+      "bytes": 1992
+    },
+    "tests/test_release_verifier.py": {
+      "sha256": "574668e8698f14281112d39a54698e074132cb6afabb671ba7b4fb24c5d2e96f",
+      "bytes": 929
+    },
+    "tests/test_evidence_bundle.py": {
+      "sha256": "86def5bf96562b77f178015ecf58cd7de4dd17a4b02e1e81a38c262e53301a81",
+      "bytes": 1077
+    },
+    "tests/test_sbom.py": {
+      "sha256": "129c1e402625a208042317984be831ede46949a9e5bc5ee433c9933a9d09af1c",
+      "bytes": 839
+    },
+    "dashboard/official_dashboard.py": {
+      "sha256": "48fe3e871a916d488eeea37e4eb9be111710e570e2e78e5c1cac9c4a80effe58",
+      "bytes": 10671
+    },
+    "src/institutional/mars_cvar_validation.py": {
+      "sha256": "1471ee600333352cf2da2245ff9e8a097da5cb737a4df227b03a4296f72684f1",
+      "bytes": 6064
+    },
+    "artifacts/mars_cvar/governance_evidence.json": {
+      "sha256": "78dc604d699fc1c1f56bfff7bd70c0399f29390f5d20b0ba7ffbecda6a6f9ff3",
+      "bytes": 4766
+    },
+    "artifacts/mars_cvar/turnover_sensitivity.csv": {
+      "sha256": "285e04273f1969d49550a42bdcf731534c548bc0acc3b878d996a0231eed735a",
+      "bytes": 528
+    },
+    "artifacts/mars_cvar/GOVERNANCE_REPORT.md": {
+      "sha256": "b12e60ea1d57383f729cdeff47b619f45d88deb91dbd902233245942808baa70",
+      "bytes": 872
+    },
+    "docs/SIGNATURE_ALGORITHM.md": {
+      "sha256": "bf45e6b0f239f60f11765c26b560ad64bae29081498f466fd9bef78905413a73",
+      "bytes": 2116
+    },
+    "docs/RESEARCH_VALIDATION_MARS_CVAR.md": {
+      "sha256": "83180b7062e54d555bccf29cbd47cda93371b71388f9ce3b232a15a905eb7f7e",
+      "bytes": 1827
+    },
+    "docs/PRODUCT_RUNTIME.md": {
+      "sha256": "aa06ca599908fd9cedd2adc1ec7cfb69b33199f1874fbf7ef2057c1c7e698b04",
+      "bytes": 1396
+    },
+    "docs/ENTERPRISE_OPERATING_MODEL.md": {
+      "sha256": "5b7786db1d8b1e9fff808d7048d352d9a1cb41250da1ec03c57a00c96d5951f8",
+      "bytes": 3450
+    },
+    "schemas/aurum_readiness.schema.json": {
+      "sha256": "ab82654d9277bfde10fafc5bf2b56871093e61fba8bcf127fb1cc0cdd9d39dce",
+      "bytes": 2392
+    },
+    "schemas/aurum_role_policy.schema.json": {
+      "sha256": "38d57da7c7aee6f0f65c96438ec9bc4242d0ed9479e0adb4ea4c82124ae8097b",
+      "bytes": 963
+    },
+    "schemas/aurum_evidence_bundle.schema.json": {
+      "sha256": "c1906dbc209b72897a898a458d2cbee65d2c4f7d21cbfe3beaf46513ede937c9",
+      "bytes": 1871
+    },
+    "schemas/aurum_sbom.schema.json": {
+      "sha256": "373ec9cb0fa75a9e48fb09b458344d6969efb29faaf86557149a9e92c1bfcc81",
+      "bytes": 1252
+    },
+    "artifacts/compliance/sbom.json": {
+      "sha256": "f087643b3258f8c845cb2e96893d67c6b597bd96d15cbb7f33f1b6ff08dea755",
+      "bytes": 20198
+    }
+  }
+}

@@ -1,0 +1,48 @@
+# Environment
+.env
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.pytest_acceptance_tmp/
+*.zip
+
+# Results - keep only backtest
+results/
+!results/backtest/
+!results/backtest/**
+
+# Temp files
+temp_*.py
+scripts/tab0_content.txt
+scripts/check_*.py
+scripts/read_*.py
+scripts/fix_*.py
+scripts/map_*.py
+scripts/add_*.py
+scripts/wire_*.py
+scripts/rewrite_*.py
+
+# Old dashboards
+dashboard/live_market_dashboard.py
+dashboard/official_dashboard.py
+dashboard/portfolio_monitoring_dashboard.py
+dashboard/realtime_dashboard.py
+dashboard/runtime_dashboard.py
+dashboard/deprecated/
+
+# Logs
+logs/
+mlruns/
+
+# Data files (keep historical prices)
+data/live/
+data/processed/
+data/raw/
+data/storage/
+
+# IDE
+.idea/
+.vscode/
+*.egg-info/

@@ -1,0 +1,34 @@
+project:
+  name: AURUM
+  environment: dev
+
+paths:
+  data_dir: data
+  results_dir: results
+
+database:
+  enabled: true
+  host: localhost
+  port: 5432
+  name: aurum
+  user: postgres
+
+redis:
+  enabled: false
+  host: localhost
+  port: 6379
+  db: 0
+
+market_data:
+  tickers:
+    - SPY
+    - QQQ
+    - TLT
+    - GLD
+    - BTC-USD
+  lookback_days: 365
+
+pipeline:
+  fail_fast: true
+  log_runtime: true
+  save_artifacts: true

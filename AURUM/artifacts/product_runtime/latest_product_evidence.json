@@ -1,0 +1,1335 @@
+{
+  "algorithm": "MARS-CVaR",
+  "counterfactual": {
+    "actions": [
+      {
+        "asset": "SPY",
+        "change": "+0.00%",
+        "current_weight": "35.00%",
+        "target_weight": "35.00%"
+      },
+      {
+        "asset": "TLT",
+        "change": "+0.00%",
+        "current_weight": "25.00%",
+        "target_weight": "25.00%"
+      },
+      {
+        "asset": "GLD",
+        "change": "+0.00%",
+        "current_weight": "20.00%",
+        "target_weight": "20.00%"
+      },
+      {
+        "asset": "CASH",
+        "change": "+0.00%",
+        "current_weight": "20.00%",
+        "target_weight": "20.00%"
+      }
+    ],
+    "baselines": [
+      {
+        "cvar_loss_magnitude": 0.02346,
+        "cvar_loss_signed": "2.346%",
+        "expected_return": "-1.006%",
+        "name": "MARS-CVaR",
+        "turnover": "0.00%",
+        "weights": {
+          "CASH": 0.2,
+          "GLD": 0.2,
+          "SPY": 0.35,
+          "TLT": 0.25
+        }
+      },
+      {
+        "cvar_loss_magnitude": 0.02346,
+        "cvar_loss_signed": "2.346%",
+        "expected_return": "-0.437%",
+        "name": "static CVaR",
+        "turnover": "0.00%",
+        "weights": {
+          "CASH": 0.2,
+          "GLD": 0.2,
+          "SPY": 0.35,
+          "TLT": 0.25
+        }
+      },
+      {
+        "cvar_loss_magnitude": 0.01045,
+        "cvar_loss_signed": "1.045%",
+        "expected_return": "-0.322%",
+        "name": "equal weight",
+        "turnover": "20.00%",
+        "weights": {
+          "CASH": 0.25,
+          "GLD": 0.25,
+          "SPY": 0.25,
+          "TLT": 0.25
+        }
+      },
+      {
+        "cvar_loss_magnitude": 0.0,
+        "cvar_loss_signed": "-0.212%",
+        "expected_return": "2.032%",
+        "name": "mean variance",
+        "turnover": "90.00%",
+        "weights": {
+          "CASH": 0.1,
+          "GLD": 0.6,
+          "SPY": 0.0,
+          "TLT": 0.3
+        }
+      }
+    ],
+    "claim": "Modeled optimization and historical walk-forward evidence only; not realized investment performance, a causal market forecast, a trade instruction, or a production promotion.",
+    "constraints": [
+      {
+        "limit": 1.0,
+        "name": "portfolio sum",
+        "observed": 1.0,
+        "slack": 0.0,
+        "status": "PASS"
+      },
+      {
+        "limit": 0.1,
+        "name": "minimum cash",
+        "observed": 0.2,
+        "slack": 0.1,
+        "status": "PASS"
+      },
+      {
+        "limit": 0.03,
+        "name": "CVaR gate signed loss",
+        "observed": 0.02346,
+        "slack": 0.00654,
+        "status": "PASS"
+      },
+      {
+        "limit": 0.4,
+        "name": "turnover gate",
+        "observed": 0.0,
+        "slack": 0.4,
+        "status": "PASS"
+      },
+      {
+        "limit": 0.6,
+        "name": "position cap SPY",
+        "observed": 0.35,
+        "slack": 0.25,
+        "status": "PASS"
+      },
+      {
+        "limit": 0.6,
+        "name": "position cap TLT",
+        "observed": 0.25,
+        "slack": 0.35,
+        "status": "PASS"
+      },
+      {
+        "limit": 0.6,
+        "name": "position cap GLD",
+        "observed": 0.2,
+        "slack": 0.4,
+        "status": "PASS"
+      },
+      {
+        "limit": 1.0,
+        "name": "position cap CASH",
+        "observed": 0.2,
+        "slack": 0.8,
+        "status": "PASS"
+      }
+    ],
+    "data_provenance": {
+      "adjustment_method": "not applicable to deterministic reference scenarios",
+      "decision_data_class": "BUNDLED_REFERENCE_DATA",
+      "frequency": "reference scenario period; walk-forward artifact retains its own historical frequency",
+      "missing_data_policy": "not applicable to deterministic reference scenarios; live mode must fail explicitly rather than silently fall back",
+      "provider": "repository deterministic fixture",
+      "scenario_data_class": "SIMULATED_RESAMPLED_SCENARIOS",
+      "source_artifacts": [
+        "data/digital_twin/historical_prices/*.csv",
+        "artifacts/mars_cvar/walk_forward_evidence.json"
+      ],
+      "walk_forward_data_class": "HISTORICAL_OBSERVATIONAL_DATA"
+    },
+    "decision_id": "MARS-05E3F16F664E97EE",
+    "frontier": [
+      {
+        "cvar_loss_signed": 0.02346,
+        "expected_return": -0.0100558333,
+        "objective": 0.0124018333,
+        "risk_weight_lambda": 0.1,
+        "turnover": 0.0
+      },
+      {
+        "cvar_loss_signed": 0.02346,
+        "expected_return": -0.0100558333,
+        "objective": 0.0182668333,
+        "risk_weight_lambda": 0.35,
+        "turnover": 0.0
+      },
+      {
+        "cvar_loss_signed": -0.00382125,
+        "expected_return": 0.0046305729,
+        "objective": 0.0216034896,
+        "risk_weight_lambda": 0.75,
+        "turnover": 0.36375
+      },
+      {
+        "cvar_loss_signed": -0.00382125,
+        "expected_return": 0.0046305729,
+        "objective": 0.0187375521,
+        "risk_weight_lambda": 1.5,
+        "turnover": 0.36375
+      },
+      {
+        "cvar_loss_signed": -0.00382125,
+        "expected_return": 0.0046305729,
+        "objective": 0.0130056771,
+        "risk_weight_lambda": 3.0,
+        "turnover": 0.36375
+      }
+    ],
+    "gate": "AUTHORIZED",
+    "governance": {
+      "execution_enabled": false,
+      "human_review_required": true,
+      "optimization_authorization": "AUTHORIZED",
+      "research_promotion": "RESEARCH_ONLY",
+      "separation_note": "Optimization authorization says the analytical inputs passed their execution gate; research promotion remains a separate empirical question."
+    },
+    "market_regime": {
+      "current_regime": "stress",
+      "decision_input_next_regime_probabilities": {
+        "calm": 0.25,
+        "stress": 0.75
+      },
+      "estimated_next_regime_probabilities": {
+        "calm": 0.5,
+        "stress": 0.5
+      },
+      "historical_regime_frequencies": {
+        "calm": 0.5454545455,
+        "stress": 0.4545454545
+      },
+      "limitations": [
+        "Reference states and probabilities are deterministic evidence fixtures.",
+        "A Markov regime model is descriptive state-transition evidence, not causal proof of markets.",
+        "Live data acquisition is optional and is not used by the offline product acceptance path."
+      ],
+      "probability_entropy_normalized": 0.8112781245,
+      "probability_vector_source": "operator-controlled reference/counterfactual input; not a causal market forecast",
+      "regime_persistence": {
+        "calm": 0.5,
+        "stress": 0.5
+      },
+      "state_definitions": {
+        "calm": "lower reference volatility state",
+        "stress": "higher reference volatility state"
+      },
+      "transition_matrix": {
+        "calm": {
+          "calm": 0.5,
+          "stress": 0.5
+        },
+        "stress": {
+          "calm": 0.5,
+          "stress": 0.5
+        }
+      },
+      "transition_matrix_row_sums": {
+        "calm": 1.0,
+        "stress": 1.0
+      },
+      "transition_matrix_valid": true
+    },
+    "metrics": [
+      [
+        "Expected return",
+        "-1.006% per reference period"
+      ],
+      [
+        "CVaR signed loss",
+        "2.346%"
+      ],
+      [
+        "Downside loss magnitude",
+        "2.346%"
+      ],
+      [
+        "L1 turnover",
+        "0.00%"
+      ],
+      [
+        "Stress probability",
+        "75%"
+      ]
+    ],
+    "optimization_authorization": "AUTHORIZED",
+    "portfolio_workspace": {
+      "asset_contributions": [
+        {
+          "asset": "SPY",
+          "expected_return_contribution": -0.0195125,
+          "expected_return_per_unit": -0.05575,
+          "weight": 0.35
+        },
+        {
+          "asset": "TLT",
+          "expected_return_contribution": 0.0044166667,
+          "expected_return_per_unit": 0.0176666667,
+          "weight": 0.25
+        },
+        {
+          "asset": "GLD",
+          "expected_return_contribution": 0.005,
+          "expected_return_per_unit": 0.025,
+          "weight": 0.2
+        },
+        {
+          "asset": "CASH",
+          "expected_return_contribution": 4e-05,
+          "expected_return_per_unit": 0.0002,
+          "weight": 0.2
+        }
+      ],
+      "current_weights": {
+        "CASH": 0.2,
+        "GLD": 0.2,
+        "SPY": 0.35,
+        "TLT": 0.25
+      },
+      "target_weights": {
+        "CASH": 0.2,
+        "GLD": 0.2,
+        "SPY": 0.35,
+        "TLT": 0.25
+      },
+      "weight_changes": {
+        "CASH": 0.0,
+        "GLD": 0.0,
+        "SPY": 0.0,
+        "TLT": 0.0
+      }
+    },
+    "raw": {
+      "algorithm": "MARS-CVaR",
+      "assets": [
+        "SPY",
+        "TLT",
+        "GLD",
+        "CASH"
+      ],
+      "authorized": true,
+      "blocked_reasons": [],
+      "claim_boundary": "Optimization evidence only; not a forecast of realized investment performance.",
+      "current_weights": {
+        "CASH": 0.2,
+        "GLD": 0.2,
+        "SPY": 0.35,
+        "TLT": 0.25
+      },
+      "cvar_loss": 0.023460000000000005,
+      "cvar_loss_convention": "signed loss = negative portfolio return; negative values indicate the modeled tail return is positive",
+      "decision_authorization_state": "AUTHORIZED",
+      "decision_id": "MARS-05E3F16F664E97EE",
+      "expected_return": -0.010055833333333335,
+      "feasibility": {
+        "max_position_cap_violation": 0.0,
+        "minimum_cash_slack": 0.1,
+        "portfolio_sum_residual": 0.0,
+        "status": "FEASIBLE"
+      },
+      "gates": {
+        "cvar": {
+          "limit": 0.03,
+          "observed": 0.023460000000000005,
+          "passed": true
+        },
+        "turnover": {
+          "limit": 0.4,
+          "observed": 5.551115123125783e-17,
+          "passed": true
+        }
+      },
+      "objective": 0.018266833333333336,
+      "objective_decomposition": {
+        "cvar_convention": "signed loss = negative portfolio return; a negative CVaR means the modeled tail return is positive, not that the loss display is missing a minus sign",
+        "expected_return_component": 0.0100558333,
+        "objective_reconstructed": 0.0182668333,
+        "tail_risk_component_signed": 0.008211,
+        "turnover_component": 0.0
+      },
+      "parameters": {
+        "alpha": 0.95,
+        "cash_asset": "CASH",
+        "max_cvar_loss_gate": 0.03,
+        "max_turnover_gate": 0.4,
+        "max_weights": [
+          0.6,
+          0.6,
+          0.6,
+          1.0
+        ],
+        "min_cash": 0.1,
+        "risk_aversion_lambda": 0.35,
+        "turnover_penalty_tau": 0.08
+      },
+      "regime_probabilities": {
+        "calm": 0.25,
+        "stress": 0.75
+      },
+      "research_promotion_state": "RESEARCH_ONLY",
+      "risk_gate": "AUTHORIZED",
+      "scenario_count": 6,
+      "solver": {
+        "backend": "scipy.optimize.linprog",
+        "method": "highs",
+        "objective": 0.018266833333333336,
+        "status": "OPTIMAL"
+      },
+      "status": "OPTIMAL",
+      "target_weights": {
+        "CASH": 0.2,
+        "GLD": 0.2,
+        "SPY": 0.35,
+        "TLT": 0.25
+      },
+      "turnover": 5.551115123125783e-17,
+      "weight_changes": {
+        "CASH": 0.0,
+        "GLD": 0.0,
+        "SPY": 0.0,
+        "TLT": 0.0
+      }
+    },
+    "research_promotion": "RESEARCH_ONLY",
+    "risk_lab": {
+      "confidence_alpha": 0.95,
+      "cvar_convention": "signed loss = -portfolio return; display both signed CVaR and nonnegative downside magnitude",
+      "cvar_loss_signed": 0.02346,
+      "dominant_tail_scenarios": [
+        "stress-03"
+      ],
+      "downside_loss_magnitude": 0.02346,
+      "scenario_count": 6,
+      "scenarios": [
+        {
+          "asset_returns": {
+            "CASH": 0.0002,
+            "GLD": 0.04,
+            "SPY": -0.11,
+            "TLT": 0.028
+          },
+          "cvar_contribution": 0.02346,
+          "cvar_tail_probability": 0.05,
+          "evidence_class": "SIMULATED_REFERENCE_SCENARIO",
+          "in_cvar_tail": true,
+          "portfolio_return": -0.02346,
+          "probability": 0.25,
+          "regime": "stress",
+          "scenario_id": "stress-03",
+          "signed_loss": 0.02346
+        },
+        {
+          "asset_returns": {
+            "CASH": 0.0002,
+            "GLD": 0.035,
+            "SPY": -0.08,
+            "TLT": 0.024
+          },
+          "cvar_contribution": 0.0,
+          "cvar_tail_probability": 0.0,
+          "evidence_class": "SIMULATED_REFERENCE_SCENARIO",
+          "in_cvar_tail": false,
+          "portfolio_return": -0.01496,
+          "probability": 0.25,
+          "regime": "stress",
+          "scenario_id": "stress-01",
+          "signed_loss": 0.01496
+        },
+        {
+          "asset_returns": {
+            "CASH": 0.0002,
+            "GLD": 0.022,
+            "SPY": -0.05,
+            "TLT": 0.017
+          },
+          "cvar_contribution": 0.0,
+          "cvar_tail_probability": 0.0,
+          "evidence_class": "SIMULATED_REFERENCE_SCENARIO",
+          "in_cvar_tail": false,
+          "portfolio_return": -0.00881,
+          "probability": 0.25,
+          "regime": "stress",
+          "scenario_id": "stress-02",
+          "signed_loss": 0.00881
+        },
+        {
+          "asset_returns": {
+            "CASH": 0.0002,
+            "GLD": 0.002,
+            "SPY": 0.012,
+            "TLT": 0.004
+          },
+          "cvar_contribution": 0.0,
+          "cvar_tail_probability": 0.0,
+          "evidence_class": "SIMULATED_REFERENCE_SCENARIO",
+          "in_cvar_tail": false,
+          "portfolio_return": 0.00564,
+          "probability": 0.0833333333,
+          "regime": "calm",
+          "scenario_id": "calm-02",
+          "signed_loss": -0.00564
+        },
+        {
+          "asset_returns": {
+            "CASH": 0.0002,
+            "GLD": 0.003,
+            "SPY": 0.018,
+            "TLT": 0.002
+          },
+          "cvar_contribution": 0.0,
+          "cvar_tail_probability": 0.0,
+          "evidence_class": "SIMULATED_REFERENCE_SCENARIO",
+          "in_cvar_tail": false,
+          "portfolio_return": 0.00744,
+          "probability": 0.0833333333,
+          "regime": "calm",
+          "scenario_id": "calm-01",
+          "signed_loss": -0.00744
+        },
+        {
+          "asset_returns": {
+            "CASH": 0.0002,
+            "GLD": 0.004,
+            "SPY": 0.021,
+            "TLT": -0.001
+          },
+          "cvar_contribution": 0.0,
+          "cvar_tail_probability": 0.0,
+          "evidence_class": "SIMULATED_REFERENCE_SCENARIO",
+          "in_cvar_tail": false,
+          "portfolio_return": 0.00794,
+          "probability": 0.0833333333,
+          "regime": "calm",
+          "scenario_id": "calm-03",
+          "signed_loss": -0.00794
+        }
+      ]
+    },
+    "sensitivity": {
+      "interpretation": "LP policy paths can kink or remain flat when constraints bind; these are evaluated sweeps, not assumed continuous relationships.",
+      "stress_probability": [
+        {
+          "SPY_weight": 0.35,
+          "cvar_loss_signed": -0.00564,
+          "expected_return": 0.0070066667,
+          "stress_probability": 0.0,
+          "turnover": 0.0
+        },
+        {
+          "SPY_weight": 0.35,
+          "cvar_loss_signed": 0.02346,
+          "expected_return": 0.0013191667,
+          "stress_probability": 0.25,
+          "turnover": 0.0
+        },
+        {
+          "SPY_weight": 0.35,
+          "cvar_loss_signed": 0.02346,
+          "expected_return": -0.0043683333,
+          "stress_probability": 0.5,
+          "turnover": 0.0
+        },
+        {
+          "SPY_weight": 0.35,
+          "cvar_loss_signed": 0.02346,
+          "expected_return": -0.0100558333,
+          "stress_probability": 0.75,
+          "turnover": 0.0
+        },
+        {
+          "SPY_weight": 0.1621794872,
+          "cvar_loss_signed": -0.0047130769,
+          "expected_return": 0.0053551709,
+          "stress_probability": 1.0,
+          "turnover": 0.3756410256
+        }
+      ],
+      "turnover_penalty": [
+        {
+          "cvar_loss_signed": -0.00212,
+          "expected_return": 0.02032,
+          "turnover": 0.9,
+          "turnover_penalty": 0.0
+        },
+        {
+          "cvar_loss_signed": -0.00218,
+          "expected_return": 0.0194466667,
+          "turnover": 0.8,
+          "turnover_penalty": 0.01
+        },
+        {
+          "cvar_loss_signed": -0.00382125,
+          "expected_return": 0.0046305729,
+          "turnover": 0.36375,
+          "turnover_penalty": 0.05
+        },
+        {
+          "cvar_loss_signed": 0.02346,
+          "expected_return": -0.0100558333,
+          "turnover": 0.0,
+          "turnover_penalty": 0.1
+        },
+        {
+          "cvar_loss_signed": 0.02346,
+          "expected_return": -0.0100558333,
+          "turnover": 0.0,
+          "turnover_penalty": 0.2
+        }
+      ]
+    },
+    "stress_testing": {
+      "governance_action": "HUMAN REVIEW; no orders or live rebalancing are emitted by this application",
+      "portfolio_loss_by_stress_scenario": [
+        0.02346,
+        0.01496,
+        0.00881
+      ],
+      "scenario_label": "SYNTHETIC_REFERENCE_STRESS_REGIME",
+      "synthetic": true
+    },
+    "summary": {
+      "promotion_state": "RESEARCH_ONLY",
+      "walk_forward_no_lookahead": true,
+      "walk_forward_periods": 1701
+    },
+    "transaction_analysis": {
+      "aggregate_l1_turnover": 0.0,
+      "one_way_turnover": 0.0,
+      "trades": [
+        {
+          "absolute_trade": 0.0,
+          "asset": "SPY",
+          "current_weight": 0.35,
+          "target_weight": 0.35
+        },
+        {
+          "absolute_trade": 0.0,
+          "asset": "TLT",
+          "current_weight": 0.25,
+          "target_weight": 0.25
+        },
+        {
+          "absolute_trade": 0.0,
+          "asset": "GLD",
+          "current_weight": 0.2,
+          "target_weight": 0.2
+        },
+        {
+          "absolute_trade": 0.0,
+          "asset": "CASH",
+          "current_weight": 0.2,
+          "target_weight": 0.2
+        }
+      ],
+      "turnover_definition": "L1 sum of absolute target minus current weights; one-way turnover is half this value when buys and sells are balanced",
+      "turnover_penalty": 0.08
+    },
+    "walk_forward_research": {
+      "claim_boundary": "Historical walk-forward evidence is not realized future performance and does not establish investment alpha.",
+      "evidence_class": "historical observational walk-forward backtest",
+      "no_lookahead": true,
+      "null_hypothesis": "MARS-CVaR does not improve out-of-sample risk-adjusted performance relative to static-CVaR/equal-weight/mean-variance after turnover costs.",
+      "promotion_state": "RESEARCH_ONLY",
+      "source_artifact": "artifacts\\mars_cvar\\walk_forward_evidence.json",
+      "summary": {
+        "best_baseline_sharpe": 0.8605559697719435,
+        "bonferroni_psr": 0.0,
+        "end": "2024-10-04",
+        "equal_weight_sharpe": 0.8393535440490786,
+        "mars_cumulative_return": 0.6014374867196388,
+        "mars_sharpe": 0.8605559697719435,
+        "mean_variance_sharpe": 0.2872144280489228,
+        "no_lookahead": true,
+        "periods": 1701,
+        "promotion_gate": "RESEARCH_ONLY",
+        "start": "2018-01-02",
+        "static_cvar_sharpe": 0.8605559697719435
+      }
+    }
+  },
+  "decision": {
+    "actions": [
+      {
+        "asset": "SPY",
+        "change": "-18.19%",
+        "current_weight": "35.00%",
+        "target_weight": "16.81%"
+      },
+      {
+        "asset": "TLT",
+        "change": "+0.00%",
+        "current_weight": "25.00%",
+        "target_weight": "25.00%"
+      },
+      {
+        "asset": "GLD",
+        "change": "+18.19%",
+        "current_weight": "20.00%",
+        "target_weight": "38.19%"
+      },
+      {
+        "asset": "CASH",
+        "change": "+0.00%",
+        "current_weight": "20.00%",
+        "target_weight": "20.00%"
+      }
+    ],
+    "baselines": [
+      {
+        "cvar_loss_magnitude": 0.0,
+        "cvar_loss_signed": "-0.382%",
+        "expected_return": "0.457%",
+        "name": "MARS-CVaR",
+        "turnover": "36.38%",
+        "weights": {
+          "CASH": 0.2,
+          "GLD": 0.381875,
+          "SPY": 0.168125,
+          "TLT": 0.25
+        }
+      },
+      {
+        "cvar_loss_magnitude": 0.0,
+        "cvar_loss_signed": "-0.382%",
+        "expected_return": "0.457%",
+        "name": "static CVaR",
+        "turnover": "36.38%",
+        "weights": {
+          "CASH": 0.2,
+          "GLD": 0.381875,
+          "SPY": 0.168125,
+          "TLT": 0.25
+        }
+      },
+      {
+        "cvar_loss_magnitude": 0.01045,
+        "cvar_loss_signed": "1.045%",
+        "expected_return": "-0.033%",
+        "name": "equal weight",
+        "turnover": "20.00%",
+        "weights": {
+          "CASH": 0.25,
+          "GLD": 0.25,
+          "SPY": 0.25,
+          "TLT": 0.25
+        }
+      },
+      {
+        "cvar_loss_magnitude": 0.0,
+        "cvar_loss_signed": "-0.212%",
+        "expected_return": "1.432%",
+        "name": "mean variance",
+        "turnover": "90.00%",
+        "weights": {
+          "CASH": 0.1,
+          "GLD": 0.6,
+          "SPY": 0.0,
+          "TLT": 0.3
+        }
+      }
+    ],
+    "claim": "Modeled optimization and historical walk-forward evidence only; not realized investment performance, a causal market forecast, a trade instruction, or a production promotion.",
+    "constraints": [
+      {
+        "limit": 1.0,
+        "name": "portfolio sum",
+        "observed": 1.0,
+        "slack": 0.0,
+        "status": "PASS"
+      },
+      {
+        "limit": 0.1,
+        "name": "minimum cash",
+        "observed": 0.2,
+        "slack": 0.1,
+        "status": "PASS"
+      },
+      {
+        "limit": 0.03,
+        "name": "CVaR gate signed loss",
+        "observed": -0.00382125,
+        "slack": 0.03382125,
+        "status": "PASS"
+      },
+      {
+        "limit": 0.4,
+        "name": "turnover gate",
+        "observed": 0.36375,
+        "slack": 0.03625,
+        "status": "PASS"
+      },
+      {
+        "limit": 0.6,
+        "name": "position cap SPY",
+        "observed": 0.168125,
+        "slack": 0.431875,
+        "status": "PASS"
+      },
+      {
+        "limit": 0.6,
+        "name": "position cap TLT",
+        "observed": 0.25,
+        "slack": 0.35,
+        "status": "PASS"
+      },
+      {
+        "limit": 0.6,
+        "name": "position cap GLD",
+        "observed": 0.381875,
+        "slack": 0.218125,
+        "status": "PASS"
+      },
+      {
+        "limit": 1.0,
+        "name": "position cap CASH",
+        "observed": 0.2,
+        "slack": 0.8,
+        "status": "PASS"
+      }
+    ],
+    "data_provenance": {
+      "adjustment_method": "not applicable to deterministic reference scenarios",
+      "decision_data_class": "BUNDLED_REFERENCE_DATA",
+      "frequency": "reference scenario period; walk-forward artifact retains its own historical frequency",
+      "missing_data_policy": "not applicable to deterministic reference scenarios; live mode must fail explicitly rather than silently fall back",
+      "provider": "repository deterministic fixture",
+      "scenario_data_class": "SIMULATED_RESAMPLED_SCENARIOS",
+      "source_artifacts": [
+        "data/digital_twin/historical_prices/*.csv",
+        "artifacts/mars_cvar/walk_forward_evidence.json"
+      ],
+      "walk_forward_data_class": "HISTORICAL_OBSERVATIONAL_DATA"
+    },
+    "decision_id": "MARS-812FA013EB90FFA1",
+    "frontier": [
+      {
+        "cvar_loss_signed": 0.02346,
+        "expected_return": -0.0043683333,
+        "objective": 0.0067143333,
+        "risk_weight_lambda": 0.1,
+        "turnover": 0.0
+      },
+      {
+        "cvar_loss_signed": -0.00382125,
+        "expected_return": 0.0045738542,
+        "objective": 0.0122762083,
+        "risk_weight_lambda": 0.35,
+        "turnover": 0.36375
+      },
+      {
+        "cvar_loss_signed": -0.00382125,
+        "expected_return": 0.0045738542,
+        "objective": 0.0107477083,
+        "risk_weight_lambda": 0.75,
+        "turnover": 0.36375
+      },
+      {
+        "cvar_loss_signed": -0.00382125,
+        "expected_return": 0.0045738542,
+        "objective": 0.0078817708,
+        "risk_weight_lambda": 1.5,
+        "turnover": 0.36375
+      },
+      {
+        "cvar_loss_signed": -0.00382125,
+        "expected_return": 0.0045738542,
+        "objective": 0.0021498958,
+        "risk_weight_lambda": 3.0,
+        "turnover": 0.36375
+      }
+    ],
+    "gate": "AUTHORIZED",
+    "governance": {
+      "execution_enabled": false,
+      "human_review_required": true,
+      "optimization_authorization": "AUTHORIZED",
+      "research_promotion": "RESEARCH_ONLY",
+      "separation_note": "Optimization authorization says the analytical inputs passed their execution gate; research promotion remains a separate empirical question."
+    },
+    "market_regime": {
+      "current_regime": "stress",
+      "decision_input_next_regime_probabilities": {
+        "calm": 0.5,
+        "stress": 0.5
+      },
+      "estimated_next_regime_probabilities": {
+        "calm": 0.5,
+        "stress": 0.5
+      },
+      "historical_regime_frequencies": {
+        "calm": 0.5454545455,
+        "stress": 0.4545454545
+      },
+      "limitations": [
+        "Reference states and probabilities are deterministic evidence fixtures.",
+        "A Markov regime model is descriptive state-transition evidence, not causal proof of markets.",
+        "Live data acquisition is optional and is not used by the offline product acceptance path."
+      ],
+      "probability_entropy_normalized": 1.0,
+      "probability_vector_source": "operator-controlled reference/counterfactual input; not a causal market forecast",
+      "regime_persistence": {
+        "calm": 0.5,
+        "stress": 0.5
+      },
+      "state_definitions": {
+        "calm": "lower reference volatility state",
+        "stress": "higher reference volatility state"
+      },
+      "transition_matrix": {
+        "calm": {
+          "calm": 0.5,
+          "stress": 0.5
+        },
+        "stress": {
+          "calm": 0.5,
+          "stress": 0.5
+        }
+      },
+      "transition_matrix_row_sums": {
+        "calm": 1.0,
+        "stress": 1.0
+      },
+      "transition_matrix_valid": true
+    },
+    "metrics": [
+      [
+        "Expected return",
+        "0.457% per reference period"
+      ],
+      [
+        "CVaR signed loss",
+        "-0.382%"
+      ],
+      [
+        "Downside loss magnitude",
+        "0.000%"
+      ],
+      [
+        "L1 turnover",
+        "36.38%"
+      ],
+      [
+        "Stress probability",
+        "50%"
+      ]
+    ],
+    "optimization_authorization": "AUTHORIZED",
+    "portfolio_workspace": {
+      "asset_contributions": [
+        {
+          "asset": "SPY",
+          "expected_return_contribution": -0.0052959375,
+          "expected_return_per_unit": -0.0315,
+          "weight": 0.168125
+        },
+        {
+          "asset": "TLT",
+          "expected_return_contribution": 0.0030833333,
+          "expected_return_per_unit": 0.0123333333,
+          "weight": 0.25
+        },
+        {
+          "asset": "GLD",
+          "expected_return_contribution": 0.0067464583,
+          "expected_return_per_unit": 0.0176666667,
+          "weight": 0.381875
+        },
+        {
+          "asset": "CASH",
+          "expected_return_contribution": 4e-05,
+          "expected_return_per_unit": 0.0002,
+          "weight": 0.2
+        }
+      ],
+      "current_weights": {
+        "CASH": 0.2,
+        "GLD": 0.2,
+        "SPY": 0.35,
+        "TLT": 0.25
+      },
+      "target_weights": {
+        "CASH": 0.2,
+        "GLD": 0.381875,
+        "SPY": 0.168125,
+        "TLT": 0.25
+      },
+      "weight_changes": {
+        "CASH": 0.0,
+        "GLD": 0.181875,
+        "SPY": -0.181875,
+        "TLT": 0.0
+      }
+    },
+    "raw": {
+      "algorithm": "MARS-CVaR",
+      "assets": [
+        "SPY",
+        "TLT",
+        "GLD",
+        "CASH"
+      ],
+      "authorized": true,
+      "blocked_reasons": [],
+      "claim_boundary": "Optimization evidence only; not a forecast of realized investment performance.",
+      "current_weights": {
+        "CASH": 0.2,
+        "GLD": 0.2,
+        "SPY": 0.35,
+        "TLT": 0.25
+      },
+      "cvar_loss": -0.00382125,
+      "cvar_loss_convention": "signed loss = negative portfolio return; negative values indicate the modeled tail return is positive",
+      "decision_authorization_state": "AUTHORIZED",
+      "decision_id": "MARS-812FA013EB90FFA1",
+      "expected_return": 0.004573854166666668,
+      "feasibility": {
+        "max_position_cap_violation": 0.0,
+        "minimum_cash_slack": 0.1,
+        "portfolio_sum_residual": 0.0,
+        "status": "FEASIBLE"
+      },
+      "gates": {
+        "cvar": {
+          "limit": 0.03,
+          "observed": -0.00382125,
+          "passed": true
+        },
+        "turnover": {
+          "limit": 0.4,
+          "observed": 0.36375,
+          "passed": true
+        }
+      },
+      "objective": 0.012276208333333333,
+      "objective_decomposition": {
+        "cvar_convention": "signed loss = negative portfolio return; a negative CVaR means the modeled tail return is positive, not that the loss display is missing a minus sign",
+        "expected_return_component": -0.0045738542,
+        "objective_reconstructed": 0.0122762083,
+        "tail_risk_component_signed": -0.0013374375,
+        "turnover_component": 0.0181875
+      },
+      "parameters": {
+        "alpha": 0.95,
+        "cash_asset": "CASH",
+        "max_cvar_loss_gate": 0.03,
+        "max_turnover_gate": 0.4,
+        "max_weights": [
+          0.6,
+          0.6,
+          0.6,
+          1.0
+        ],
+        "min_cash": 0.1,
+        "risk_aversion_lambda": 0.35,
+        "turnover_penalty_tau": 0.05
+      },
+      "regime_probabilities": {
+        "calm": 0.5,
+        "stress": 0.5
+      },
+      "research_promotion_state": "RESEARCH_ONLY",
+      "risk_gate": "AUTHORIZED",
+      "scenario_count": 6,
+      "solver": {
+        "backend": "scipy.optimize.linprog",
+        "method": "highs",
+        "objective": 0.012276208333333333,
+        "status": "OPTIMAL"
+      },
+      "status": "OPTIMAL",
+      "target_weights": {
+        "CASH": 0.2,
+        "GLD": 0.381875,
+        "SPY": 0.168125,
+        "TLT": 0.25
+      },
+      "turnover": 0.36375,
+      "weight_changes": {
+        "CASH": 0.0,
+        "GLD": 0.181875,
+        "SPY": -0.181875,
+        "TLT": 0.0
+      }
+    },
+    "research_promotion": "RESEARCH_ONLY",
+    "risk_lab": {
+      "confidence_alpha": 0.95,
+      "cvar_convention": "signed loss = -portfolio return; display both signed CVaR and nonnegative downside magnitude",
+      "cvar_loss_signed": -0.00382125,
+      "dominant_tail_scenarios": [
+        "calm-02"
+      ],
+      "downside_loss_magnitude": 0.0,
+      "scenario_count": 6,
+      "scenarios": [
+        {
+          "asset_returns": {
+            "CASH": 0.0002,
+            "GLD": 0.002,
+            "SPY": 0.012,
+            "TLT": 0.004
+          },
+          "cvar_contribution": -0.00382125,
+          "cvar_tail_probability": 0.05,
+          "evidence_class": "SIMULATED_REFERENCE_SCENARIO",
+          "in_cvar_tail": true,
+          "portfolio_return": 0.00382125,
+          "probability": 0.1666666667,
+          "regime": "calm",
+          "scenario_id": "calm-02",
+          "signed_loss": -0.00382125
+        },
+        {
+          "asset_returns": {
+            "CASH": 0.0002,
+            "GLD": 0.04,
+            "SPY": -0.11,
+            "TLT": 0.028
+          },
+          "cvar_contribution": 0.0,
+          "cvar_tail_probability": 0.0,
+          "evidence_class": "SIMULATED_REFERENCE_SCENARIO",
+          "in_cvar_tail": false,
+          "portfolio_return": 0.00382125,
+          "probability": 0.1666666667,
+          "regime": "stress",
+          "scenario_id": "stress-03",
+          "signed_loss": -0.00382125
+        },
+        {
+          "asset_returns": {
+            "CASH": 0.0002,
+            "GLD": 0.022,
+            "SPY": -0.05,
+            "TLT": 0.017
+          },
+          "cvar_contribution": 0.0,
+          "cvar_tail_probability": 0.0,
+          "evidence_class": "SIMULATED_REFERENCE_SCENARIO",
+          "in_cvar_tail": false,
+          "portfolio_return": 0.004285,
+          "probability": 0.1666666667,
+          "regime": "stress",
+          "scenario_id": "stress-02",
+          "signed_loss": -0.004285
+        },
+        {
+          "asset_returns": {
+            "CASH": 0.0002,
+            "GLD": 0.003,
+            "SPY": 0.018,
+            "TLT": 0.002
+          },
+          "cvar_contribution": 0.0,
+          "cvar_tail_probability": 0.0,
+          "evidence_class": "SIMULATED_REFERENCE_SCENARIO",
+          "in_cvar_tail": false,
+          "portfolio_return": 0.004711875,
+          "probability": 0.1666666667,
+          "regime": "calm",
+          "scenario_id": "calm-01",
+          "signed_loss": -0.004711875
+        },
+        {
+          "asset_returns": {
+            "CASH": 0.0002,
+            "GLD": 0.004,
+            "SPY": 0.021,
+            "TLT": -0.001
+          },
+          "cvar_contribution": 0.0,
+          "cvar_tail_probability": 0.0,
+          "evidence_class": "SIMULATED_REFERENCE_SCENARIO",
+          "in_cvar_tail": false,
+          "portfolio_return": 0.004848125,
+          "probability": 0.1666666667,
+          "regime": "calm",
+          "scenario_id": "calm-03",
+          "signed_loss": -0.004848125
+        },
+        {
+          "asset_returns": {
+            "CASH": 0.0002,
+            "GLD": 0.035,
+            "SPY": -0.08,
+            "TLT": 0.024
+          },
+          "cvar_contribution": 0.0,
+          "cvar_tail_probability": 0.0,
+          "evidence_class": "SIMULATED_REFERENCE_SCENARIO",
+          "in_cvar_tail": false,
+          "portfolio_return": 0.005955625,
+          "probability": 0.1666666667,
+          "regime": "stress",
+          "scenario_id": "stress-01",
+          "signed_loss": -0.005955625
+        }
+      ]
+    },
+    "sensitivity": {
+      "interpretation": "LP policy paths can kink or remain flat when constraints bind; these are evaluated sweeps, not assumed continuous relationships.",
+      "stress_probability": [
+        {
+          "SPY_weight": 0.35,
+          "cvar_loss_signed": -0.00564,
+          "expected_return": 0.0070066667,
+          "stress_probability": 0.0,
+          "turnover": 0.0
+        },
+        {
+          "SPY_weight": 0.35,
+          "cvar_loss_signed": 0.02346,
+          "expected_return": 0.0013191667,
+          "stress_probability": 0.25,
+          "turnover": 0.0
+        },
+        {
+          "SPY_weight": 0.168125,
+          "cvar_loss_signed": -0.00382125,
+          "expected_return": 0.0045738542,
+          "stress_probability": 0.5,
+          "turnover": 0.36375
+        },
+        {
+          "SPY_weight": 0.168125,
+          "cvar_loss_signed": -0.00382125,
+          "expected_return": 0.0046305729,
+          "stress_probability": 0.75,
+          "turnover": 0.36375
+        },
+        {
+          "SPY_weight": 0.0,
+          "cvar_loss_signed": -0.01639,
+          "expected_return": 0.0235733333,
+          "stress_probability": 1.0,
+          "turnover": 0.7
+        }
+      ],
+      "turnover_penalty": [
+        {
+          "cvar_loss_signed": -0.00212,
+          "expected_return": 0.01432,
+          "turnover": 0.9,
+          "turnover_penalty": 0.0
+        },
+        {
+          "cvar_loss_signed": -0.00199,
+          "expected_return": 0.01284,
+          "turnover": 0.7,
+          "turnover_penalty": 0.01
+        },
+        {
+          "cvar_loss_signed": -0.00382125,
+          "expected_return": 0.0045738542,
+          "turnover": 0.36375,
+          "turnover_penalty": 0.05
+        },
+        {
+          "cvar_loss_signed": 0.02346,
+          "expected_return": -0.0043683333,
+          "turnover": 0.0,
+          "turnover_penalty": 0.1
+        },
+        {
+          "cvar_loss_signed": 0.02346,
+          "expected_return": -0.0043683333,
+          "turnover": 0.0,
+          "turnover_penalty": 0.2
+        }
+      ]
+    },
+    "stress_testing": {
+      "governance_action": "HUMAN REVIEW; no orders or live rebalancing are emitted by this application",
+      "portfolio_loss_by_stress_scenario": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scenario_label": "SYNTHETIC_REFERENCE_STRESS_REGIME",
+      "synthetic": true
+    },
+    "summary": {
+      "promotion_state": "RESEARCH_ONLY",
+      "walk_forward_no_lookahead": true,
+      "walk_forward_periods": 1701
+    },
+    "transaction_analysis": {
+      "aggregate_l1_turnover": 0.36375,
+      "one_way_turnover": 0.181875,
+      "trades": [
+        {
+          "absolute_trade": 0.181875,
+          "asset": "SPY",
+          "current_weight": 0.35,
+          "target_weight": 0.168125
+        },
+        {
+          "absolute_trade": 0.0,
+          "asset": "TLT",
+          "current_weight": 0.25,
+          "target_weight": 0.25
+        },
+        {
+          "absolute_trade": 0.181875,
+          "asset": "GLD",
+          "current_weight": 0.2,
+          "target_weight": 0.381875
+        },
+        {
+          "absolute_trade": 0.0,
+          "asset": "CASH",
+          "current_weight": 0.2,
+          "target_weight": 0.2
+        }
+      ],
+      "turnover_definition": "L1 sum of absolute target minus current weights; one-way turnover is half this value when buys and sells are balanced",
+      "turnover_penalty": 0.05
+    },
+    "walk_forward_research": {
+      "claim_boundary": "Historical walk-forward evidence is not realized future performance and does not establish investment alpha.",
+      "evidence_class": "historical observational walk-forward backtest",
+      "no_lookahead": true,
+      "null_hypothesis": "MARS-CVaR does not improve out-of-sample risk-adjusted performance relative to static-CVaR/equal-weight/mean-variance after turnover costs.",
+      "promotion_state": "RESEARCH_ONLY",
+      "source_artifact": "artifacts\\mars_cvar\\walk_forward_evidence.json",
+      "summary": {
+        "best_baseline_sharpe": 0.8605559697719435,
+        "bonferroni_psr": 0.0,
+        "end": "2024-10-04",
+        "equal_weight_sharpe": 0.8393535440490786,
+        "mars_cumulative_return": 0.6014374867196388,
+        "mars_sharpe": 0.8605559697719435,
+        "mean_variance_sharpe": 0.2872144280489228,
+        "no_lookahead": true,
+        "periods": 1701,
+        "promotion_gate": "RESEARCH_ONLY",
+        "start": "2018-01-02",
+        "static_cvar_sharpe": 0.8605559697719435
+      }
+    }
+  },
+  "evidence_boundary": "Modeled optimization and historical walk-forward evidence only; not realized investment performance, a causal market forecast, a trade instruction, or a production promotion.",
+  "mode": "DETERMINISTIC_PORTFOLIO_DEMO",
+  "parameters": {
+    "alpha": 0.95,
+    "risk_aversion": 0.35,
+    "stress_probability": 0.5,
+    "turnover_penalty": 0.05
+  },
+  "project": "AURUM - Quantitative Risk and Portfolio Intelligence",
+  "runtime_contract": "institutional evidence surface over the repository-native MARS-CVaR LP; human review remains mandatory"
+}

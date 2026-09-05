@@ -1,0 +1,34 @@
+{
+  "package": "AURUM_MARS_CVaR_RC3_ENTERPRISE",
+  "release_stage": "RC3_ENTERPRISE",
+  "build_date": "2026-09-04",
+  "windows_acceptance": "PASS_IN_TARGET_WINDOWS_ENVIRONMENT",
+  "members": [
+    "AURUM",
+    "AURUM-v2"
+  ],
+  "sanitizer_excludes": [
+    ".env",
+    ".git",
+    ".venv/venv",
+    "__pycache__",
+    ".pytest_cache",
+    ".coverage",
+    "*.pyc/*.pyo",
+    "nested *.zip"
+  ],
+  "release_candidate": "RC3_PATCH1",
+  "python_target": "3.14",
+  "windows_entrypoint": "RUN_ACCEPTANCE.cmd",
+  "user_command": ".\\RUN_ACCEPTANCE.cmd",
+  "powershell_policy_dependency": false,
+  "patch_reason": "Added enterprise readiness, artifact/data-quality gates, hash-linked lineage, observability, and declarative role policy while preserving research-only execution boundaries.",
+  "enterprise_controls": [
+    "/v1/platform/readiness",
+    "/v1/platform/observability",
+    "/v1/platform/role-policy",
+    "/v1/platform/audit/lineage"
+  ],
+  "promotion_state": "RESEARCH_ONLY",
+  "execution_enabled": false
+}
