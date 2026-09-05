@@ -1,6 +1,6 @@
 {
   "release": "PRODUCT_V1_RC3_ENTERPRISE",
-  "build_date": "2026-09-04",
+  "build_date": "2026-09-05",
   "root": "AURUM_PRODUCT_V1",
   "inner_repository": "AURUM",
   "signature_algorithm": "MARS-CVaR",

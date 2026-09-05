@@ -1,7 +1,7 @@
 {
   "package": "AURUM_MARS_CVaR_RC3_ENTERPRISE",
   "release_stage": "RC3_ENTERPRISE",
-  "build_date": "2026-09-04",
+  "build_date": "2026-09-05",
   "windows_acceptance": "PASS_IN_TARGET_WINDOWS_ENVIRONMENT",
   "members": [
     "AURUM",
