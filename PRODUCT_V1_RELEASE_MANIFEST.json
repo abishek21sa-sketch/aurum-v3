@@ -11,7 +11,7 @@
     "RUN_DEMO.cmd",
     "RUN_APP.cmd"
   ],
-  "engineering_regression": "29 selected tests passed",
+  "engineering_regression": "32 selected tests passed",
   "container_product_runtime_acceptance": "PASS",
   "evidence": [
     "MARS_CVAR_GOVERNANCE=7/7",
@@ -25,9 +25,12 @@
     "MARS_PROMOTION_GATE=RESEARCH_ONLY",
     "AURUM_DEPLOYMENT_PREFLIGHT=PASS_RESEARCH_BOUNDARY",
     "AURUM_PRODUCTION_GATE=BLOCKED_BY_DEPLOYMENT_CONTROLS",
-    "FRONTEND_COMMAND_CENTER=PASS"
+    "FRONTEND_COMMAND_CENTER=PASS",
+    "AURUM_INTELLIGENCE=PASS",
+    "AI_DEFAULT_MODE=LOCAL_GROUNDED",
+    "AI_EXECUTION_BOUNDARY=DISABLED"
   ],
   "windows_status": "Target Windows environment verified: engineering and product acceptance PASS; launchers remain available for local rerun",
-  "product_sections": ["market_regime", "portfolio_workspace", "risk_lab", "constraints", "baselines", "frontier", "walk_forward_research", "data_provenance", "governance", "enterprise_readiness", "deployment_preflight", "audit_lineage", "evidence_bundle", "supply_chain_sbom"],
+  "product_sections": ["market_regime", "portfolio_workspace", "risk_lab", "constraints", "baselines", "frontier", "walk_forward_research", "data_provenance", "governance", "ai_intelligence", "enterprise_readiness", "deployment_preflight", "audit_lineage", "evidence_bundle", "supply_chain_sbom"],
   "claim_boundary": "Engineering/product evidence only unless an underlying source explicitly establishes a stronger class. Human review remains required; research promotion remains separate from optimization authorization."
 }

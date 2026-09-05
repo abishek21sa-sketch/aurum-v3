@@ -18,6 +18,10 @@ def test_product_frontend_contains_command_center_surface_and_safety_copy():
         "Current vs counterfactual",
         "Evidence room",
         "No orders emitted",
+        "AURUM Intelligence",
+        "Ask AURUM",
+        "/api/ai/brief",
+        "/api/ai/ask",
         "/api/preflight",
     ):
         assert token in html

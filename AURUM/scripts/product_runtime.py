@@ -27,10 +27,16 @@ from product_adapter import (  # noqa: E402
 )
 from product_frontend import build_html  # noqa: E402
 from src.institutional.deployment_preflight import build_deployment_preflight  # noqa: E402
+from src.institutional.ai_intelligence import (  # noqa: E402
+    answer_ai_question,
+    build_ai_brief,
+    build_ai_status,
+)
 
 
 ARTIFACT = ROOT / "artifacts" / "product_runtime" / "latest_product_evidence.json"
 PREFLIGHT_ARTIFACT = ROOT / "artifacts" / "compliance" / "deployment_preflight.json"
+AI_ARTIFACT = ROOT / "artifacts" / "product_runtime" / "latest_ai_intelligence_brief.json"
 
 
 def prepare_demo() -> dict:
@@ -48,6 +54,11 @@ def prepare_demo() -> dict:
         "runtime_contract": "institutional evidence surface over the repository-native MARS-CVaR LP; human review remains mandatory",
     }
     ARTIFACT.write_text(json.dumps(payload, indent=2, sort_keys=True, default=str), encoding="utf-8")
+    ai_payload = {
+        "status": build_ai_status(ROOT),
+        "brief": build_ai_brief(ROOT, decision),
+    }
+    AI_ARTIFACT.write_text(json.dumps(ai_payload, indent=2, sort_keys=True, default=str), encoding="utf-8")
     print(f"{ALGORITHM}_PRODUCT_DEMO_PREPARED=PASS")
     print(f"DECISION_ID={decision['decision_id']}")
     return payload
@@ -65,6 +76,17 @@ def load_preflight() -> dict:
 
 def _html() -> str:
     return build_html(PROJECT, SUBTITLE, CONTROLS)
+
+
+def _params_from_query(query: dict[str, list[str]]) -> dict:
+    return {
+        control["key"]: float(query.get(control["key"], [control["default"]])[0])
+        for control in CONTROLS
+    }
+
+
+def _decision_from_query(query: dict[str, list[str]]) -> dict:
+    return compute(_params_from_query(query) if query else DEFAULTS)
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -87,9 +109,17 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, json.dumps(payload, default=str).encode())
             if parsed.path == "/api/preflight":
                 return self._send(200, json.dumps(load_preflight(), default=str).encode())
+            if parsed.path == "/api/ai/status":
+                return self._send(200, json.dumps(build_ai_status(ROOT), default=str).encode())
+            if parsed.path == "/api/ai/brief":
+                return self._send(200, json.dumps(build_ai_brief(ROOT, _decision_from_query(parse_qs(parsed.query))), default=str).encode())
+            if parsed.path == "/api/ai/ask":
+                query = parse_qs(parsed.query)
+                question = query.get("question", [""])[0]
+                return self._send(200, json.dumps(answer_ai_question(ROOT, _decision_from_query(query), question), default=str).encode())
             if parsed.path == "/api/decision":
                 query = parse_qs(parsed.query)
-                params = {c["key"]: float(query.get(c["key"], [c["default"]])[0]) for c in CONTROLS}
+                params = _params_from_query(query)
                 decision = compute(params)
                 payload = {"project": PROJECT, "algorithm": ALGORITHM, "mode": "INTERACTIVE", "parameters": params, "decision": decision}
                 ARTIFACT.parent.mkdir(parents=True, exist_ok=True)
@@ -133,6 +163,12 @@ def acceptance() -> None:
         raise SystemExit("PRODUCT_RUNTIME_ACCEPTANCE=FAIL invalid optimization authorization")
     if decision["research_promotion"] != "RESEARCH_ONLY":
         raise SystemExit("PRODUCT_RUNTIME_ACCEPTANCE=FAIL research promotion was silently changed")
+    ai_status = build_ai_status(ROOT)
+    ai_brief = build_ai_brief(ROOT, decision)
+    if ai_status["service"] != "AURUM Intelligence" or ai_brief["decision_id"] != decision["decision_id"]:
+        raise SystemExit("PRODUCT_RUNTIME_ACCEPTANCE=FAIL AI intelligence contract is not grounded")
+    if ai_brief["execution_enabled"] is not False or ai_brief["research_promotion"] != "RESEARCH_ONLY":
+        raise SystemExit("PRODUCT_RUNTIME_ACCEPTANCE=FAIL AI governance boundary changed")
     changed = payload["counterfactual"]
     if changed["decision_id"] == decision["decision_id"] and changed["raw"] == decision["raw"]:
         raise SystemExit("PRODUCT_RUNTIME_ACCEPTANCE=FAIL counterfactual did not change")
@@ -141,7 +177,16 @@ def acceptance() -> None:
     thread = threading.Thread(target=server.serve_forever, daemon=True)
     thread.start()
     try:
-        for path in ("/health", "/", "/api/evidence", "/api/preflight", "/download/evidence.json"):
+        for path in (
+            "/health",
+            "/",
+            "/api/evidence",
+            "/api/preflight",
+            "/api/ai/status",
+            "/api/ai/brief",
+            "/api/ai/ask?question=What%20is%20the%20main%20risk%3F",
+            "/download/evidence.json",
+        ):
             with urllib.request.urlopen(f"http://127.0.0.1:{port}{path}", timeout=20) as response:
                 if response.status != 200:
                     raise SystemExit(f"PRODUCT_RUNTIME_ACCEPTANCE=FAIL http={path}:{response.status}")
@@ -151,6 +196,8 @@ def acceptance() -> None:
         thread.join(timeout=5)
     if not ARTIFACT.exists():
         raise SystemExit("PRODUCT_RUNTIME_ACCEPTANCE=FAIL evidence artifact missing")
+    if not AI_ARTIFACT.exists():
+        raise SystemExit("PRODUCT_RUNTIME_ACCEPTANCE=FAIL AI artifact missing")
     print(f"{ALGORITHM}_PRODUCT_RUNTIME_ACCEPTANCE=PASS")
 
 

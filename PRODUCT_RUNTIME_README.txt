@@ -14,8 +14,19 @@ Evidence artifact: AURUM/artifacts/product_runtime/latest_product_evidence.json
 Stop the app with Ctrl+C in its command window.
 
 The runtime exposes market/regime, portfolio, CVaR risk, baseline and
-walk-forward research, stress/frontier, and provenance views. Its controls
-are governed inputs to a deterministic offline reference fixture.
+walk-forward research, stress/frontier, provenance, and AURUM Intelligence
+views. Its controls are governed inputs to a deterministic offline reference
+fixture. The AURUM Intelligence workspace provides an evidence-grounded CIO
+brief, risk challenge, and Ask AURUM question loop.
+
+AI endpoints:
+  /api/ai/status             active provider mode and safety boundary
+  /api/ai/brief              current evidence-grounded CIO brief
+  /api/ai/ask?question=...   bounded read-only question response
+
+The default AI mode is LOCAL_GROUNDED: no portfolio data leaves the runtime.
+An external model overlay requires explicit operator configuration and never
+changes solver outputs, authorizes orders, or promotes research.
 
 ENTERPRISE CONTROL CONTRACT
 ---------------------------

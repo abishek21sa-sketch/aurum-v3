@@ -1,0 +1,89 @@
+{
+  "brief": {
+    "citations": [
+      {
+        "label": "Decision",
+        "value": "MARS-812FA013EB90FFA1"
+      },
+      {
+        "label": "Data class",
+        "value": "BUNDLED_REFERENCE_DATA"
+      },
+      {
+        "label": "Scenario class",
+        "value": "SIMULATED_RESAMPLED_SCENARIOS"
+      },
+      {
+        "label": "Promotion",
+        "value": "RESEARCH_ONLY"
+      }
+    ],
+    "confidence": "Moderate \u00b7 grounded in the current deterministic evidence payload",
+    "decision_id": "MARS-812FA013EB90FFA1",
+    "decision_rationale": [
+      "The current lens is stress with a 50% modeled next-regime stress input.",
+      "The optimizer proposes SPY -18.19% to 16.81%; GLD +18.19% to 38.19%, while holding the other assets at their current target where applicable.",
+      "The modeled expected return is 0.457% and signed CVaR is -0.382% at alpha 0.95; these are reference-period evidence, not realized performance.",
+      "The walk-forward artifact contains 1701 no-lookahead periods, but its promotion state remains RESEARCH_ONLY."
+    ],
+    "execution_enabled": false,
+    "executive_summary": "AURUM Intelligence reads this decision as a risk-aware, evidence-bounded portfolio lens. It is responding to a 50% stress input with a modeled 0.457% reference-period return and 36.38% L1 turnover. The AI is interpreting the repository-native evidence; it is not producing a market forecast.",
+    "external_transmission": false,
+    "generated_at_utc": "2026-09-05T16:46:58Z",
+    "grounding": [
+      "Current MARS-CVaR decision payload",
+      "Market/regime transition evidence",
+      "CVaR scenario lab",
+      "Walk-forward validation and governance state"
+    ],
+    "headline": "Stress regime lens \u00b7 human review required",
+    "mode": "LOCAL_GROUNDED",
+    "provider_mode": "LOCAL_GROUNDED",
+    "question": null,
+    "research_promotion": "RESEARCH_ONLY",
+    "review_focus": [
+      "Challenge the stress-regime assumption and the confidence implied by the transition matrix.",
+      "Review the material allocation changes and their implementation cost before any downstream action.",
+      "Keep optimization authorization separate from empirical research promotion."
+    ],
+    "risk_flags": [
+      "Implementation friction: L1 turnover is 36.38%, so liquidity and transaction-cost review matters.",
+      "Regime uncertainty: normalized probability entropy is 1.00; the model is not expressing a concentrated regime view.",
+      "Scenario limitation: tail evidence is simulated/reference data and should not be read as a live loss forecast.",
+      "Governance boundary: this is research-only evidence and is not a production recommendation or order instruction."
+    ],
+    "safety_boundary": "AI interprets evidence for human review; it cannot change solver outputs, authorize orders, or promote research.",
+    "schema_version": "1.0",
+    "title": "AURUM Intelligence brief",
+    "what_would_change_my_view": [
+      "Validated live inputs with an explicit missing-data and freshness record.",
+      "Out-of-sample evidence that survives transaction costs, regime variation, and an independent review.",
+      "A committee-approved implementation plan covering liquidity, limits, and the material SPY/GLD move."
+    ]
+  },
+  "status": {
+    "capabilities": [
+      "CIO brief",
+      "decision rationale",
+      "risk challenge",
+      "Ask AURUM"
+    ],
+    "configuration": {
+      "api_key_present": false,
+      "external_approval_flag_enabled": false,
+      "live_flag_enabled": false
+    },
+    "execution_enabled": false,
+    "external_transmission": false,
+    "grounding": "Current MARS-CVaR decision, regime evidence, CVaR lab, walk-forward validation, and governance state.",
+    "live_model_enabled": false,
+    "model": "AURUM grounded analyst",
+    "operator_note": "Local evidence-grounded reasoning is active; no portfolio data leaves this runtime.",
+    "provider_label": "Grounded analyst active",
+    "provider_mode": "LOCAL_GROUNDED",
+    "research_promotion": "RESEARCH_ONLY",
+    "safety_boundary": "AI interprets evidence for human review; it cannot change solver outputs, authorize orders, or promote research.",
+    "schema_version": "1.0",
+    "service": "AURUM Intelligence"
+  }
+}
