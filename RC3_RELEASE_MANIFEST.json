@@ -22,12 +22,13 @@
   "windows_entrypoint": "RUN_ACCEPTANCE.cmd",
   "user_command": ".\\RUN_ACCEPTANCE.cmd",
   "powershell_policy_dependency": false,
-  "patch_reason": "Added enterprise readiness, artifact/data-quality gates, hash-linked lineage, observability, and declarative role policy while preserving research-only execution boundaries.",
+  "patch_reason": "Added enterprise readiness, deployment preflight, recovery runbooks, artifact/data-quality gates, hash-linked lineage, observability, and declarative role policy while preserving research-only execution boundaries.",
   "enterprise_controls": [
     "/v1/platform/readiness",
     "/v1/platform/observability",
     "/v1/platform/role-policy",
-    "/v1/platform/audit/lineage"
+    "/v1/platform/audit/lineage",
+    "/v1/platform/deployment-preflight"
   ],
   "promotion_state": "RESEARCH_ONLY",
   "execution_enabled": false

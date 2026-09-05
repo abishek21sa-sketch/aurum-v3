@@ -14,8 +14,12 @@
       "bytes": 17839
     },
     "src/institutional/enterprise_readiness.py": {
-      "sha256": "dbb69c8561fc9db85054cdc847af2225ca2f9d42ff53709c421ae95219e81f4a",
-      "bytes": 15951
+      "sha256": "a505f04830d0bde6e8f9ed5b4d98eb5c8cbcde2225c492c54e82d226cbfad87b",
+      "bytes": 16319
+    },
+    "src/institutional/deployment_preflight.py": {
+      "sha256": "3481f7a4dfbbfcfa85979b1e5826a4ff43389830dbbfb5a21baf7bd4799614c4",
+      "bytes": 8733
     },
     "scripts/product_adapter.py": {
       "sha256": "edd67cdc28f62e85a654d6286c144e9baa47127033ed21a9868d8fbe735ecf33",
@@ -25,9 +29,13 @@
       "sha256": "03df559c5226d59dec0b5dab631b21ebfd228bcc52ed059a36e14e4802aacde5",
       "bytes": 20499
     },
+    "scripts/run_deployment_preflight.py": {
+      "sha256": "fd4d5f593561b2b1d1e3f12e6493f117e80bcbed51b6b0e910f6518acabda386",
+      "bytes": 991
+    },
     "scripts/verify_enterprise_release.py": {
-      "sha256": "c0f9a8b9ba0c791342ec10704c26629a9f4d4e3d077f4d7df0de29ef23454884",
-      "bytes": 8544
+      "sha256": "c50c3eb73b4d4541a36f3c0e0937083d210433fdf54e8fb3a8fef05373f72f2b",
+      "bytes": 9017
     },
     "scripts/export_enterprise_evidence.py": {
       "sha256": "19dfbdef74f3072114aae23d3f2ec1c3e469f66d7adc026fcde2da8280f85d35",
@@ -38,16 +46,16 @@
       "bytes": 2797
     },
     "src/api/main.py": {
-      "sha256": "8c2f586d9264ffcd78f9209fdfc452836ea7a03ef09ea4190ecb42b26b92305e",
-      "bytes": 3889
+      "sha256": "e4c540bf92ab8ec7e34f4b2856f03c102b916ebf746c1d940c98bf9a101f76b1",
+      "bytes": 4253
     },
     "src/institutional/mars_cvar_reference.py": {
       "sha256": "51daf1841c44c5ae350a3a2365ae92b4d341dc57559cab580b628327e50c1241",
       "bytes": 1107
     },
     "scripts/rc3_windows_acceptance.py": {
-      "sha256": "878b2b24fb585ae42e616db9cdb1f765ab045ae28c40ef2c24855934f6126f36",
-      "bytes": 2435
+      "sha256": "3a72df4e2404d784e47d594a72e137e29229f541227e3d43c5e7e1b93a405704",
+      "bytes": 2593
     },
     "scripts/run_mars_cvar_institutional.py": {
       "sha256": "03d3ed6b05c22b5d73afa521353ec2f98a82710424518ee0fad5cf7d3ca3a816",
@@ -86,8 +94,8 @@
       "bytes": 1188
     },
     "tests/test_enterprise_readiness.py": {
-      "sha256": "a2e441bfd654de87e44719dea9b5e058aa50884cabe42350cbae79e67f63949b",
-      "bytes": 1992
+      "sha256": "4aa23b19ca31cd0874e6d21b820d7e35d4e829c465d59b3024b34e8abd221174",
+      "bytes": 2426
     },
     "tests/test_release_verifier.py": {
       "sha256": "574668e8698f14281112d39a54698e074132cb6afabb671ba7b4fb24c5d2e96f",
@@ -110,7 +118,7 @@
       "bytes": 6064
     },
     "artifacts/mars_cvar/governance_evidence.json": {
-      "sha256": "da273679ce483a785bbfad8368e1e7c85a04b3cdda55432deda7d77c52441cb3",
+      "sha256": "e0b0d6238eb97b0e8a853a2c3fd25c7dcb272231b9359d2214f54633ae27781e",
       "bytes": 4767
     },
     "artifacts/mars_cvar/turnover_sensitivity.csv": {
@@ -120,6 +128,10 @@
     "artifacts/mars_cvar/GOVERNANCE_REPORT.md": {
       "sha256": "b12e60ea1d57383f729cdeff47b619f45d88deb91dbd902233245942808baa70",
       "bytes": 872
+    },
+    "artifacts/compliance/deployment_preflight.json": {
+      "sha256": "6ce9fb36ee71d7c0066460dc77049363e5c8edafadc70c3409f5764329a4d0c2",
+      "bytes": 5008
     },
     "docs/SIGNATURE_ALGORITHM.md": {
       "sha256": "bf45e6b0f239f60f11765c26b560ad64bae29081498f466fd9bef78905413a73",
@@ -134,8 +146,32 @@
       "bytes": 1396
     },
     "docs/ENTERPRISE_OPERATING_MODEL.md": {
-      "sha256": "5b7786db1d8b1e9fff808d7048d352d9a1cb41250da1ec03c57a00c96d5951f8",
-      "bytes": 3450
+      "sha256": "ff7713561ba81faddc73bd81488d82384e10e0c084c8833a9218da4e86cffc82",
+      "bytes": 3953
+    },
+    "docs/OPERATIONS_RUNBOOK.md": {
+      "sha256": "b39b935589cccbdbf8b2b3c24249b4a34826b9d7f3dbf58320e8ae52cd3cf3ca",
+      "bytes": 2305
+    },
+    "docs/DISASTER_RECOVERY.md": {
+      "sha256": "2f8fad91f9af2654bd482f7bbb9e3a94118541acdb970f1cd548325900400a51",
+      "bytes": 1620
+    },
+    "docker-compose.yml": {
+      "sha256": "4ae1cb7518189df20ca0de4cd2d454058eb38e158f1ee2b70c0ca1287028d9e4",
+      "bytes": 3544
+    },
+    "Dockerfile.api": {
+      "sha256": "0646a4ab52f6e01cb939409fb30d5426b6864b9b4f14fd0e83bc90491fdbd7db",
+      "bytes": 311
+    },
+    "Dockerfile.dashboard": {
+      "sha256": "8d7796abee176673a439caf47970c18c0d942636cca1fcf5b69c4bf772112ebd",
+      "bytes": 350
+    },
+    "configs/prod.yaml": {
+      "sha256": "bff873681fe5306ff043d8c9a1784b007ef5da94cf105e1e1bc2ab6642ab3dea",
+      "bytes": 411
     },
     "schemas/aurum_readiness.schema.json": {
       "sha256": "ab82654d9277bfde10fafc5bf2b56871093e61fba8bcf127fb1cc0cdd9d39dce",
@@ -152,6 +188,10 @@
     "schemas/aurum_sbom.schema.json": {
       "sha256": "373ec9cb0fa75a9e48fb09b458344d6969efb29faaf86557149a9e92c1bfcc81",
       "bytes": 1252
+    },
+    "schemas/aurum_deployment_preflight.schema.json": {
+      "sha256": "6cb262ebd85850631b043f3986ad828306e5e33799c0f81e44a4fc3a887eb3ca",
+      "bytes": 1935
     },
     "artifacts/compliance/sbom.json": {
       "sha256": "f087643b3258f8c845cb2e96893d67c6b597bd96d15cbb7f33f1b6ff08dea755",

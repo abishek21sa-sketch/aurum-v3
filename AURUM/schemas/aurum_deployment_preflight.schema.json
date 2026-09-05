@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aurum.local/schemas/aurum_deployment_preflight.schema.json",
+  "title": "AURUM Deployment Preflight",
+  "type": "object",
+  "required": ["schema_version", "service", "generated_at_utc", "overall_status", "research_gate", "production_gate", "checks", "summary", "blockers", "required_actions"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "service": {"const": "AURUM deployment boundary"},
+    "generated_at_utc": {"type": "string"},
+    "overall_status": {"enum": ["READY_FOR_HUMAN_REVIEW", "PRODUCTION_BLOCKED"]},
+    "research_gate": {"enum": ["PASS", "FAIL"]},
+    "production_gate": {"enum": ["PASS", "BLOCKED"]},
+    "decision_id": {"type": ["string", "null"]},
+    "execution_enabled": {"type": ["boolean", "null"]},
+    "research_promotion": {"type": ["string", "null"]},
+    "checks": {"type": "array", "items": {"$ref": "#/$defs/check"}},
+    "summary": {"type": "object", "required": ["total_checks", "passed_checks", "failed_checks", "production_blockers"], "properties": {"total_checks": {"type": "integer", "minimum": 0}, "passed_checks": {"type": "integer", "minimum": 0}, "failed_checks": {"type": "integer", "minimum": 0}, "production_blockers": {"type": "integer", "minimum": 0}}, "additionalProperties": false},
+    "blockers": {"type": "array", "items": {"type": "string"}},
+    "required_actions": {"type": "array", "items": {"type": "string"}},
+    "boundary_note": {"type": "string"}
+  },
+  "$defs": {
+    "check": {"type": "object", "required": ["check_id", "domain", "status", "severity", "summary", "details"], "properties": {"check_id": {"type": "string"}, "domain": {"type": "string"}, "status": {"enum": ["PASS", "FAIL"]}, "severity": {"enum": ["INFO", "HIGH", "CRITICAL"]}, "summary": {"type": "string"}, "details": {"type": "object"}}, "additionalProperties": false}
+  },
+  "additionalProperties": false
+}

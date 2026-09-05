@@ -9,7 +9,7 @@ regulatory control system.
 
 ## Control-plane endpoints
 
-The FastAPI surface exposes four read-only contracts:
+The FastAPI surface exposes six read-only contracts:
 
 | Endpoint | Purpose |
 | --- | --- |
@@ -18,10 +18,17 @@ The FastAPI surface exposes four read-only contracts:
 | `/v1/platform/role-policy` | Declarative role/capability contract for deployment IAM. |
 | `/v1/platform/audit/lineage` | SHA-256 hash-linked lineage for fixture input, solver output, evidence, and release artifact. |
 | `/v1/platform/evidence-bundle` | Portable evidence record with stable run identity, bundle hash, provenance, governance, and retention metadata. |
+| `/v1/platform/deployment-preflight` | Fail-closed deployment, container, secret, ingress, recovery, and paper-trading boundary checks. |
 
 `READY_FOR_HUMAN_REVIEW` means the evidence package is internally coherent.
 It does not mean investment approval, research promotion, or authorization to
 send an order.
+
+The current preflight intentionally reports `research_gate=PASS` and
+`production_gate=BLOCKED`. This is the correct state for a research build:
+deployment-owned controls such as immutable image digests, external secret
+injection, non-root images, authenticated ingress, and organization-owned IAM
+must be completed in the target environment before production use.
 
 ## Control boundaries
 

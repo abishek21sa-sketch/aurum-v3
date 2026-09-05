@@ -8,7 +8,7 @@
     "mars_sharpe": 0.8605559697719435,
     "static_cvar_sharpe": 0.8605559697719435,
     "equal_weight_sharpe": 0.8393535440490786,
-    "mean_variance_sharpe": 0.2872144280489228,
+    "mean_variance_sharpe": 0.28721443039977246,
     "mars_cumulative_return": 0.6014374867196388,
     "best_baseline_sharpe": 0.8605559697719435,
     "bonferroni_psr": 0.0,

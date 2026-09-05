@@ -1,0 +1,164 @@
+{
+  "blockers": [
+    "deployment.image_provenance_pinned",
+    "deployment.external_secret_injection",
+    "deployment.non_root_containers",
+    "deployment.api_healthcheck",
+    "deployment.ingress_boundary"
+  ],
+  "boundary_note": "A passing research gate proves repository controls only; production deployment remains blocked until deployment-owned controls pass.",
+  "checks": [
+    {
+      "check_id": "boundary.research_execution_disabled",
+      "details": {
+        "execution_enabled": false,
+        "research_promotion": "RESEARCH_ONLY"
+      },
+      "domain": "governance",
+      "severity": "INFO",
+      "status": "PASS",
+      "summary": "Research build remains fail-closed for execution"
+    },
+    {
+      "check_id": "security.repository_secret_hygiene",
+      "details": {
+        "findings": []
+      },
+      "domain": "security",
+      "severity": "INFO",
+      "status": "PASS",
+      "summary": "No private-key or environment-secret files are present"
+    },
+    {
+      "check_id": "delivery.github_acceptance_workflow",
+      "details": {
+        "present": true
+      },
+      "domain": "delivery",
+      "severity": "INFO",
+      "status": "PASS",
+      "summary": "Repository contains an automated acceptance workflow"
+    },
+    {
+      "check_id": "operations.runbook_present",
+      "details": {},
+      "domain": "operations",
+      "severity": "INFO",
+      "status": "PASS",
+      "summary": "Operator runbook is present"
+    },
+    {
+      "check_id": "operations.recovery_plan_present",
+      "details": {},
+      "domain": "operations",
+      "severity": "INFO",
+      "status": "PASS",
+      "summary": "Disaster-recovery contract is present"
+    },
+    {
+      "check_id": "deployment.production_profile_present",
+      "details": {},
+      "domain": "deployment",
+      "severity": "INFO",
+      "status": "PASS",
+      "summary": "Production configuration profile exists"
+    },
+    {
+      "check_id": "deployment.image_provenance_pinned",
+      "details": {
+        "images": [
+          "redis:7-alpine",
+          "timescale/timescaledb:latest-pg16"
+        ],
+        "unpinned_images": [
+          "redis:7-alpine",
+          "timescale/timescaledb:latest-pg16"
+        ]
+      },
+      "domain": "supply_chain",
+      "severity": "HIGH",
+      "status": "FAIL",
+      "summary": "Production container images are pinned by immutable digest"
+    },
+    {
+      "check_id": "deployment.external_secret_injection",
+      "details": {
+        "default_credential_present": true
+      },
+      "domain": "security",
+      "severity": "CRITICAL",
+      "status": "FAIL",
+      "summary": "Database credentials are supplied by deployment secret management"
+    },
+    {
+      "check_id": "deployment.non_root_containers",
+      "details": {
+        "missing_user_declarations": [
+          "Dockerfile.api",
+          "Dockerfile.dashboard"
+        ]
+      },
+      "domain": "container_security",
+      "severity": "HIGH",
+      "status": "FAIL",
+      "summary": "Application containers declare a non-root runtime user"
+    },
+    {
+      "check_id": "deployment.api_healthcheck",
+      "details": {
+        "configured": false
+      },
+      "domain": "reliability",
+      "severity": "HIGH",
+      "status": "FAIL",
+      "summary": "API service has a deployment health check"
+    },
+    {
+      "check_id": "deployment.ingress_boundary",
+      "details": {
+        "direct_host_bindings": [
+          "6379:6379",
+          "5434:5432",
+          "8000:8000",
+          "8501:8501"
+        ]
+      },
+      "domain": "network_security",
+      "severity": "HIGH",
+      "status": "FAIL",
+      "summary": "Production services are exposed through approved ingress"
+    },
+    {
+      "check_id": "paper_trading.execution_isolation",
+      "details": {
+        "execution_enabled": false
+      },
+      "domain": "execution_control",
+      "severity": "INFO",
+      "status": "PASS",
+      "summary": "Paper/research workflows cannot authorize live execution"
+    }
+  ],
+  "decision_id": "MARS-812FA013EB90FFA1",
+  "execution_enabled": false,
+  "generated_at_utc": "2026-09-05T14:43:00Z",
+  "overall_status": "PRODUCTION_BLOCKED",
+  "production_gate": "BLOCKED",
+  "required_actions": [
+    "Pin every production image by immutable digest.",
+    "Inject database and API secrets from an external secret manager.",
+    "Run containers as a dedicated non-root identity.",
+    "Expose services only through authenticated ingress with health checks.",
+    "Complete organization-owned IAM, backup, incident, and change-approval controls."
+  ],
+  "research_gate": "PASS",
+  "research_promotion": "RESEARCH_ONLY",
+  "schema_version": "1.0",
+  "service": "AURUM deployment boundary",
+  "summary": {
+    "failed_checks": 5,
+    "passed_checks": 7,
+    "production_blockers": 5,
+    "total_checks": 12
+  }
+}

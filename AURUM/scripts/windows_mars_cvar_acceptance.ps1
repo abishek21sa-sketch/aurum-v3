@@ -12,6 +12,8 @@ if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 & $py scripts/run_mars_cvar_institutional.py
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+& $py scripts/run_deployment_preflight.py
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 & $py scripts/generate_sbom.py
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 & $py scripts/build_mars_cvar_release_evidence.py
@@ -20,9 +22,9 @@ if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 & $py scripts/verify_enterprise_release.py
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-& $py -m pytest -p no:cacheprovider --basetemp $acceptanceBase tests/test_signature_algorithm.py tests/test_mars_cvar_institutional_bridge.py tests/test_mars_cvar_validation.py tests/test_mars_cvar_api_ui.py tests/test_mars_cvar_walk_forward.py tests/test_mars_cvar_product.py tests/test_enterprise_readiness.py tests/test_release_verifier.py tests/test_evidence_bundle.py tests/test_sbom.py -q
+& $py -m pytest -p no:cacheprovider --basetemp $acceptanceBase tests/test_signature_algorithm.py tests/test_mars_cvar_institutional_bridge.py tests/test_mars_cvar_validation.py tests/test_mars_cvar_api_ui.py tests/test_mars_cvar_walk_forward.py tests/test_mars_cvar_product.py tests/test_enterprise_readiness.py tests/test_deployment_preflight.py tests/test_release_verifier.py tests/test_evidence_bundle.py tests/test_sbom.py -q
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-& $py -m py_compile src/optimization/signature_algorithm.py src/institutional/mars_cvar_decision_bridge.py src/institutional/mars_cvar_product.py src/institutional/enterprise_readiness.py src/api/main.py scripts/verify_enterprise_release.py scripts/export_enterprise_evidence.py scripts/generate_sbom.py dashboard/official_dashboard.py
+& $py -m py_compile src/optimization/signature_algorithm.py src/institutional/mars_cvar_decision_bridge.py src/institutional/mars_cvar_product.py src/institutional/enterprise_readiness.py src/institutional/deployment_preflight.py src/api/main.py scripts/run_deployment_preflight.py scripts/verify_enterprise_release.py scripts/export_enterprise_evidence.py scripts/generate_sbom.py dashboard/official_dashboard.py
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 $v2 = Join-Path (Split-Path $root -Parent) "AURUM-v2"
 if (Test-Path $v2) {

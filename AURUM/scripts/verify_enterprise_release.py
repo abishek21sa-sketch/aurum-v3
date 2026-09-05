@@ -50,6 +50,7 @@ def _schema_validation(root: Path, readiness: dict[str, Any]) -> dict[str, Any]:
         "role_policy": root / "schemas/aurum_role_policy.schema.json",
         "evidence_bundle": root / "schemas/aurum_evidence_bundle.schema.json",
         "sbom": root / "schemas/aurum_sbom.schema.json",
+        "deployment_preflight": root / "schemas/aurum_deployment_preflight.schema.json",
     }
     try:
         import jsonschema
@@ -74,12 +75,18 @@ def _schema_validation(root: Path, readiness: dict[str, Any]) -> dict[str, Any]:
                     errors.append({"contract": name, "error": "evidence bundle export missing"})
                     continue
                 instance = json.loads(bundle_path.read_text(encoding="utf-8"))
-            else:
+            elif name == "sbom":
                 sbom_path = root / "artifacts/compliance/sbom.json"
                 if not sbom_path.is_file():
                     errors.append({"contract": name, "error": "SBOM export missing"})
                     continue
                 instance = json.loads(sbom_path.read_text(encoding="utf-8"))
+            else:
+                preflight_path = root / "artifacts/compliance/deployment_preflight.json"
+                if not preflight_path.is_file():
+                    errors.append({"contract": name, "error": "deployment preflight export missing"})
+                    continue
+                instance = json.loads(preflight_path.read_text(encoding="utf-8"))
             for error in jsonschema.Draft202012Validator(schema).iter_errors(instance):
                 errors.append({"contract": name, "path": ".".join(str(part) for part in error.path), "error": error.message})
         except (OSError, json.JSONDecodeError, jsonschema.SchemaError) as exc:

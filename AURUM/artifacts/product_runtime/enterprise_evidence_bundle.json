@@ -1,7 +1,7 @@
 {
   "algorithm": "MARS-CVaR",
-  "bundle_evidence_hash": "dbc19fdf6279b510dcfb9acfa46480899ee259005a2a2895739be28a8806d974",
-  "bundle_sha256": "48bcf39123ada7935927185b267d1065e004be6c535411d2f1e161ba47a30cbe",
+  "bundle_evidence_hash": "5e3175050a229725f234f7795f0ba1996db0ee4911be7a8574367ad4cb276345",
+  "bundle_sha256": "fae315712bed37a349cfa56e500c818c9faff50e7788de89bc452297fd2d9e68",
   "bundle_type": "AURUM_ENTERPRISE_EVIDENCE_BUNDLE",
   "claim_boundary": "Modeled optimization and historical walk-forward evidence only; not realized investment performance, a causal market forecast, a trade instruction, or a production promotion.",
   "decision_id": "MARS-812FA013EB90FFA1",
@@ -601,7 +601,7 @@
         "equal_weight_sharpe": 0.8393535440490786,
         "mars_cumulative_return": 0.6014374867196388,
         "mars_sharpe": 0.8605559697719435,
-        "mean_variance_sharpe": 0.2872144280489228,
+        "mean_variance_sharpe": 0.28721443039977246,
         "no_lookahead": true,
         "periods": 1701,
         "promotion_gate": "RESEARCH_ONLY",
@@ -610,7 +610,7 @@
       }
     }
   },
-  "generated_at_utc": "2026-09-05T14:00:56Z",
+  "generated_at_utc": "2026-09-05T14:43:03Z",
   "governance": {
     "execution_enabled": false,
     "human_review_required": true,
@@ -618,7 +618,7 @@
     "research_promotion": "RESEARCH_ONLY",
     "separation_note": "Optimization authorization says the analytical inputs passed their execution gate; research promotion remains a separate empirical question."
   },
-  "lineage_root_hash": "72cd9912c8ad5317fdae8200f7de6cc0f5f049d23edf7f06ea0d40561ba5af1a",
+  "lineage_root_hash": "56bb38656cb6525b603446adb29812f308f9e8548e2771299ccc0943d6461493",
   "provenance": {
     "adjustment_method": "not applicable to deterministic reference scenarios",
     "decision_data_class": "BUNDLED_REFERENCE_DATA",
@@ -638,8 +638,8 @@
     "summary": {
       "critical_failures": 0,
       "failed_checks": 0,
-      "passed_checks": 20,
-      "total_checks": 20
+      "passed_checks": 30,
+      "total_checks": 30
     }
   },
   "retention_policy": {
@@ -651,6 +651,6 @@
     "retention_owner_role": "risk_officer",
     "retention_period": "ORGANIZATION_DEFINED"
   },
-  "run_id": "MARS-812FA013EB90FFA1:72cd9912c8ad5317",
+  "run_id": "MARS-812FA013EB90FFA1:56bb38656cb6525b",
   "schema_version": "1.0"
 }

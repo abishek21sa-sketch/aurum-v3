@@ -11,6 +11,7 @@ from src.institutional.enterprise_readiness import (
     build_observability_snapshot,
     build_role_policy,
 )
+from src.institutional.deployment_preflight import build_deployment_preflight
 
 from src.api.routes_market import router as market_router
 from src.api.routes_anomalies import router as anomalies_router
@@ -86,6 +87,13 @@ def platform_observability():
     evidence = build_reference_product_evidence(root)
     readiness = build_enterprise_readiness(root, evidence)
     return build_observability_snapshot(root, readiness)
+
+
+@app.get("/v1/platform/deployment-preflight", tags=["Platform controls"])
+def platform_deployment_preflight():
+    """Return deployment controls while preserving the research-only boundary."""
+    root = Path(__file__).resolve().parents[2]
+    return build_deployment_preflight(root)
 
 
 @app.get("/v1/platform/role-policy", tags=["Platform controls"])

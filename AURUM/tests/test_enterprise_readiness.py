@@ -40,6 +40,8 @@ def test_platform_control_endpoints_expose_machine_contracts():
     observability = client.get("/v1/platform/observability")
     policy = client.get("/v1/platform/role-policy")
     lineage = client.get("/v1/platform/audit/lineage")
+    preflight = client.get("/v1/platform/deployment-preflight")
+    preflight = client.get("/v1/platform/deployment-preflight")
 
     assert readiness.status_code == 200
     assert readiness.json()["release_gate"] == "PASS"
@@ -49,3 +51,9 @@ def test_platform_control_endpoints_expose_machine_contracts():
     assert policy.json()["schema_version"] == "1.0"
     assert lineage.status_code == 200
     assert lineage.json()["root_hash"]
+    assert preflight.status_code == 200
+    assert preflight.json()["research_gate"] == "PASS"
+    assert preflight.json()["execution_enabled"] is False
+    assert preflight.status_code == 200
+    assert preflight.json()["research_gate"] == "PASS"
+    assert preflight.json()["execution_enabled"] is False
