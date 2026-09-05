@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aurum.local/schemas/aurum_live_data.schema.json",
+  "title": "AURUM Governed Market Data Status",
+  "type": "object",
+  "required": ["schema_version", "service", "status", "mode", "provider", "quality", "optimizer_feed_enabled", "fail_closed_policy"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "service": {"const": "AURUM governed market data"},
+    "status": {"enum": ["REFERENCE_ONLY", "BLOCKED", "READY_FOR_REVIEW", "PASS"]},
+    "mode": {"type": "string"},
+    "provider": {"type": "string"},
+    "snapshot_path": {"type": "string"},
+    "live_requested": {"type": "boolean"},
+    "optimizer_feed_enabled": {"type": "boolean"},
+    "external_fetch_enabled": {"type": "boolean"},
+    "approval_required": {"type": "boolean"},
+    "note": {"type": "string"},
+    "quality": {"type": "object"},
+    "fail_closed_policy": {"type": "string"}
+  },
+  "additionalProperties": false
+}

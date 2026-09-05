@@ -16,7 +16,10 @@ def test_deployment_preflight_preserves_research_boundary_and_reports_production
     assert payload["production_gate"] == "BLOCKED"
     assert payload["execution_enabled"] is False
     assert "deployment.image_provenance_pinned" in payload["blockers"]
-    assert "deployment.external_secret_injection" in payload["blockers"]
+    assert "deployment.external_secret_injection" not in payload["blockers"]
+    assert "deployment.non_root_containers" not in payload["blockers"]
+    assert "deployment.api_healthcheck" not in payload["blockers"]
+    assert "deployment.ingress_boundary" not in payload["blockers"]
 
 
 def test_deployment_preflight_endpoint_is_machine_readable():

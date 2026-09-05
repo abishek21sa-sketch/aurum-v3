@@ -6,12 +6,16 @@ ENV PYTHONPATH=/app
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
+RUN addgroup --system aurum && adduser --system --ingroup aurum aurum
+
 COPY requirements.txt .
 
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . .
+COPY --chown=aurum:aurum . .
+
+USER aurum
 
 EXPOSE 8501
 

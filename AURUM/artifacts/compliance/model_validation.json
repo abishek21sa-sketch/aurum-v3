@@ -1,0 +1,91 @@
+{
+  "claim_boundary": "Internal checks prepare an independent validation packet; they do not constitute independent validation or investment approval.",
+  "decision_id": "MARS-812FA013EB90FFA1",
+  "execution_enabled": false,
+  "generated_at_utc": "2026-09-05T18:48:58Z",
+  "independent_review_required": true,
+  "internal_checks": [
+    {
+      "check_id": "validation.no_lookahead",
+      "details": {
+        "value": true
+      },
+      "status": "PASS",
+      "summary": "Walk-forward process declares no lookahead"
+    },
+    {
+      "check_id": "validation.null_hypothesis",
+      "details": {
+        "present": true
+      },
+      "status": "PASS",
+      "summary": "A falsifiable research null hypothesis is recorded"
+    },
+    {
+      "check_id": "validation.baseline_comparators",
+      "details": {
+        "comparator_count": 4
+      },
+      "status": "PASS",
+      "summary": "At least three comparator strategies are retained"
+    },
+    {
+      "check_id": "validation.transaction_cost_awareness",
+      "details": {
+        "turnover": 0.36375
+      },
+      "status": "PASS",
+      "summary": "Turnover and implementation-cost evidence is present"
+    },
+    {
+      "check_id": "validation.scenario_coverage",
+      "details": {
+        "scenario_count": 6
+      },
+      "status": "PASS",
+      "summary": "Tail-risk scenarios carry explicit evidence"
+    },
+    {
+      "check_id": "validation.cvar_convention",
+      "details": {
+        "convention": "signed loss = -portfolio return; display both signed CVaR and nonnegative downside magnitude"
+      },
+      "status": "PASS",
+      "summary": "Signed CVaR convention is documented"
+    },
+    {
+      "check_id": "validation.provenance_classification",
+      "details": {
+        "decision_data_class": "BUNDLED_REFERENCE_DATA",
+        "scenario_data_class": "SIMULATED_RESAMPLED_SCENARIOS"
+      },
+      "status": "PASS",
+      "summary": "Input and scenario evidence classes are disclosed"
+    },
+    {
+      "check_id": "validation.governance_separation",
+      "details": {
+        "execution_enabled": false,
+        "research_promotion": "RESEARCH_ONLY"
+      },
+      "status": "PASS",
+      "summary": "Execution and promotion remain separated"
+    }
+  ],
+  "promotion_state": "RESEARCH_ONLY",
+  "review_scope": [
+    "Reproduce the walk-forward split and verify no-lookahead controls.",
+    "Challenge scenario construction, tail convention, and transaction-cost assumptions.",
+    "Compare results against independent implementation and adverse parameter perturbations.",
+    "Approve or reject any future research-promotion request separately from optimizer authorization."
+  ],
+  "schema_version": "1.0",
+  "service": "AURUM independent model-validation packet",
+  "status": "READY_FOR_INDEPENDENT_REVIEW",
+  "summary": {
+    "failed_checks": 0,
+    "passed_checks": 8,
+    "total_checks": 8,
+    "walk_forward_periods": 1701
+  }
+}

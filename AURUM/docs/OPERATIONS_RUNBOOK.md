@@ -27,6 +27,14 @@ controls listed by the preflight are implemented and approved.
 - `GET /v1/platform/observability` returns low-cardinality health signals.
 - `GET /v1/platform/deployment-preflight` returns the fail-closed deployment
   boundary contract.
+- `GET /v1/platform/data-status` returns provider mode, freshness, and
+  optimizer-feed approval state.
+- `GET /v1/platform/model-validation` returns the internal packet prepared for
+  independent review.
+- `GET /v1/platform/ai-evaluation` returns grounding and safety-contract
+  checks for AURUM Intelligence.
+- `GET /v1/platform/enterprise-status` returns SSO, tenancy, immutable
+  storage, and customer-operations ownership state.
 - `GET /v1/platform/audit/lineage` returns the hash-linked evidence lineage.
 - `GET /v1/platform/evidence-bundle` returns the portable evidence bundle.
 

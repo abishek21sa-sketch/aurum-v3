@@ -36,8 +36,17 @@ The API also exposes read-only integration contracts:
   /v1/platform/role-policy     declarative IAM capability contract
   /v1/platform/audit/lineage   SHA-256 evidence lineage
   /v1/platform/evidence-bundle portable evidence export contract
+  /v1/platform/data-status      governed live-data and freshness contract
+  /v1/platform/model-validation independent-review packet
+  /v1/platform/enterprise-status deployment/customer control ownership
+  /v1/platform/ai-evaluation    AI grounding and safety contract checks
 Readiness is for human review, not investment approval. The current build is
 RESEARCH_ONLY and execution_enabled=false.
+
+The repository includes docker-compose.production.yml as a deployment
+contract. It is intentionally parameterized for immutable image digests and
+external secrets; the production gate remains blocked until an operator
+supplies deployment-owned values and approvals.
 
 The release gate also writes:
   AURUM/artifacts/product_runtime/enterprise_evidence_bundle.json

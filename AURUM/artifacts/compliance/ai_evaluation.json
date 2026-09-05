@@ -1,0 +1,49 @@
+{
+  "checks": [
+    {
+      "check_id": "ai.provider_mode_declared",
+      "status": "PASS",
+      "summary": "The active AI provider mode is explicit"
+    },
+    {
+      "check_id": "ai.brief_grounded",
+      "status": "PASS",
+      "summary": "The brief is tied to the current decision and grounding sources"
+    },
+    {
+      "check_id": "ai.question_response_grounded",
+      "status": "PASS",
+      "summary": "Ask AURUM returns a bounded answer tied to the current decision"
+    },
+    {
+      "check_id": "ai.execution_boundary",
+      "status": "PASS",
+      "summary": "AI cannot enable execution"
+    },
+    {
+      "check_id": "ai.promotion_boundary",
+      "status": "PASS",
+      "summary": "AI cannot promote research"
+    },
+    {
+      "check_id": "ai.external_transmission_explicit",
+      "status": "PASS",
+      "summary": "External transmission is either disabled or explicitly visible"
+    }
+  ],
+  "claim_boundary": "Contract checks validate grounding and safety boundaries; they do not prove model quality, factual accuracy, or investment performance.",
+  "decision_id": "MARS-812FA013EB90FFA1",
+  "execution_enabled": false,
+  "generated_at_utc": "2026-09-05T18:48:58Z",
+  "live_provider_evaluation": "SKIPPED_NO_EXPLICIT_LIVE_MODEL",
+  "provider_mode": "LOCAL_GROUNDED",
+  "research_promotion": "RESEARCH_ONLY",
+  "schema_version": "1.0",
+  "service": "AURUM Intelligence evaluation contract",
+  "status": "PASS",
+  "summary": {
+    "failed_checks": 0,
+    "passed_checks": 6,
+    "total_checks": 6
+  }
+}

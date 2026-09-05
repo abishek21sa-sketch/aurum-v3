@@ -1,0 +1,58 @@
+{
+  "audit_storage_mode": "HASH_LINKED_LOCAL_EXPORT",
+  "boundary_note": "This contract identifies integration ownership; it is not a substitute for customer IAM, compliance, or operational controls.",
+  "controls": [
+    {
+      "control_id": "identity.sso",
+      "evidence": "Gateway/identity integration is not supplied by the repository.",
+      "owner": "customer_platform",
+      "status": "DEPLOYMENT_REQUIRED"
+    },
+    {
+      "control_id": "identity.rbac_enforcement",
+      "evidence": "Role policy is declared; enforcement belongs at the service and gateway boundary.",
+      "owner": "customer_platform",
+      "status": "DEPLOYMENT_REQUIRED"
+    },
+    {
+      "control_id": "tenancy.isolation",
+      "evidence": "Multi-tenant data partitioning and tenant-scoped keys are not enabled in this research build.",
+      "owner": "aurum_product",
+      "status": "RESEARCH_SINGLE_TENANT"
+    },
+    {
+      "control_id": "evidence.immutable_storage",
+      "evidence": "Exports are hash-linked; WORM/retention storage must be bound by deployment.",
+      "owner": "customer_platform",
+      "status": "DEPLOYMENT_REQUIRED"
+    },
+    {
+      "control_id": "operations.slo_and_support",
+      "evidence": "RTO, RPO, SLO, on-call, and support commitments must be approved per customer.",
+      "owner": "aurum_operations",
+      "status": "CUSTOMER_APPROVAL_REQUIRED"
+    },
+    {
+      "control_id": "deployment.production_profile",
+      "evidence": "docker-compose.production.yml",
+      "owner": "aurum_product",
+      "status": "PASS"
+    }
+  ],
+  "execution_enabled": false,
+  "generated_at_utc": "2026-09-05T18:48:58Z",
+  "identity_mode": "DEPLOYMENT_SSO_REQUIRED",
+  "required_customer_evidence": [
+    "SSO/OIDC or SAML integration test and break-glass procedure",
+    "RBAC and segregation-of-duties test evidence",
+    "Tenant-isolation test evidence if multiple customers share a deployment",
+    "Immutable retention, access logs, legal hold, backup, and restore evidence",
+    "Approved SLO/RTO/RPO, incident response, support, and change-management records"
+  ],
+  "research_promotion": "RESEARCH_ONLY",
+  "role_policy_source": "src/institutional/enterprise_readiness.py:build_role_policy",
+  "schema_version": "1.0",
+  "service": "AURUM enterprise platform contract",
+  "status": "INTEGRATION_READY_NOT_PRODUCTION",
+  "tenancy_mode": "SINGLE_TENANT_RESEARCH_BUILD"
+}

@@ -22,19 +22,27 @@
   "windows_entrypoint": "RUN_ACCEPTANCE.cmd",
   "user_command": ".\\RUN_ACCEPTANCE.cmd",
   "powershell_policy_dependency": false,
-  "patch_reason": "Added enterprise readiness, deployment preflight, recovery runbooks, a responsive command-center frontend, and a visible evidence-grounded AURUM Intelligence layer with Ask AURUM while preserving research-only execution boundaries.",
+  "patch_reason": "Added governed live-data controls, an AI grounding evaluation contract, independent model-validation packet, enterprise platform integration status, immutable-image production profile, recovery runbooks, responsive command-center frontend, and visible evidence-grounded AURUM Intelligence while preserving research-only execution boundaries.",
   "enterprise_controls": [
     "/v1/platform/readiness",
     "/v1/platform/observability",
     "/v1/platform/role-policy",
     "/v1/platform/audit/lineage",
-    "/v1/platform/deployment-preflight"
+    "/v1/platform/deployment-preflight",
+    "/v1/platform/data-status",
+    "/v1/platform/model-validation",
+    "/v1/platform/enterprise-status",
+    "/v1/platform/ai-evaluation"
   ],
   "ai_surface": [
     "/api/ai/status",
     "/api/ai/brief",
-    "/api/ai/ask"
+    "/api/ai/ask",
+    "/v1/platform/ai-evaluation"
   ],
+  "governed_data_contract": "/v1/platform/data-status",
+  "model_validation_contract": "/v1/platform/model-validation",
+  "enterprise_platform_contract": "/v1/platform/enterprise-status",
   "promotion_state": "RESEARCH_ONLY",
   "execution_enabled": false
 }

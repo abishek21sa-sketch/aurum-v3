@@ -5,6 +5,19 @@
   "max_llm_calls_per_run": 2,
   "default_model": "gpt-4o-mini",
   "low_cost_model": "gpt-4o-mini",
+  "live_provider": {
+    "provider": "openai",
+    "enabled_by_default": false,
+    "requires_explicit_external_approval": true,
+    "requires_managed_api_key": true,
+    "model_output_must_be_grounded": true
+  },
+  "evaluation": {
+    "contract_checks_required": true,
+    "execution_authorization_from_ai": false,
+    "research_promotion_from_ai": false,
+    "live_provider_smoke_test_requires_operator": true
+  },
   "phase5b": {
     "enabled": true,
     "committee_mode": "single_call",

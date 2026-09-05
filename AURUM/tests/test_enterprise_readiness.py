@@ -41,6 +41,10 @@ def test_platform_control_endpoints_expose_machine_contracts():
     policy = client.get("/v1/platform/role-policy")
     lineage = client.get("/v1/platform/audit/lineage")
     preflight = client.get("/v1/platform/deployment-preflight")
+    data_status = client.get("/v1/platform/data-status")
+    model_validation = client.get("/v1/platform/model-validation")
+    enterprise_status = client.get("/v1/platform/enterprise-status")
+    ai_evaluation = client.get("/v1/platform/ai-evaluation")
     preflight = client.get("/v1/platform/deployment-preflight")
 
     assert readiness.status_code == 200
@@ -54,6 +58,14 @@ def test_platform_control_endpoints_expose_machine_contracts():
     assert preflight.status_code == 200
     assert preflight.json()["research_gate"] == "PASS"
     assert preflight.json()["execution_enabled"] is False
+    assert data_status.status_code == 200
+    assert data_status.json()["service"] == "AURUM governed market data"
+    assert model_validation.status_code == 200
+    assert model_validation.json()["independent_review_required"] is True
+    assert enterprise_status.status_code == 200
+    assert enterprise_status.json()["execution_enabled"] is False
+    assert ai_evaluation.status_code == 200
+    assert ai_evaluation.json()["status"] == "PASS"
     assert preflight.status_code == 200
     assert preflight.json()["research_gate"] == "PASS"
     assert preflight.json()["execution_enabled"] is False

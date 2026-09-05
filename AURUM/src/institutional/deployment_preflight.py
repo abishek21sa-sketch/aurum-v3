@@ -65,7 +65,9 @@ def _secret_filename_findings(root: Path) -> list[str]:
 
 def build_deployment_preflight(root: Path) -> dict[str, Any]:
     """Return repository-proven deployment controls without persisting state."""
-    compose_path = root / "docker-compose.yml"
+    compose_path = root / "docker-compose.production.yml"
+    if not compose_path.is_file():
+        compose_path = root / "docker-compose.yml"
     compose = compose_path.read_text(encoding="utf-8") if compose_path.is_file() else ""
     dockerfiles = {
         "Dockerfile.api": (root / "Dockerfile.api"),

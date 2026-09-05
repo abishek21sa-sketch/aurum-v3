@@ -1,10 +1,6 @@
 {
   "blockers": [
-    "deployment.image_provenance_pinned",
-    "deployment.external_secret_injection",
-    "deployment.non_root_containers",
-    "deployment.api_healthcheck",
-    "deployment.ingress_boundary"
+    "deployment.image_provenance_pinned"
   ],
   "boundary_note": "A passing research gate proves repository controls only; production deployment remains blocked until deployment-owned controls pass.",
   "checks": [
@@ -67,12 +63,16 @@
       "check_id": "deployment.image_provenance_pinned",
       "details": {
         "images": [
-          "redis:7-alpine",
-          "timescale/timescaledb:latest-pg16"
+          "${AURUM_REDIS_IMAGE:?Set",
+          "${AURUM_TIMESCALE_IMAGE:?Set",
+          "${AURUM_API_IMAGE:?Set",
+          "${AURUM_DASHBOARD_IMAGE:?Set"
         ],
         "unpinned_images": [
-          "redis:7-alpine",
-          "timescale/timescaledb:latest-pg16"
+          "${AURUM_REDIS_IMAGE:?Set",
+          "${AURUM_TIMESCALE_IMAGE:?Set",
+          "${AURUM_API_IMAGE:?Set",
+          "${AURUM_DASHBOARD_IMAGE:?Set"
         ]
       },
       "domain": "supply_chain",
@@ -83,49 +83,41 @@
     {
       "check_id": "deployment.external_secret_injection",
       "details": {
-        "default_credential_present": true
+        "default_credential_present": false
       },
       "domain": "security",
-      "severity": "CRITICAL",
-      "status": "FAIL",
+      "severity": "INFO",
+      "status": "PASS",
       "summary": "Database credentials are supplied by deployment secret management"
     },
     {
       "check_id": "deployment.non_root_containers",
       "details": {
-        "missing_user_declarations": [
-          "Dockerfile.api",
-          "Dockerfile.dashboard"
-        ]
+        "missing_user_declarations": []
       },
       "domain": "container_security",
-      "severity": "HIGH",
-      "status": "FAIL",
+      "severity": "INFO",
+      "status": "PASS",
       "summary": "Application containers declare a non-root runtime user"
     },
     {
       "check_id": "deployment.api_healthcheck",
       "details": {
-        "configured": false
+        "configured": true
       },
       "domain": "reliability",
-      "severity": "HIGH",
-      "status": "FAIL",
+      "severity": "INFO",
+      "status": "PASS",
       "summary": "API service has a deployment health check"
     },
     {
       "check_id": "deployment.ingress_boundary",
       "details": {
-        "direct_host_bindings": [
-          "6379:6379",
-          "5434:5432",
-          "8000:8000",
-          "8501:8501"
-        ]
+        "direct_host_bindings": []
       },
       "domain": "network_security",
-      "severity": "HIGH",
-      "status": "FAIL",
+      "severity": "INFO",
+      "status": "PASS",
       "summary": "Production services are exposed through approved ingress"
     },
     {
@@ -141,7 +133,7 @@
   ],
   "decision_id": "MARS-812FA013EB90FFA1",
   "execution_enabled": false,
-  "generated_at_utc": "2026-09-05T16:52:43Z",
+  "generated_at_utc": "2026-09-05T18:48:58Z",
   "overall_status": "PRODUCTION_BLOCKED",
   "production_gate": "BLOCKED",
   "required_actions": [
@@ -156,9 +148,9 @@
   "schema_version": "1.0",
   "service": "AURUM deployment boundary",
   "summary": {
-    "failed_checks": 5,
-    "passed_checks": 7,
-    "production_blockers": 5,
+    "failed_checks": 1,
+    "passed_checks": 11,
+    "production_blockers": 1,
     "total_checks": 12
   }
 }

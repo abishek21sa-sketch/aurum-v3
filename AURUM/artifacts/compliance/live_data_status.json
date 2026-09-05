@@ -1,0 +1,51 @@
+{
+  "approval_required": true,
+  "external_fetch_enabled": false,
+  "fail_closed_policy": "No live snapshot may be replaced by bundled reference data without an explicit operator mode change.",
+  "live_requested": false,
+  "mode": "REFERENCE_ONLY",
+  "note": "Reference data is active; live acquisition is not requested.",
+  "optimizer_feed_enabled": false,
+  "provider": "repository_fixture",
+  "quality": {
+    "checks": {
+      "freshness_within_sla": false,
+      "numeric_prices_valid": false,
+      "required_tickers_present": true,
+      "timestamps_valid": false,
+      "unique_tickers": true
+    },
+    "freshness_sla_minutes": 30,
+    "invalid_rows": [
+      "SPY:invalid_timestamp",
+      "QQQ:invalid_timestamp",
+      "TLT:invalid_timestamp",
+      "GLD:invalid_timestamp",
+      "BTC-USD:invalid_timestamp"
+    ],
+    "latest_age_minutes": null,
+    "latest_timestamp_utc": null,
+    "missing_tickers": [],
+    "observed_tickers": [
+      "BTC-USD",
+      "GLD",
+      "QQQ",
+      "SPY",
+      "TLT"
+    ],
+    "required_tickers": [
+      "SPY",
+      "QQQ",
+      "TLT",
+      "GLD",
+      "BTC-USD"
+    ],
+    "row_count": 5,
+    "schema_version": "1.0",
+    "status": "FAIL"
+  },
+  "schema_version": "1.0",
+  "service": "AURUM governed market data",
+  "snapshot_path": "data/live/latest_live_market_snapshot.csv",
+  "status": "REFERENCE_ONLY"
+}
