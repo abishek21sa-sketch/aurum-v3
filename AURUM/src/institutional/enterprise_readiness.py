@@ -26,6 +26,7 @@ REQUIRED_ARTIFACTS = (
     "src/api/main.py",
     "scripts/product_adapter.py",
     "scripts/product_runtime.py",
+    "scripts/product_frontend.py",
     "scripts/run_deployment_preflight.py",
     "artifacts/mars_cvar/walk_forward_evidence.json",
     "artifacts/mars_cvar/release_manifest.json",

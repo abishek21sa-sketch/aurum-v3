@@ -14,8 +14,8 @@
       "bytes": 17839
     },
     "src/institutional/enterprise_readiness.py": {
-      "sha256": "a505f04830d0bde6e8f9ed5b4d98eb5c8cbcde2225c492c54e82d226cbfad87b",
-      "bytes": 16319
+      "sha256": "0302303c93b2835dff7f102607feace585c4a91e07b3d9bf44b200bae513199b",
+      "bytes": 16354
     },
     "src/institutional/deployment_preflight.py": {
       "sha256": "3481f7a4dfbbfcfa85979b1e5826a4ff43389830dbbfb5a21baf7bd4799614c4",
@@ -26,8 +26,12 @@
       "bytes": 4132
     },
     "scripts/product_runtime.py": {
-      "sha256": "03df559c5226d59dec0b5dab631b21ebfd228bcc52ed059a36e14e4802aacde5",
-      "bytes": 20499
+      "sha256": "fdfe00c133683c4a9e1cc291fec8c405cc29328a450d1a7b999e501c068a4564",
+      "bytes": 6848
+    },
+    "scripts/product_frontend.py": {
+      "sha256": "5bea413802fb1bf873600927daa7a562a94461a58c67fc66fd5b18eb91e5162b",
+      "bytes": 36698
     },
     "scripts/run_deployment_preflight.py": {
       "sha256": "fd4d5f593561b2b1d1e3f12e6493f117e80bcbed51b6b0e910f6518acabda386",
@@ -54,8 +58,8 @@
       "bytes": 1107
     },
     "scripts/rc3_windows_acceptance.py": {
-      "sha256": "3a72df4e2404d784e47d594a72e137e29229f541227e3d43c5e7e1b93a405704",
-      "bytes": 2593
+      "sha256": "5adc3dc3f09fec9dbe9223ce7e8bfd644d33c2ada2eb891a7ea1f40d40f6205f",
+      "bytes": 2665
     },
     "scripts/run_mars_cvar_institutional.py": {
       "sha256": "03d3ed6b05c22b5d73afa521353ec2f98a82710424518ee0fad5cf7d3ca3a816",
@@ -97,6 +101,10 @@
       "sha256": "4aa23b19ca31cd0874e6d21b820d7e35d4e829c465d59b3024b34e8abd221174",
       "bytes": 2426
     },
+    "tests/test_product_frontend.py": {
+      "sha256": "0237671559b2aa9c6993c4446278c3c07bbd672acd52c872000078896f2e1db8",
+      "bytes": 879
+    },
     "tests/test_release_verifier.py": {
       "sha256": "574668e8698f14281112d39a54698e074132cb6afabb671ba7b4fb24c5d2e96f",
       "bytes": 929
@@ -118,7 +126,7 @@
       "bytes": 6064
     },
     "artifacts/mars_cvar/governance_evidence.json": {
-      "sha256": "e0b0d6238eb97b0e8a853a2c3fd25c7dcb272231b9359d2214f54633ae27781e",
+      "sha256": "ac8a2984312c5e94c34e1da50a82eddebaffdfb316de828858036a72f13cec5a",
       "bytes": 4767
     },
     "artifacts/mars_cvar/turnover_sensitivity.csv": {
@@ -130,7 +138,7 @@
       "bytes": 872
     },
     "artifacts/compliance/deployment_preflight.json": {
-      "sha256": "6ce9fb36ee71d7c0066460dc77049363e5c8edafadc70c3409f5764329a4d0c2",
+      "sha256": "bc30a44aa6be69e091c56997215205ace012d68906f591dd0488c7dabd9f4697",
       "bytes": 5008
     },
     "docs/SIGNATURE_ALGORITHM.md": {

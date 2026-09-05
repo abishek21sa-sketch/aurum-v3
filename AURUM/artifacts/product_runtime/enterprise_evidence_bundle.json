@@ -1,7 +1,7 @@
 {
   "algorithm": "MARS-CVaR",
   "bundle_evidence_hash": "5e3175050a229725f234f7795f0ba1996db0ee4911be7a8574367ad4cb276345",
-  "bundle_sha256": "fae315712bed37a349cfa56e500c818c9faff50e7788de89bc452297fd2d9e68",
+  "bundle_sha256": "d7c629bb35f8bde958f7b2046783d1d10b57156918028dbabe62d61e25523685",
   "bundle_type": "AURUM_ENTERPRISE_EVIDENCE_BUNDLE",
   "claim_boundary": "Modeled optimization and historical walk-forward evidence only; not realized investment performance, a causal market forecast, a trade instruction, or a production promotion.",
   "decision_id": "MARS-812FA013EB90FFA1",
@@ -610,7 +610,7 @@
       }
     }
   },
-  "generated_at_utc": "2026-09-05T14:43:03Z",
+  "generated_at_utc": "2026-09-05T15:40:03Z",
   "governance": {
     "execution_enabled": false,
     "human_review_required": true,
@@ -618,7 +618,7 @@
     "research_promotion": "RESEARCH_ONLY",
     "separation_note": "Optimization authorization says the analytical inputs passed their execution gate; research promotion remains a separate empirical question."
   },
-  "lineage_root_hash": "56bb38656cb6525b603446adb29812f308f9e8548e2771299ccc0943d6461493",
+  "lineage_root_hash": "90229753278721b79f30fc22d74d7b1bc902119e0d419eae2202a2923ead3682",
   "provenance": {
     "adjustment_method": "not applicable to deterministic reference scenarios",
     "decision_data_class": "BUNDLED_REFERENCE_DATA",
@@ -638,8 +638,8 @@
     "summary": {
       "critical_failures": 0,
       "failed_checks": 0,
-      "passed_checks": 30,
-      "total_checks": 30
+      "passed_checks": 31,
+      "total_checks": 31
     }
   },
   "retention_policy": {
@@ -651,6 +651,6 @@
     "retention_owner_role": "risk_officer",
     "retention_period": "ORGANIZATION_DEFINED"
   },
-  "run_id": "MARS-812FA013EB90FFA1:56bb38656cb6525b",
+  "run_id": "MARS-812FA013EB90FFA1:90229753278721b7",
   "schema_version": "1.0"
 }
