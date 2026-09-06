@@ -1,6 +1,6 @@
 {
   "claim_boundary": "Image references and attestation metadata are shape-validated locally; registry signatures and deployment binding require external verification.",
-  "generated_at_utc": "2026-09-06T06:09:58Z",
+  "generated_at_utc": "2026-09-06T06:20:26Z",
   "images": {
     "AURUM_API_IMAGE": null,
     "AURUM_DASHBOARD_IMAGE": null,
@@ -9,6 +9,7 @@
   },
   "manifest_path": "config/production_image_provenance.json",
   "manifest_present": false,
+  "manifest_schema_valid": false,
   "metadata_checks": {
     "all_images_pinned_by_sha256": false,
     "deployment_binding_present": false,

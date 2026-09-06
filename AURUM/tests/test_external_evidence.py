@@ -88,6 +88,19 @@ def test_invalid_approval_and_digest_do_not_close_controls(tmp_path, monkeypatch
     assert build_production_image_provenance(ROOT)["status"] == "REQUIRED"
 
 
+def test_manifest_schema_version_is_required(tmp_path, monkeypatch):
+    customer = _customer_manifest()
+    customer["schema_version"] = "0.9"
+    customer_path = tmp_path / "customer-evidence.json"
+    customer_path.write_text(json.dumps(customer), encoding="utf-8")
+    monkeypatch.setenv("AURUM_CUSTOMER_EVIDENCE_FILE", str(customer_path))
+
+    result = build_customer_evidence_status(ROOT)
+
+    assert result["manifest_schema_valid"] is False
+    assert result["status"] == "REQUIRED"
+
+
 def test_external_evidence_api_endpoints_are_read_only_and_fail_closed():
     client = TestClient(app)
     customer = client.get("/v1/platform/customer-evidence")

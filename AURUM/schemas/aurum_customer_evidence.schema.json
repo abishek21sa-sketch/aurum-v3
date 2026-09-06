@@ -3,7 +3,7 @@
   "$id": "https://aurum.local/schemas/aurum_customer_evidence.schema.json",
   "title": "AURUM Customer Evidence Intake",
   "type": "object",
-  "required": ["schema_version", "service", "status", "coverage", "controls"],
+  "required": ["schema_version", "service", "status", "coverage", "controls", "manifest_schema_valid"],
   "properties": {
     "schema_version": {"const": "1.0"},
     "service": {"const": "AURUM customer evidence intake"},
@@ -12,6 +12,7 @@
     "coverage": {"$ref": "#/$defs/coverage"},
     "controls": {"type": "array", "minItems": 5, "items": {"type": "object", "required": ["control_id", "label", "owner", "status"], "properties": {"control_id": {"type": "string"}, "label": {"type": "string"}, "owner": {"type": "string"}, "status": {"enum": ["EVIDENCED", "REQUIRED"]}, "evidence_uri": {"type": ["string", "null"]}, "evidence_sha256": {"type": ["string", "null"]}, "approved_by": {"type": ["string", "null"]}, "approved_at_utc": {"type": ["string", "null"]}, "verification_record": {"type": ["string", "null"]}}, "additionalProperties": false}},
     "manifest_present": {"type": "boolean"},
+    "manifest_schema_valid": {"type": "boolean"},
     "source": {"type": "string"},
     "manifest_path": {"type": "string"},
     "claim_boundary": {"type": "string"}

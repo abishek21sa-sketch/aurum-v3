@@ -11,6 +11,7 @@
     "status": {"enum": ["EVIDENCED", "REQUIRED"]},
     "source": {"type": "string"},
     "manifest_present": {"type": "boolean"},
+    "manifest_schema_valid": {"type": "boolean"},
     "manifest_path": {"type": "string"},
     "images": {"type": "object", "required": ["AURUM_REDIS_IMAGE", "AURUM_TIMESCALE_IMAGE", "AURUM_API_IMAGE", "AURUM_DASHBOARD_IMAGE"], "properties": {"AURUM_REDIS_IMAGE": {"type": ["string", "null"]}, "AURUM_TIMESCALE_IMAGE": {"type": ["string", "null"]}, "AURUM_API_IMAGE": {"type": ["string", "null"]}, "AURUM_DASHBOARD_IMAGE": {"type": ["string", "null"]}}, "additionalProperties": false},
     "metadata_checks": {"type": "object", "required": ["required_attestation_metadata", "all_images_pinned_by_sha256", "deployment_binding_present"], "properties": {"required_attestation_metadata": {"type": "boolean"}, "all_images_pinned_by_sha256": {"type": "boolean"}, "deployment_binding_present": {"type": "boolean"}}, "additionalProperties": false},

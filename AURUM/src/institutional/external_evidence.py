@@ -80,6 +80,7 @@ def build_customer_evidence_status(root: Path) -> dict[str, Any]:
     """Validate the external customer-control evidence manifest, if supplied."""
     path, source = _external_path(root, "AURUM_CUSTOMER_EVIDENCE_FILE", "customer_evidence.json")
     payload = _load_json(path) if path.is_file() else None
+    manifest_schema_valid = bool(payload and payload.get("schema_version") == EVIDENCE_SCHEMA_VERSION)
     controls_by_id = payload.get("controls", {}) if payload else {}
     if isinstance(controls_by_id, list):
         controls_by_id = {item.get("control_id"): item for item in controls_by_id if isinstance(item, dict)}
@@ -107,8 +108,9 @@ def build_customer_evidence_status(root: Path) -> dict[str, Any]:
         "generated_at_utc": _utc_now(),
         "source": source,
         "manifest_present": path.is_file(),
+        "manifest_schema_valid": manifest_schema_valid,
         "manifest_path": str(path) if source == "ENVIRONMENT" else "config/customer_evidence.json",
-        "status": "EVIDENCED" if passed == len(controls) else "REQUIRED",
+        "status": "EVIDENCED" if manifest_schema_valid and passed == len(controls) else "REQUIRED",
         "coverage": {"passed": passed, "total": len(controls), "percent": round((passed / len(controls)) * 100, 1)},
         "controls": controls,
         "claim_boundary": "Shape and hash metadata are validated locally; customer authority and the underlying evidence remain external responsibilities.",
@@ -124,17 +126,19 @@ def build_production_image_provenance(root: Path) -> dict[str, Any]:
     path, source = _external_path(root, "AURUM_PRODUCTION_PROVENANCE_FILE", "production_image_provenance.json")
     payload = _load_json(path) if path.is_file() else None
     images = payload.get("images", {}) if payload else {}
+    manifest_schema_valid = bool(payload and payload.get("schema_version") == EVIDENCE_SCHEMA_VERSION)
     required_metadata = ("registry", "attestation_uri", "attestation_sha256", "signed_by", "verification_record", "deployment_binding")
     metadata_valid = bool(payload) and all(payload.get(key) not in (None, "") for key in required_metadata)
     metadata_valid = metadata_valid and bool(SHA256_RE.fullmatch(str(payload.get("attestation_sha256", ""))))
     images_valid = isinstance(images, dict) and all(_valid_image_reference(images.get(key)) for key in IMAGE_KEYS)
-    valid = metadata_valid and images_valid and payload.get("schema_version") == EVIDENCE_SCHEMA_VERSION
+    valid = metadata_valid and images_valid and manifest_schema_valid
     return {
         "schema_version": EVIDENCE_SCHEMA_VERSION,
         "service": "AURUM production image provenance intake",
         "generated_at_utc": _utc_now(),
         "source": source,
         "manifest_present": path.is_file(),
+        "manifest_schema_valid": manifest_schema_valid,
         "manifest_path": str(path) if source == "ENVIRONMENT" else "config/production_image_provenance.json",
         "status": "EVIDENCED" if valid else "REQUIRED",
         "images": {key: images.get(key) for key in IMAGE_KEYS} if isinstance(images, dict) else {},

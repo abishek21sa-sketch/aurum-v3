@@ -54,8 +54,8 @@
       "bytes": 5612
     },
     "src/institutional/external_evidence.py": {
-      "sha256": "96bad1fed1e2aa51bcbc9ec989544d99130e00c61a20006467b6e30d7141cba1",
-      "bytes": 7140
+      "sha256": "761db11bad1167570c6d2c56130d265db725d8ca55633b676c297017d1ec34b6",
+      "bytes": 7449
     },
     "scripts/product_adapter.py": {
       "sha256": "edd67cdc28f62e85a654d6286c144e9baa47127033ed21a9868d8fbe735ecf33",
@@ -150,8 +150,8 @@
       "bytes": 6048
     },
     "tests/test_external_evidence.py": {
-      "sha256": "66f734ce85bd0d0eaa753387481d0d9dade6789b90ffd523c875b3b04681351f",
-      "bytes": 4135
+      "sha256": "d07a99b8f4ecf97f7274cce402ff90c3a9516f3d6e64c190fe4de44e7a880142",
+      "bytes": 4627
     },
     "tests/test_release_verifier.py": {
       "sha256": "574668e8698f14281112d39a54698e074132cb6afabb671ba7b4fb24c5d2e96f",
@@ -174,7 +174,7 @@
       "bytes": 6064
     },
     "artifacts/mars_cvar/governance_evidence.json": {
-      "sha256": "9cc75a36952c2e71545298d6ce06c8cd75138e1e98bdb6393f83f5d24b27039f",
+      "sha256": "9c55488186c1ea04b2a8c270c637f72e168c7ec2eea546a70a4b1d42257d2522",
       "bytes": 4767
     },
     "artifacts/mars_cvar/turnover_sensitivity.csv": {
@@ -186,40 +186,40 @@
       "bytes": 872
     },
     "artifacts/compliance/deployment_preflight.json": {
-      "sha256": "53868c325d53826dad482bc7d9bee5cc9223fd03f3aa1863adb3c3d64c647730",
+      "sha256": "69a0edd17c91f83cb2541120ddd14d21c5adb7a7e16624471460deb77676a888",
       "bytes": 5793
     },
     "artifacts/compliance/live_data_status.json": {
-      "sha256": "2cc542d08f43e28045cac40a7a98df39ed94dfab8b390020cc552f39df76c0a5",
+      "sha256": "09441602d67bb1986162a9de62c912b04c47f4474b2339082fd1429921564688",
       "bytes": 2395
     },
     "artifacts/compliance/model_validation.json": {
-      "sha256": "45a42d0c50078e693cc3d6a00e9b468ae23974b87de25d0c46af56071dbb156b",
+      "sha256": "40c653de320ab76f3471add49779cabff1fb382876dc92f3057f1508a67647ed",
       "bytes": 3015
     },
     "artifacts/compliance/enterprise_platform.json": {
-      "sha256": "c14331c3e38fff8e7ab77be4ab51bc52e28af756119ae6d5a18f95913a7bcb2c",
+      "sha256": "8e3cbe5961d91261bba6a467c36ca7b8f0387fda4af6fd3c2708132a4aef3031",
       "bytes": 2451
     },
     "artifacts/compliance/ai_evaluation.json": {
-      "sha256": "6adccf7e507752db3679c9d100a2fcd7a93c42268fa055593f0c858a3bdd885c",
+      "sha256": "6e2c0b17cfa9cb021bcdebca12a81f17b6648fc24d672fb905b1fce786fe5ea6",
       "bytes": 1619
     },
     "artifacts/compliance/control_plane.json": {
-      "sha256": "45177fc4cad040331bd38fae7ff69b7aa4c8da5e544bc2a42724f7b6f8cfb6ab",
-      "bytes": 12803
+      "sha256": "294e266da19fd62c88825377193942200d1dfe7234dc43ed997a6c90983b1da8",
+      "bytes": 12881
     },
     "artifacts/compliance/operations_status.json": {
-      "sha256": "95cdb8a6c4ab48fd8cbe38020a78b9fb11cc454f3e0757826734f5f37d83be96",
+      "sha256": "7a37bb9223365b1507abc83baafe44667688f748cc112c40a9c731faea38c7ff",
       "bytes": 3999
     },
     "artifacts/compliance/customer_evidence_status.json": {
-      "sha256": "b650c53805447666f210faff4f75ad1661cc34a37e644b1873dee02bcd242730",
-      "bytes": 2321
+      "sha256": "02a549f7e00327207c185a305122af52a9d75379bc864bce8f6de72632c7ced7",
+      "bytes": 2356
     },
     "artifacts/compliance/production_image_provenance_status.json": {
-      "sha256": "62782ed72e0e28204d6ffbb2ca0861880bb580224ff1b221c0872571603ac5c4",
-      "bytes": 765
+      "sha256": "493f5ee7ef66edc6355e7acdad68b45d26f1e5cb97c9a3471e51a5456cf865dd",
+      "bytes": 800
     },
     "artifacts/product_runtime/latest_ai_intelligence_brief.json": {
       "sha256": "5b3891a25ae9de065b337e59def30d8227ada046b6f7e26f31dcf329f63525af",
@@ -330,12 +330,12 @@
       "bytes": 1584
     },
     "schemas/aurum_customer_evidence.schema.json": {
-      "sha256": "0f081fc01f2c5d9e921e1f9ffc9add6f730a6b965d78b643c808d54e0d52c78b",
-      "bytes": 1591
+      "sha256": "8643d74858d2d5b3ac8281f27d4aeb84a488416b447da98fec32887d5eac7191",
+      "bytes": 1666
     },
     "schemas/aurum_production_image_provenance.schema.json": {
-      "sha256": "dc8102a08944af24656817cf5564a39e3a0ae08448f3ccb8a50935fa26ba6f21",
-      "bytes": 1481
+      "sha256": "e14d14e933c2fc822d13f2d81484f01fc9f138614f1bb03686cb8e22ee2a3b58",
+      "bytes": 1531
     },
     "artifacts/compliance/sbom.json": {
       "sha256": "f087643b3258f8c845cb2e96893d67c6b597bd96d15cbb7f33f1b6ff08dea755",
