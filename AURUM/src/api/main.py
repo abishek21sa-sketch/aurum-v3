@@ -20,6 +20,7 @@ from src.institutional.ai_evaluation import build_ai_evaluation
 from src.institutional.control_plane import build_control_plane
 from src.institutional.external_evidence import build_customer_evidence_status, build_production_image_provenance
 from src.institutional.operations_contract import build_operations_status
+from src.institutional.synthetic_ml import build_synthetic_dataset_status
 from scripts.product_adapter import compute as compute_product_decision
 
 from src.api.routes_market import router as market_router
@@ -177,6 +178,12 @@ def platform_customer_evidence():
 def platform_image_provenance():
     """Return immutable image and signed-provenance intake status."""
     return build_production_image_provenance(_project_root())
+
+
+@app.get("/v1/platform/synthetic-ml-status", tags=["Platform controls"])
+def platform_synthetic_ml_status():
+    """Return the explicit synthetic-data development and ML validation boundary."""
+    return build_synthetic_dataset_status(_project_root())
 
 
 @app.get("/v1/platform/role-policy", tags=["Platform controls"])

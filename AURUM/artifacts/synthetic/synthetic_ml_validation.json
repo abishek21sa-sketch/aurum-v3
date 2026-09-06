@@ -1,0 +1,121 @@
+{
+  "checks": {
+    "baseline_reported": true,
+    "chronological_split": true,
+    "no_external_fetch": true,
+    "optimizer_feed_enabled": false,
+    "synthetic_only": true
+  },
+  "claim_boundary": "Metrics are development baselines on deterministic synthetic data; they do not validate live-market performance, causality, or investment outcomes.",
+  "classification": {
+    "accuracy": 0.27856135401974613,
+    "balanced_accuracy": 0.20767613038906416,
+    "confusion_matrix": {
+      "NORMAL": {
+        "NORMAL": 0,
+        "STRESS": 0,
+        "TREND_UP": 0,
+        "VOLATILITY_CLUSTER": 0
+      },
+      "RECOVERY": {
+        "NORMAL": 94,
+        "STRESS": 582,
+        "TREND_UP": 293,
+        "VOLATILITY_CLUSTER": 916
+      },
+      "STRESS": {
+        "NORMAL": 48,
+        "STRESS": 790,
+        "TREND_UP": 0,
+        "VOLATILITY_CLUSTER": 113
+      },
+      "TREND_UP": {
+        "NORMAL": 0,
+        "STRESS": 0,
+        "TREND_UP": 0,
+        "VOLATILITY_CLUSTER": 0
+      },
+      "VOLATILITY_CLUSTER": {
+        "NORMAL": 0,
+        "STRESS": 0,
+        "TREND_UP": 0,
+        "VOLATILITY_CLUSTER": 0
+      }
+    },
+    "features": [
+      "rolling_vol_20",
+      "momentum_20",
+      "drawdown_60",
+      "stress_score",
+      "volume_zscore"
+    ],
+    "labels": [
+      "NORMAL",
+      "STRESS",
+      "TREND_UP",
+      "VOLATILITY_CLUSTER"
+    ],
+    "majority_baseline_accuracy": 0.0,
+    "model": "nearest_centroid"
+  },
+  "data_class": "SIMULATED_SYNTHETIC_DATA",
+  "dataset_id": "AURUM-SYNTHETIC-ML-10000-V1",
+  "execution_enabled": false,
+  "generated_at_utc": "2026-09-06T13:52:17Z",
+  "promotion_state": "RESEARCH_ONLY",
+  "regression": {
+    "coefficients": [
+      0.00021110693113404971,
+      -0.0006917425644535936,
+      -0.00010903698262126695,
+      0.0006342589935724712,
+      0.0004835279199720971,
+      -0.00041152637358733083
+    ],
+    "features": [
+      "rolling_vol_20",
+      "momentum_20",
+      "drawdown_60",
+      "stress_score",
+      "volume_zscore"
+    ],
+    "mae": 0.022031920755560267,
+    "model": "ridge_closed_form",
+    "mse": 0.0009231564674877879,
+    "r_squared": 0.0005557912068898663,
+    "ridge_lambda": 0.1,
+    "train_feature_means": [
+      0.019423271878641717,
+      0.012384286145442814,
+      -0.07876597371064688,
+      0.36796282350846915,
+      -0.015181041373124699
+    ],
+    "train_feature_scales": [
+      0.014930011394761461,
+      0.10857581006576382,
+      0.09648050703783176,
+      0.27094804798994215,
+      0.999772235771446
+    ]
+  },
+  "schema_version": "1.0",
+  "service": "AURUM synthetic ML math validation",
+  "split": {
+    "excluded_by_case": {
+      "clean": 18,
+      "duplicate_observation": 90,
+      "label_noise": 94,
+      "missing_feature": 100,
+      "nonpositive_price": 90,
+      "outlier_return": 73,
+      "sparse_history": 400,
+      "stale_timestamp": 100
+    },
+    "excluded_rows": 965,
+    "method": "chronological",
+    "test_rows": 2836,
+    "train_max_time_index": 348.59999999999997,
+    "train_rows": 6199
+  }
+}

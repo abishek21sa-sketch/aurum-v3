@@ -55,6 +55,14 @@ The product surface preserves the repository-native MARS-CVaR LP and adds
 regime, portfolio, risk, baseline, stress, provenance, governance, and AI
 intelligence views. The AI layer interprets the current evidence payload; it
 does not change solver outputs or authorize execution.
+
+Synthetic AI/ML laboratory: the acceptance run generates exactly 10,000
+deterministic, labelled rows with normal, trend, volatility, stress, recovery,
+liquidity, regime-transition, missing-data, stale, duplicate, outlier,
+nonpositive-price, label-noise, and schema-drift cases. It runs transparent
+chronological ridge-regression and nearest-centroid baselines. These artifacts
+are SIMULATED_SYNTHETIC_DATA only and never count as live, historical,
+customer, causal, or realized-performance evidence.
 Modeled, synthetic, simulated, historical, optimized, and realized evidence
 remain distinct. Human review is required; no orders are emitted.
 

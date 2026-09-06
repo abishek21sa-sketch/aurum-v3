@@ -74,3 +74,23 @@ Optimization authorization and research promotion are separate states. A
 decision can be `AUTHORIZED` for analytical execution while the empirical
 strategy remains `RESEARCH_ONLY`. Historical walk-forward results are research
 evidence, not realized investment performance or a guarantee of future return.
+
+## Synthetic AI/ML development lab
+
+The repository also ships a deterministic 10,000-row synthetic scenario
+dataset for feature engineering, edge-case coverage, replay, and transparent
+ML mathematics. Run RUN_ACCEPTANCE.cmd to regenerate it and execute the
+chronological ridge-regression and nearest-centroid baselines. The artifacts
+are artifacts/synthetic/synthetic_ml_dataset.csv,
+artifacts/synthetic/synthetic_ml_dataset_manifest.json, and
+artifacts/synthetic/synthetic_ml_validation.json.
+
+The dataset includes normal, trend, volatility-cluster, stress, recovery,
+liquidity-shock, regime-boundary, missing-feature, stale-timestamp, duplicate,
+outlier, nonpositive-price, label-noise, and schema-drift cases. It is marked
+SIMULATED_SYNTHETIC_DATA, never enables the optimizer feed, and must not be
+described as live-market, historical, customer, causal, or realized-performance
+evidence.
+
+The synthetic status contract is available at /v1/platform/synthetic-ml-status;
+the product runtime exposes /api/synthetic-ml/status.

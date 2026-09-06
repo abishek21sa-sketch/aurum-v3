@@ -19,6 +19,12 @@ views. Its controls are governed inputs to a deterministic offline reference
 fixture. The AURUM Intelligence workspace provides an evidence-grounded CIO
 brief, risk challenge, and Ask AURUM question loop.
 
+The acceptance workflow also generates a deterministic 10,000-row
+SIMULATED_SYNTHETIC_DATA laboratory set with labelled edge cases and
+transparent chronological ML baselines. This is for AI/ML math, feature
+engineering, replay, and failure-mode testing only; it never enables the
+optimizer feed and is not market or realized-performance evidence.
+
 AI endpoints:
   /api/ai/status             active provider mode and safety boundary
   /api/ai/brief              current evidence-grounded CIO brief

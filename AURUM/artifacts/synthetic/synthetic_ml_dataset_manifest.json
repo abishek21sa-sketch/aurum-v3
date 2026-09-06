@@ -1,0 +1,93 @@
+{
+  "actual_rows": 10000,
+  "asset_count": 20,
+  "assets": [
+    "SPY",
+    "QQQ",
+    "TLT",
+    "GLD",
+    "IWM",
+    "EEM",
+    "HYG",
+    "LQD",
+    "VNQ",
+    "DBC",
+    "XLK",
+    "XLF",
+    "XLE",
+    "XLP",
+    "XLU",
+    "XLI",
+    "XLC",
+    "XLB",
+    "XLY",
+    "CASH"
+  ],
+  "case_counts": {
+    "clean": 8857,
+    "duplicate_observation": 90,
+    "label_noise": 94,
+    "liquidity_shock": 76,
+    "missing_feature": 100,
+    "nonpositive_price": 90,
+    "outlier_return": 73,
+    "regime_boundary": 20,
+    "schema_drift": 100,
+    "sparse_history": 400,
+    "stale_timestamp": 100
+  },
+  "case_types": [
+    "clean",
+    "sparse_history",
+    "regime_boundary",
+    "liquidity_shock",
+    "outlier_return",
+    "missing_feature",
+    "stale_timestamp",
+    "duplicate_observation",
+    "nonpositive_price",
+    "label_noise",
+    "schema_drift"
+  ],
+  "claim_boundary": "Synthetic data is intentionally non-market data and cannot support live, historical, customer, or realized-performance claims.",
+  "data_class": "SIMULATED_SYNTHETIC_DATA",
+  "dataset_id": "AURUM-SYNTHETIC-ML-10000-V1",
+  "external_fetch_performed": false,
+  "feature_fields": [
+    "rolling_vol_20",
+    "momentum_20",
+    "drawdown_60",
+    "stress_score",
+    "volume_zscore"
+  ],
+  "file": "artifacts/synthetic/synthetic_ml_dataset.csv",
+  "generated_at_utc": "2026-09-06T13:52:16Z",
+  "generator": "src/institutional/synthetic_ml.py:generate_synthetic_dataset",
+  "optimizer_feed_enabled": false,
+  "purpose": [
+    "AI/ML feature engineering",
+    "math validation",
+    "edge-case testing",
+    "replayable stress scenarios"
+  ],
+  "regimes": [
+    "NORMAL",
+    "TREND_UP",
+    "VOLATILITY_CLUSTER",
+    "STRESS",
+    "RECOVERY"
+  ],
+  "requested_rows": 10000,
+  "row_counts": {
+    "total": 10000,
+    "training_eligible": 9035
+  },
+  "schema_version": "1.0",
+  "seed": 20260906,
+  "service": "AURUM synthetic ML dataset manifest",
+  "sha256": "12874c640727fd07954e88c347d4c5315e9d7e2b383c9fef2243e924c9427d33",
+  "target_fields": [
+    "target_return_1",
+    "target_regime"
+  ]
+}

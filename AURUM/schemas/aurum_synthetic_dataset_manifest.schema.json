@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aurum.local/schemas/aurum_synthetic_dataset_manifest.schema.json",
+  "title": "AURUM Synthetic ML Dataset Manifest",
+  "type": "object",
+  "required": ["schema_version", "service", "dataset_id", "seed", "actual_rows", "assets", "regimes", "case_types", "feature_fields", "target_fields", "file", "sha256", "data_class", "optimizer_feed_enabled"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "service": {"const": "AURUM synthetic ML dataset manifest"},
+    "dataset_id": {"type": "string"},
+    "generated_at_utc": {"type": "string"},
+    "generator": {"type": "string"},
+    "seed": {"type": "integer"},
+    "requested_rows": {"type": "integer", "minimum": 1},
+    "actual_rows": {"type": "integer", "minimum": 1},
+    "asset_count": {"type": "integer", "minimum": 1},
+    "assets": {"type": "array", "items": {"type": "string"}},
+    "regimes": {"type": "array", "items": {"type": "string"}},
+    "case_types": {"type": "array", "items": {"type": "string"}},
+    "feature_fields": {"type": "array", "items": {"type": "string"}},
+    "target_fields": {"type": "array", "items": {"type": "string"}},
+    "row_counts": {"type": "object"},
+    "case_counts": {"type": "object"},
+    "file": {"type": "string"},
+    "sha256": {"type": "string", "pattern": "^[0-9a-fA-F]{64}$"},
+    "data_class": {"const": "SIMULATED_SYNTHETIC_DATA"},
+    "external_fetch_performed": {"const": false},
+    "optimizer_feed_enabled": {"const": false},
+    "purpose": {"type": "array", "items": {"type": "string"}},
+    "claim_boundary": {"type": "string"}
+  },
+  "additionalProperties": true
+}

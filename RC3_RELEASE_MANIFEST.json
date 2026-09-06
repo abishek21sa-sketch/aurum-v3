@@ -51,6 +51,8 @@
   "operations_contract": "/v1/platform/operations-status",
   "customer_evidence_contract": "/v1/platform/customer-evidence",
   "production_image_provenance_contract": "/v1/platform/image-provenance",
+  "synthetic_ml_contract": "/v1/platform/synthetic-ml-status",
+  "synthetic_dataset": "10000_ROWS_SIMULATED_SYNTHETIC_DATA",
   "external_evidence_intake": "ENVIRONMENT_ONLY_SHAPE_HASH_APPROVER_TIMESTAMP_VALIDATED",
   "customer_acceptance_register": "control-plane.customer_acceptance.controls",
   "operations_evidence_register": "operations-status.customer_evidence_register",

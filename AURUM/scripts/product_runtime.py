@@ -36,6 +36,7 @@ from src.institutional.live_data_contract import build_live_data_status  # noqa:
 from src.institutional.control_plane import build_control_plane  # noqa: E402
 from src.institutional.operations_contract import build_operations_status  # noqa: E402
 from src.institutional.external_evidence import build_customer_evidence_status, build_production_image_provenance  # noqa: E402
+from src.institutional.synthetic_ml import build_synthetic_dataset_status  # noqa: E402
 
 
 ARTIFACT = ROOT / "artifacts" / "product_runtime" / "latest_product_evidence.json"
@@ -131,6 +132,8 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, json.dumps(build_customer_evidence_status(ROOT), default=str).encode())
             if parsed.path == "/api/image-provenance":
                 return self._send(200, json.dumps(build_production_image_provenance(ROOT), default=str).encode())
+            if parsed.path == "/api/synthetic-ml/status":
+                return self._send(200, json.dumps(build_synthetic_dataset_status(ROOT), default=str).encode())
             if parsed.path == "/api/decision":
                 query = parse_qs(parsed.query)
                 params = _params_from_query(query)
@@ -204,6 +207,7 @@ def acceptance() -> None:
             "/api/operations/status",
             "/api/customer-evidence",
             "/api/image-provenance",
+            "/api/synthetic-ml/status",
             "/download/evidence.json",
         ):
             with urllib.request.urlopen(f"http://127.0.0.1:{port}{path}", timeout=20) as response:

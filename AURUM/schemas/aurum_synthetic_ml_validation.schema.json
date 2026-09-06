@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aurum.local/schemas/aurum_synthetic_ml_validation.schema.json",
+  "title": "AURUM Synthetic ML Validation",
+  "type": "object",
+  "required": ["schema_version", "service", "dataset_id", "data_class", "split", "regression", "classification", "checks", "promotion_state", "execution_enabled"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "service": {"const": "AURUM synthetic ML math validation"},
+    "generated_at_utc": {"type": "string"},
+    "dataset_id": {"type": "string"},
+    "data_class": {"const": "SIMULATED_SYNTHETIC_DATA"},
+    "split": {"type": "object"},
+    "regression": {"type": "object"},
+    "classification": {"type": "object"},
+    "checks": {"type": "object"},
+    "promotion_state": {"const": "RESEARCH_ONLY"},
+    "execution_enabled": {"const": false},
+    "claim_boundary": {"type": "string"}
+  },
+  "additionalProperties": true
+}
