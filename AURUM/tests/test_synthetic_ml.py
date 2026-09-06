@@ -45,6 +45,8 @@ def test_synthetic_ml_validation_is_chronological_and_research_only(tmp_path):
     assert result["regression"]["mse"] >= 0
     assert 0 <= result["classification"]["accuracy"] <= 1
     assert result["classification"]["majority_baseline_accuracy"] >= 0
+    assert set(result["classification"]["unseen_test_labels"]).issubset(result["classification"]["test_labels"])
+    assert set(result["classification"]["unseen_test_labels"]).isdisjoint(result["classification"]["labels"])
 
 
 def test_synthetic_outputs_validate_against_public_schemas(tmp_path):

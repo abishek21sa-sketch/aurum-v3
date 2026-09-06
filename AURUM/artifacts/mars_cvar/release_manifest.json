@@ -58,8 +58,8 @@
       "bytes": 7449
     },
     "src/institutional/synthetic_ml.py": {
-      "sha256": "66474dedb3dac19bec06324ddc255d1f62eb0c814669e8c854935112bba5c518",
-      "bytes": 21526
+      "sha256": "9df5475189e84cedcb888efa14280e355e961a54f233bf4919e15df640d45f60",
+      "bytes": 21766
     },
     "scripts/product_adapter.py": {
       "sha256": "edd67cdc28f62e85a654d6286c144e9baa47127033ed21a9868d8fbe735ecf33",
@@ -166,8 +166,8 @@
       "bytes": 5865
     },
     "tests/test_synthetic_ml.py": {
-      "sha256": "a36aaa973205b5c38bb92f73f36aa3b705a932141b3dd84a3c0b0566c0d11323",
-      "bytes": 2709
+      "sha256": "7488bab12cea56d0e6b0e76710b1d93fe1804459eab1a709956634b0c160c6cb",
+      "bytes": 2932
     },
     "tests/test_release_verifier.py": {
       "sha256": "574668e8698f14281112d39a54698e074132cb6afabb671ba7b4fb24c5d2e96f",
@@ -190,8 +190,8 @@
       "bytes": 6064
     },
     "artifacts/mars_cvar/governance_evidence.json": {
-      "sha256": "d0f7c0a95ed6916cf3ac8560211447d678111cbbfa64ae7382882f68568528cd",
-      "bytes": 4767
+      "sha256": "d33f4024db31c844a0a82f3880923ff53c78caa0978fab2b6452c0ce55265306",
+      "bytes": 4766
     },
     "artifacts/mars_cvar/turnover_sensitivity.csv": {
       "sha256": "285e04273f1969d49550a42bdcf731534c548bc0acc3b878d996a0231eed735a",
@@ -202,43 +202,43 @@
       "bytes": 872
     },
     "artifacts/compliance/deployment_preflight.json": {
-      "sha256": "99bf9094d1670ee00626ef85ba9bcb76330d35097673caffbbfcb70430fa44b7",
+      "sha256": "38ead7abc4513eb54f97363abd17c1e5e897476e6f9e32f8c02955ff2276a544",
       "bytes": 5793
     },
     "artifacts/compliance/live_data_status.json": {
-      "sha256": "9de5c6f573b83128fc47ca9e0631ccea2dccc37e918230948a9f5da436b31fbe",
+      "sha256": "52ac47a185765e90fdf3fb596386741539fca28f1c7991d9275de7f0b543f2b9",
       "bytes": 2395
     },
     "artifacts/compliance/model_validation.json": {
-      "sha256": "7161045af83540ffccf7ae2edc63c30747c2b4d3d134376300780c73a06f5135",
+      "sha256": "ba722b3eba61f866f6390d30d109dff93bc588500d8de29b9883370496c5b953",
       "bytes": 3015
     },
     "artifacts/compliance/enterprise_platform.json": {
-      "sha256": "d8bdc3b6d218266e1d97f025f53e64c77a49a5b25315b3d2589dbe88a0c7efd3",
+      "sha256": "33fefe6fbcff702268a8a0c89613dfb8c4cd7d7cde9815e83ac84aed2421ede9",
       "bytes": 2451
     },
     "artifacts/compliance/ai_evaluation.json": {
-      "sha256": "2373e3cd11104f50559146489c6218276f9857a154788b817c52b75d9ce3f4a6",
+      "sha256": "8d833f0e5b536e03003c7dd70f1e260fd4bc5862eb7d5fa51cd9cb2717785bb3",
       "bytes": 1619
     },
     "artifacts/compliance/control_plane.json": {
-      "sha256": "08feac80b937c6f854e79051888e9c0ff3cddd9102b0a54f97cfbfd5bd2dbc03",
+      "sha256": "a1c90b22fa3428c944ba2e92b7c078700ef17598d39d639d51fcbaf8ee0392be",
       "bytes": 12881
     },
     "artifacts/compliance/operations_status.json": {
-      "sha256": "77147074a7f2807a95ba853cd87885393c4d91ec571674ea040e87712e9c9b65",
+      "sha256": "f5e33cb94e2c258f815d0b43b06765175a75d44092de521ddc44a140b35604f7",
       "bytes": 3999
     },
     "artifacts/compliance/customer_evidence_status.json": {
-      "sha256": "9e759f780c1f97359eb94475015f087c9cd77be7a2187ab8f5e9b1b3e88efa65",
+      "sha256": "9f0da798336859a5592fd72a8c0870be4189c7b3b511f5eedc3241dcb46c564f",
       "bytes": 2356
     },
     "artifacts/compliance/production_image_provenance_status.json": {
-      "sha256": "e657e753aae73bbbadbdf5c0abd3e40053971b3acc9546e44bc277902045ece5",
+      "sha256": "4df27987c9efa488265c43cb29d8c8c34a15de52d486c9be913cee49b569bf6a",
       "bytes": 800
     },
     "artifacts/product_runtime/latest_ai_intelligence_brief.json": {
-      "sha256": "5b3891a25ae9de065b337e59def30d8227ada046b6f7e26f31dcf329f63525af",
+      "sha256": "31a4af53a962aa965e8027c954a11d4699893d55013a42f141575e5562390005",
       "bytes": 4555
     },
     "artifacts/synthetic/synthetic_ml_dataset.csv": {
@@ -246,12 +246,12 @@
       "bytes": 2610017
     },
     "artifacts/synthetic/synthetic_ml_dataset_manifest.json": {
-      "sha256": "7a9d10d8f46e0559c704a496db354743addc6e306129520695e30eb5448105ff",
+      "sha256": "4dafbd8f68fad08a4227fe673482ebc3438144d4c6640cb1f0bf275b507c13be",
       "bytes": 2170
     },
     "artifacts/synthetic/synthetic_ml_validation.json": {
-      "sha256": "8ac36c5ef11905c26a75fcb53cf94233b0d61aa9901330258140f873ad447409",
-      "bytes": 3156
+      "sha256": "4a6c6cf592f7139c1304c7a75e1dd54733a093d41a0ead16018602c60d188826",
+      "bytes": 3395
     },
     "docs/SIGNATURE_ALGORITHM.md": {
       "sha256": "bf45e6b0f239f60f11765c26b560ad64bae29081498f466fd9bef78905413a73",

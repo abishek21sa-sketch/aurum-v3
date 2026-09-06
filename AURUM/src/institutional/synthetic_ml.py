@@ -409,22 +409,24 @@ def run_synthetic_ml_validation(root: Path, ridge_lambda: float = 0.1) -> dict[s
     total_variance = sum((observed - mean_actual) ** 2 for observed in actual)
     r_squared = 1.0 - (mse * len(actual) / total_variance) if total_variance else 0.0
 
-    labels = sorted({item[3] for item in train})
-    centroids = {label: [_mean(row[index] for row, item in zip(train_features, train) if item[3] == label) for index in range(len(FEATURE_FIELDS))] for label in labels}
+    model_labels = sorted({item[3] for item in train})
+    observed_test_labels = sorted({item[3] for item in test})
+    unseen_test_labels = sorted(set(observed_test_labels) - set(model_labels))
+    centroids = {label: [_mean(row[index] for row, item in zip(train_features, train) if item[3] == label) for index in range(len(FEATURE_FIELDS))] for label in model_labels}
     predicted_labels = []
     for features in test_features:
-        predicted_labels.append(min(labels, key=lambda label: sum((features[index] - centroids[label][index]) ** 2 for index in range(len(FEATURE_FIELDS)))))
+        predicted_labels.append(min(model_labels, key=lambda label: sum((features[index] - centroids[label][index]) ** 2 for index in range(len(FEATURE_FIELDS)))))
     actual_labels = [item[3] for item in test]
     correct = sum(predicted == observed for predicted, observed in zip(predicted_labels, actual_labels))
     label_counts = Counter(actual_labels)
     balanced_scores = []
-    confusion = {label: {other: 0 for other in labels} for label in labels}
+    confusion_labels = sorted(set(model_labels) | set(observed_test_labels))
+    confusion = {label: {other: 0 for other in confusion_labels} for label in confusion_labels}
     for predicted, observed in zip(predicted_labels, actual_labels):
-        confusion.setdefault(observed, {}).setdefault(predicted, 0)
         confusion[observed][predicted] += 1
-    for label in labels:
+    for label in observed_test_labels:
         total = label_counts.get(label, 0)
-        balanced_scores.append((sum(confusion.get(label, {}).values() and [confusion[label].get(label, 0)]) / total) if total else 0.0)
+        balanced_scores.append(confusion[label].get(label, 0) / total if total else 0.0)
     majority_label = Counter(item[3] for item in train).most_common(1)[0][0]
     majority_accuracy = sum(label == majority_label for label in actual_labels) / len(actual_labels)
     return {
@@ -435,7 +437,7 @@ def run_synthetic_ml_validation(root: Path, ridge_lambda: float = 0.1) -> dict[s
         "data_class": "SIMULATED_SYNTHETIC_DATA",
         "split": {"method": "chronological", "train_max_time_index": split, "train_rows": len(train), "test_rows": len(test), "excluded_rows": sum(excluded.values()), "excluded_by_case": dict(sorted(excluded.items()))},
         "regression": {"model": "ridge_closed_form", "features": list(FEATURE_FIELDS), "ridge_lambda": ridge_lambda, "coefficients": coefficients, "mse": mse, "mae": mae, "r_squared": r_squared, "train_feature_means": means, "train_feature_scales": scales},
-        "classification": {"model": "nearest_centroid", "features": list(FEATURE_FIELDS), "labels": labels, "accuracy": correct / len(actual_labels), "balanced_accuracy": _mean(balanced_scores), "majority_baseline_accuracy": majority_accuracy, "confusion_matrix": confusion},
+        "classification": {"model": "nearest_centroid", "features": list(FEATURE_FIELDS), "labels": model_labels, "test_labels": observed_test_labels, "unseen_test_labels": unseen_test_labels, "accuracy": correct / len(actual_labels), "balanced_accuracy": _mean(balanced_scores), "majority_baseline_accuracy": majority_accuracy, "confusion_matrix": confusion},
         "checks": {"chronological_split": True, "no_external_fetch": True, "synthetic_only": True, "optimizer_feed_enabled": False, "baseline_reported": True},
         "promotion_state": "RESEARCH_ONLY",
         "execution_enabled": False,
