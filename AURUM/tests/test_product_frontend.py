@@ -19,6 +19,12 @@ def test_product_frontend_contains_command_center_surface_and_safety_copy():
         "Evidence room",
         "No orders emitted",
         "AURUM Intelligence",
+        "Research Operations",
+        "Research loop",
+        "Committee room",
+        "Research memory",
+        "Mission Control",
+        "Digital twin",
         "Ask AURUM",
         "Decision pulse",
         "Public evidence",
@@ -33,6 +39,8 @@ def test_product_frontend_contains_command_center_surface_and_safety_copy():
         "production_images",
         "/api/ai/brief",
         "/api/ai/ask",
+        "/api/research/operations",
+        "/download/research-operations.json",
         "/api/preflight",
     ):
         assert token in html

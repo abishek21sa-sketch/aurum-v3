@@ -38,11 +38,17 @@ from src.institutional.operations_contract import build_operations_status  # noq
 from src.institutional.external_evidence import build_customer_evidence_status, build_production_image_provenance  # noqa: E402
 from src.institutional.synthetic_ml import build_synthetic_dataset_status  # noqa: E402
 from src.institutional.public_data import build_public_data_status  # noqa: E402
+from src.institutional.research_operations import (  # noqa: E402
+    build_research_memory,
+    build_research_operations,
+    write_research_operations,
+)
 
 
 ARTIFACT = ROOT / "artifacts" / "product_runtime" / "latest_product_evidence.json"
 PREFLIGHT_ARTIFACT = ROOT / "artifacts" / "compliance" / "deployment_preflight.json"
 AI_ARTIFACT = ROOT / "artifacts" / "product_runtime" / "latest_ai_intelligence_brief.json"
+RESEARCH_ARTIFACT = ROOT / "artifacts" / "research_operations" / "latest_research_operations.json"
 
 
 def prepare_demo() -> dict:
@@ -65,6 +71,7 @@ def prepare_demo() -> dict:
         "brief": build_ai_brief(ROOT, decision),
     }
     AI_ARTIFACT.write_text(json.dumps(ai_payload, indent=2, sort_keys=True, default=str), encoding="utf-8")
+    write_research_operations(ROOT, decision)
     print(f"{ALGORITHM}_PRODUCT_DEMO_PREPARED=PASS")
     print(f"DECISION_ID={decision['decision_id']}")
     return payload
@@ -137,6 +144,31 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, json.dumps(build_synthetic_dataset_status(ROOT), default=str).encode())
             if parsed.path == "/api/public-data/status":
                 return self._send(200, json.dumps(build_public_data_status(ROOT), default=str).encode())
+            if parsed.path == "/api/research/operations":
+                return self._send(200, json.dumps(build_research_operations(ROOT, _decision_from_query(parse_qs(parsed.query))), default=str).encode())
+            if parsed.path == "/api/research/feed":
+                research = build_research_operations(ROOT, _decision_from_query(parse_qs(parsed.query)))
+                return self._send(200, json.dumps({
+                    "schema_version": research["schema_version"],
+                    "service": research["service"],
+                    "status": research["validation"]["status"],
+                    "hypotheses": research["hypotheses"],
+                    "validation": research["validation"],
+                    "next_actions": research["next_actions"],
+                    "research_promotion": research["research_promotion"],
+                    "execution_enabled": research["execution_enabled"],
+                }, default=str).encode())
+            if parsed.path == "/api/research/memory":
+                return self._send(200, json.dumps(build_research_memory(ROOT, _decision_from_query(parse_qs(parsed.query))), default=str).encode())
+            if parsed.path == "/api/research/committee":
+                research = build_research_operations(ROOT, _decision_from_query(parse_qs(parsed.query)))
+                return self._send(200, json.dumps(research["committee"], default=str).encode())
+            if parsed.path == "/api/mission-control/status":
+                research = build_research_operations(ROOT, _decision_from_query(parse_qs(parsed.query)))
+                return self._send(200, json.dumps(research["mission_control"], default=str).encode())
+            if parsed.path == "/api/digital-twin/status":
+                research = build_research_operations(ROOT, _decision_from_query(parse_qs(parsed.query)))
+                return self._send(200, json.dumps(research["digital_twin"], default=str).encode())
             if parsed.path == "/api/decision":
                 query = parse_qs(parsed.query)
                 params = _params_from_query(query)
@@ -147,6 +179,9 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, json.dumps(decision, default=str).encode())
             if parsed.path == "/download/evidence.json":
                 payload = ARTIFACT.read_bytes() if ARTIFACT.exists() else json.dumps(prepare_demo(), indent=2).encode()
+                return self._send(200, payload, "application/json")
+            if parsed.path == "/download/research-operations.json":
+                payload = RESEARCH_ARTIFACT.read_bytes() if RESEARCH_ARTIFACT.exists() else json.dumps(write_research_operations(ROOT), indent=2).encode()
                 return self._send(200, payload, "application/json")
             return self._send(404, b'{"detail":"not found"}')
         except Exception as exc:
@@ -212,7 +247,14 @@ def acceptance() -> None:
             "/api/image-provenance",
             "/api/synthetic-ml/status",
             "/api/public-data/status",
+            "/api/research/operations",
+            "/api/research/feed",
+            "/api/research/memory",
+            "/api/research/committee",
+            "/api/mission-control/status",
+            "/api/digital-twin/status",
             "/download/evidence.json",
+            "/download/research-operations.json",
         ):
             with urllib.request.urlopen(f"http://127.0.0.1:{port}{path}", timeout=20) as response:
                 if response.status != 200:
@@ -225,6 +267,15 @@ def acceptance() -> None:
         raise SystemExit("PRODUCT_RUNTIME_ACCEPTANCE=FAIL evidence artifact missing")
     if not AI_ARTIFACT.exists():
         raise SystemExit("PRODUCT_RUNTIME_ACCEPTANCE=FAIL AI artifact missing")
+    research = build_research_operations(ROOT, decision)
+    if research["service"] != "AURUM Research Operations":
+        raise SystemExit("PRODUCT_RUNTIME_ACCEPTANCE=FAIL research operations contract missing")
+    if research["execution_enabled"] is not False or research["research_promotion"] != "RESEARCH_ONLY":
+        raise SystemExit("PRODUCT_RUNTIME_ACCEPTANCE=FAIL research operations boundary changed")
+    if research["committee"]["judge_engaged_bear_objection"] is not True:
+        raise SystemExit("PRODUCT_RUNTIME_ACCEPTANCE=FAIL committee did not record bear objection")
+    if not research["memory"] or not research["lineage"]:
+        raise SystemExit("PRODUCT_RUNTIME_ACCEPTANCE=FAIL research lineage incomplete")
     print(f"{ALGORITHM}_PRODUCT_RUNTIME_ACCEPTANCE=PASS")
 
 

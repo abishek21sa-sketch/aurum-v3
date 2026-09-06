@@ -1,0 +1,314 @@
+{
+  "artifact_integrity": {
+    "content_sha256": "f6152b4276cc99f5f3854107b9682df634fc7afb1c16fdbc921783c90c8dfa3c",
+    "hash_scope": "all fields except artifact_integrity"
+  },
+  "committee": {
+    "agents": [
+      {
+        "position": "Investigate",
+        "role": "Bull",
+        "summary": "Stress-aware CVaR allocation has a coherent risk-management thesis and a complete walk-forward artifact."
+      },
+      {
+        "position": "Do not promote",
+        "role": "Bear",
+        "summary": "The reference MARS Sharpe (0.861) does not exceed the best baseline (0.861); the current evidence therefore does not establish incremental alpha."
+      },
+      {
+        "position": "Constrain",
+        "role": "Risk",
+        "summary": "L1 turnover is 36.38%; tail scenarios are reference-class evidence with 6 scenarios."
+      },
+      {
+        "position": "Request evidence",
+        "role": "Judge",
+        "summary": "Keep the hypothesis in research-only status until independent uplift, cost realism, and reviewable external evidence are added."
+      }
+    ],
+    "conditions_for_next_review": [
+      "Add independent public-data validation with a frozen manifest and freshness record.",
+      "Test transaction costs, capacity, and turnover sensitivity on the same time split.",
+      "Run an independent out-of-time window and document multiple-testing controls."
+    ],
+    "decision": "RESEARCH_ONLY",
+    "decision_label": "Hold for further research",
+    "execution_enabled": false,
+    "judge_engaged_bear_objection": true,
+    "mode": "LOCAL_GROUNDED_COMMITTEE_FIXTURE",
+    "research_promotion": "RESEARCH_ONLY",
+    "strongest_bear_objection": "The reference MARS Sharpe (0.861) does not exceed the best baseline (0.861); the current evidence therefore does not establish incremental alpha."
+  },
+  "digital_twin": {
+    "boundary": "Digital-twin scenarios are analytical counterfactuals, not live forecasts or execution instructions.",
+    "evidence_class": "SIMULATED_REFERENCE_SCENARIO",
+    "scenario_count": 6,
+    "scenarios": [
+      {
+        "in_cvar_tail": true,
+        "portfolio_return": 0.00382125,
+        "regime": "calm",
+        "scenario_id": "calm-02",
+        "signed_loss": -0.00382125
+      },
+      {
+        "in_cvar_tail": false,
+        "portfolio_return": 0.00382125,
+        "regime": "stress",
+        "scenario_id": "stress-03",
+        "signed_loss": -0.00382125
+      },
+      {
+        "in_cvar_tail": false,
+        "portfolio_return": 0.004285,
+        "regime": "stress",
+        "scenario_id": "stress-02",
+        "signed_loss": -0.004285
+      },
+      {
+        "in_cvar_tail": false,
+        "portfolio_return": 0.004711875,
+        "regime": "calm",
+        "scenario_id": "calm-01",
+        "signed_loss": -0.004711875
+      },
+      {
+        "in_cvar_tail": false,
+        "portfolio_return": 0.004848125,
+        "regime": "calm",
+        "scenario_id": "calm-03",
+        "signed_loss": -0.004848125
+      },
+      {
+        "in_cvar_tail": false,
+        "portfolio_return": 0.005955625,
+        "regime": "stress",
+        "scenario_id": "stress-01",
+        "signed_loss": -0.005955625
+      }
+    ],
+    "status": "REFERENCE_SCENARIOS"
+  },
+  "execution_enabled": false,
+  "generated_at_utc": "2026-09-06T18:57:04Z",
+  "hypotheses": [
+    {
+      "evidence_refs": [
+        "artifacts/mars_cvar/walk_forward_evidence.json",
+        "artifacts/public_data/public_data_manifest.json",
+        "artifacts/synthetic/synthetic_ml_validation.json"
+      ],
+      "holding_period": "reference period",
+      "hypothesis_id": "H-MARS-001",
+      "next_action": "Independent out-of-time validation",
+      "priority": "HIGH",
+      "stage": "STATISTICAL_REVIEW",
+      "status": "RESEARCH_ONLY",
+      "thesis": "A regime-aware CVaR lens may reduce tail exposure while preserving a reviewable implementation path when turnover and evidence boundaries are explicit.",
+      "title": "Regime-conditioned CVaR allocation with turnover control",
+      "universe": "SPY / TLT / GLD / CASH"
+    }
+  ],
+  "learning": {
+    "boundary": "Modeled optimization and historical walk-forward evidence only; not realized investment performance, a causal market forecast, a trade instruction, or a production promotion.",
+    "decay_monitor": {
+      "metrics": [
+        "Sharpe",
+        "CVaR",
+        "max_drawdown",
+        "turnover",
+        "calibration"
+      ],
+      "required_windows": [
+        "out_of_time",
+        "transaction_cost",
+        "regime_slice"
+      ],
+      "status": "BLOCKED_BY_GOVERNANCE"
+    },
+    "next_evaluation": "Create an independently frozen evaluation window before any paper-trading consideration.",
+    "paper_trading_enabled": false,
+    "stage": "RESEARCH_ONLY",
+    "status": "NOT_STARTED"
+  },
+  "lineage": [
+    {
+      "from": "decision",
+      "relationship": "research hypothesis derived from governed evidence",
+      "to": "H-MARS-001"
+    },
+    {
+      "from": "H-MARS-001",
+      "relationship": "evaluated by reference walk-forward checks",
+      "to": "validation"
+    },
+    {
+      "from": "validation",
+      "relationship": "challenged by Bull/Bear/Risk/Judge fixture",
+      "to": "committee"
+    },
+    {
+      "from": "committee",
+      "relationship": "constraints retained for future experiments",
+      "to": "memory"
+    },
+    {
+      "from": "memory",
+      "relationship": "out-of-time evaluation required before decay monitoring",
+      "to": "learning"
+    }
+  ],
+  "memory": [
+    {
+      "applies_when": "The candidate Sharpe is not greater than the best baseline after the same split.",
+      "failure_mode": "no_incremental_baseline_edge",
+      "lesson": "A complete backtest is not enough when the optimized lens ties its strongest baseline.",
+      "memory_id": "RM-001",
+      "source": "H-MARS-001",
+      "status": "ACTIVE_CONSTRAINT",
+      "structured_constraint": "Require independent out-of-sample uplift before empirical promotion."
+    },
+    {
+      "applies_when": "Aggregate turnover is material or the target move is concentrated.",
+      "failure_mode": "implementation_friction",
+      "lesson": "The current reference decision carries 36.38% L1 turnover, so liquidity and cost review must remain visible.",
+      "memory_id": "RM-002",
+      "source": "transaction_analysis",
+      "status": "ACTIVE_CONSTRAINT",
+      "structured_constraint": "Do not treat target weights as implementable without cost and capacity evidence."
+    },
+    {
+      "applies_when": "Scenario data is synthetic, simulated, or reference-only.",
+      "failure_mode": "scenario_class_boundary",
+      "lesson": "Simulated reference scenarios can explain a tail convention but cannot be presented as a live loss forecast.",
+      "memory_id": "RM-003",
+      "source": "risk_lab.scenarios",
+      "status": "ACTIVE_CONSTRAINT",
+      "structured_constraint": "Carry evidence_class and source lineage into every scenario-derived conclusion."
+    }
+  ],
+  "mission_control": {
+    "components": [
+      {
+        "mode": "MARS-CVaR reference solver",
+        "name": "Decision engine",
+        "status": "READY"
+      },
+      {
+        "mode": "local grounded / human-gated",
+        "name": "AI intelligence",
+        "status": "READY"
+      },
+      {
+        "mode": "PUBLIC_AUTHORITATIVE_DATA",
+        "name": "Public evidence",
+        "status": "PASS"
+      },
+      {
+        "mode": "SIMULATED_SYNTHETIC_DATA",
+        "name": "Synthetic ML",
+        "status": "PASS"
+      },
+      {
+        "mode": "no orders emitted",
+        "name": "Execution",
+        "status": "DISABLED"
+      }
+    ],
+    "cycle_mode": "DETERMINISTIC_RESEARCH_CYCLE",
+    "cycle_status": "READY",
+    "execution_enabled": false,
+    "last_decision_id": "MARS-812FA013EB90FFA1",
+    "scheduler": {
+      "note": "A deterministic request-driven cycle is active; no hidden background scheduler is running.",
+      "status": "NOT_CONFIGURED"
+    },
+    "timeline": [
+      {
+        "detail": "Decision and public-evidence artifacts loaded.",
+        "stage": "Observe",
+        "status": "PASS"
+      },
+      {
+        "detail": "Validation contract is visible; promotion remains blocked.",
+        "stage": "Validate",
+        "status": "REVIEW"
+      },
+      {
+        "detail": "Bear objection and risk challenge are recorded.",
+        "stage": "Challenge",
+        "status": "PASS"
+      },
+      {
+        "detail": "Judge outcome is research-only; no order or promotion path exists.",
+        "stage": "Decide",
+        "status": "REVIEW"
+      },
+      {
+        "detail": "Requires an independently frozen out-of-time evaluation.",
+        "stage": "Learn",
+        "status": "BLOCKED"
+      }
+    ]
+  },
+  "mode": "DETERMINISTIC_GOVERNED_FIXTURE",
+  "next_actions": [
+    "Freeze an independent public-data evaluation window and hash the manifest.",
+    "Add transaction-cost and capacity assumptions to the same research ticket.",
+    "Replace the deterministic committee fixture with a schema-validated optional model provider."
+  ],
+  "research_promotion": "RESEARCH_ONLY",
+  "schema_version": "1.0",
+  "service": "AURUM Research Operations",
+  "validation": {
+    "checks": [
+      {
+        "evidence": "walk_forward_evidence.json",
+        "id": "walk_forward_complete",
+        "label": "Walk-forward window complete",
+        "status": "PASS",
+        "value": "1701 periods"
+      },
+      {
+        "evidence": "walk_forward_research.no_lookahead",
+        "id": "no_lookahead",
+        "label": "No-lookahead boundary",
+        "status": "PASS",
+        "value": "true"
+      },
+      {
+        "evidence": "research validation contract",
+        "id": "sample_size",
+        "label": "Independent sample-size floor",
+        "status": "PASS",
+        "value": "1701 >= 30"
+      },
+      {
+        "evidence": "walk_forward_research.summary",
+        "id": "baseline_uplift",
+        "label": "Incremental uplift over best baseline",
+        "status": "REVIEW",
+        "value": "0.861 vs 0.861 Sharpe"
+      },
+      {
+        "evidence": "governance.research_promotion",
+        "id": "promotion_gate",
+        "label": "Empirical promotion gate",
+        "status": "BLOCKED",
+        "value": "RESEARCH_ONLY"
+      }
+    ],
+    "checks_passed": 3,
+    "checks_total": 5,
+    "claim_boundary": "Reference walk-forward evidence is not realized performance and does not establish investment alpha.",
+    "method": "governed_reference_validation",
+    "metrics": {
+      "best_baseline_sharpe": 0.860556,
+      "bonferroni_psr": 0.0,
+      "mars_sharpe": 0.860556,
+      "periods": 1701
+    },
+    "promotion_safe": false,
+    "status": "REVIEW"
+  }
+}

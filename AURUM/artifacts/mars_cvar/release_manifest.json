@@ -65,17 +65,21 @@
       "sha256": "9df5475189e84cedcb888efa14280e355e961a54f233bf4919e15df640d45f60",
       "bytes": 21766
     },
+    "src/institutional/research_operations.py": {
+      "sha256": "865e782f4286c24f14b2e295c7f5c4e8d5c5584d11afea68805a38312d1b9aa3",
+      "bytes": 16447
+    },
     "scripts/product_adapter.py": {
       "sha256": "edd67cdc28f62e85a654d6286c144e9baa47127033ed21a9868d8fbe735ecf33",
       "bytes": 4132
     },
     "scripts/product_runtime.py": {
-      "sha256": "b681457b7a32ca5d5aa9e937754a155b588e84067e784d0b0ee97aa60b64441a",
-      "bytes": 11360
+      "sha256": "19d8e295e1b8ca4300faa61bb134d9dadde67bd562cdb2e02cb010eb36d3da6c",
+      "bytes": 14926
     },
     "scripts/product_frontend.py": {
-      "sha256": "d0d9f10eb8c80aebac8260bfcbcfaf8d0f9e89337065e7b49f7b84d8e0f4eeff",
-      "bytes": 62332
+      "sha256": "59d073171f2df340fc8e47385a63973948c6cb94808bc50d348e33a8873a22b6",
+      "bytes": 71898
     },
     "scripts/ingest_public_data.py": {
       "sha256": "2fd87c2ab75b7a2db26f19470dbb84adeaf84cf073f29050c73a035850e25d2e",
@@ -158,8 +162,12 @@
       "bytes": 4537
     },
     "tests/test_product_frontend.py": {
-      "sha256": "1be416e34e027ee70021d012c7ef19c37569b9140729cfef348b06493ec7e486",
-      "bytes": 1310
+      "sha256": "d9a7284f29acb351a053821c83d98979c18885662555b897e6b9199992ff9b94",
+      "bytes": 1552
+    },
+    "tests/test_research_operations.py": {
+      "sha256": "ef4311f9a28c1655a4fe41c8b66c232b43b5892cebe0a45b6fed7f28b9861dfc",
+      "bytes": 1808
     },
     "tests/test_ai_intelligence.py": {
       "sha256": "67834a52de73cf7bf7b75ba2217b58694eb823d82aa1f3d313421da751d6593c",
@@ -250,8 +258,12 @@
       "bytes": 800
     },
     "artifacts/product_runtime/latest_ai_intelligence_brief.json": {
-      "sha256": "49b73db800c8f11b020217fc554815cbe06e77ebe2b4c24b9846feffb73e1b98",
+      "sha256": "ac60edd8bcf38ac75cc22c804ceca7cfaa605274a2648d82c4ea7c1e72f584e7",
       "bytes": 4555
+    },
+    "artifacts/research_operations/latest_research_operations.json": {
+      "sha256": "e93c45acc56bf5e51a0d82e2dd3b1b96b032bf827c4e481353f0a3af475ec611",
+      "bytes": 11002
     },
     "artifacts/synthetic/synthetic_ml_dataset.csv": {
       "sha256": "12874c640727fd07954e88c347d4c5315e9d7e2b383c9fef2243e924c9427d33",
@@ -272,6 +284,10 @@
     "docs/RESEARCH_VALIDATION_MARS_CVAR.md": {
       "sha256": "83180b7062e54d555bccf29cbd47cda93371b71388f9ce3b232a15a905eb7f7e",
       "bytes": 1827
+    },
+    "docs/RESEARCH_OPERATIONS.md": {
+      "sha256": "5f2d02f7f02ac923ecb72b5ed26f0a7acb276415f6b1e6df9b702bc32a31f7c4",
+      "bytes": 1684
     },
     "docs/PRODUCT_RUNTIME.md": {
       "sha256": "aa06ca599908fd9cedd2adc1ec7cfb69b33199f1874fbf7ef2057c1c7e698b04",
