@@ -102,6 +102,8 @@ def test_control_plane_keeps_readiness_denominators_separate():
     assert result["repository_control_coverage"] == {"passed": 6, "total": 6, "percent": 100.0}
     assert result["deployment_preflight_coverage"]["total"] == 14
     assert result["customer_acceptance_coverage"]["passed"] == 0
+    assert len(result["customer_acceptance"]["controls"]) == 5
+    assert all(item["status"] != "PASS" for item in result["customer_acceptance"]["controls"])
     assert result["production_blocked"] is True
 
 
@@ -112,6 +114,8 @@ def test_operations_contract_is_explicitly_customer_configured():
     assert result["customer_configuration_complete"] is False
     assert result["execution_enabled"] is False
     assert len(result["required_customer_evidence"]) == 5
+    assert len(result["customer_evidence_register"]) == 5
+    assert all(item["status"] == "REQUIRED" for item in result["customer_evidence_register"])
 
 
 def test_governed_payloads_validate_against_public_schemas():

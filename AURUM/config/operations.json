@@ -8,5 +8,9 @@
   "support_owner": "CUSTOMER_CONFIGURATION_REQUIRED",
   "alert_route": "CUSTOMER_CONFIGURATION_REQUIRED",
   "backup_restore_drill_id": null,
-  "change_approval_record": null
+  "change_approval_record": null,
+  "legal_hold_record": null,
+  "deletion_approval_record": null,
+  "incident_escalation_path": "CUSTOMER_CONFIGURATION_REQUIRED",
+  "rollback_plan_reference": null
 }

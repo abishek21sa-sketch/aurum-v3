@@ -33,6 +33,8 @@ until immutable production image digests are supplied and deployment-owned contr
 are approved
 Unified control plane: 6/6 repository controls covered; deployment 13/14;
 customer acceptance 0/5 (customer configuration required)
+Customer evidence register: 5 enterprise controls + 5 operational evidence
+items, all explicitly owned and currently REQUIRED/approval-gated
 
 The product surface preserves the repository-native MARS-CVaR LP and adds
 regime, portfolio, risk, baseline, stress, provenance, governance, and AI

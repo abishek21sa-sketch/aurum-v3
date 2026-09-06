@@ -46,12 +46,12 @@
       "bytes": 3428
     },
     "src/institutional/control_plane.py": {
-      "sha256": "de03fe6df53cb44019b7f6ccad23400a9d805c9708a15e2bf94e70800327b2a3",
-      "bytes": 4907
+      "sha256": "587081ccb711cfecea44442e300503c3aee8a6ec7e3f4467df177f6dd02e5c11",
+      "bytes": 6232
     },
     "src/institutional/operations_contract.py": {
-      "sha256": "f80f07201a14c7b8c12d4aefcc17421f628f3e251238a7088ea887a81dd50a21",
-      "bytes": 3299
+      "sha256": "22f0e87adac5275ef66230c75e33c405b5330d54ff7d0a2c91afa4bf19ef66aa",
+      "bytes": 5612
     },
     "scripts/product_adapter.py": {
       "sha256": "edd67cdc28f62e85a654d6286c144e9baa47127033ed21a9868d8fbe735ecf33",
@@ -62,8 +62,8 @@
       "bytes": 10242
     },
     "scripts/product_frontend.py": {
-      "sha256": "8500bd1cd07bdaf09cda97ed838b1aea8fe498c58910cf43a63e9476a62896fc",
-      "bytes": 50291
+      "sha256": "b37850fe13adc5aaf3d8d25c12bed29b41cbff07f0b77a1cbb7cc246d3033832",
+      "bytes": 51781
     },
     "scripts/run_deployment_preflight.py": {
       "sha256": "b380155f2023d8242c6f501aece4c4c608025be6d79062b43f83f1b794a77b21",
@@ -134,16 +134,16 @@
       "bytes": 3656
     },
     "tests/test_product_frontend.py": {
-      "sha256": "34420cb7191278e9919509b7c50b92453bb0d815bb455725993439ba63bf6cc6",
-      "bytes": 1067
+      "sha256": "f9f77516bc0fab223c609c65155d4925683e249aa2673931e5091e64d8cddb00",
+      "bytes": 1143
     },
     "tests/test_ai_intelligence.py": {
       "sha256": "67834a52de73cf7bf7b75ba2217b58694eb823d82aa1f3d313421da751d6593c",
       "bytes": 5579
     },
     "tests/test_governed_controls.py": {
-      "sha256": "e857e2a0ad3c0c56bf38e4014f2736e09e562290f00fcf085567821c20333800",
-      "bytes": 5441
+      "sha256": "8de94221f63e60487f0a1a7faa7022240bd775075a59ce07f31eee3888717d7c",
+      "bytes": 5751
     },
     "tests/test_release_verifier.py": {
       "sha256": "574668e8698f14281112d39a54698e074132cb6afabb671ba7b4fb24c5d2e96f",
@@ -166,7 +166,7 @@
       "bytes": 6064
     },
     "artifacts/mars_cvar/governance_evidence.json": {
-      "sha256": "6e8b44d7aaa1023dd52fab8af227c5ec4c6b3ac24eb031040e6ec7200e34f053",
+      "sha256": "84a86bc5e2c1dce7a7166dc89e2e11adb161395a5cf89eea76f2f29fe85f3123",
       "bytes": 4767
     },
     "artifacts/mars_cvar/turnover_sensitivity.csv": {
@@ -178,35 +178,35 @@
       "bytes": 872
     },
     "artifacts/compliance/deployment_preflight.json": {
-      "sha256": "f2a2fd7f8aa2c9f663a7c10d82e7cf3dc163b8ba820e4b65f587f4de57eddd1c",
+      "sha256": "27250b57b106e787fb97bdbf67fb024ca0893eda5c5c85c0bf1e61042cae4090",
       "bytes": 5430
     },
     "artifacts/compliance/live_data_status.json": {
-      "sha256": "1b7303bce11a42e63e44a9c34bc83c16e828b7752affdeab8f13ec4e7d7455bc",
+      "sha256": "cb92e43455a7fa4b722440bc7813b5afeb56f582159ed0c6b4a08da577b0e91b",
       "bytes": 2395
     },
     "artifacts/compliance/model_validation.json": {
-      "sha256": "1b08a6a6b0309349c4e494413ef06e6b3b57fa198c0dbb42d34d0a49ccdc8d83",
+      "sha256": "b01c9bbf5fa63218bb2bb0593a56620309f8f378f34062e502238cd1e20ca235",
       "bytes": 3015
     },
     "artifacts/compliance/enterprise_platform.json": {
-      "sha256": "b9556d810aa97267131a2ee8419160a951524a1474b5843e0b576278e03dfc8c",
+      "sha256": "1a405c6b3ddecdea271348d2563dbefc8360c00609b941f21870d087de3efb5e",
       "bytes": 2451
     },
     "artifacts/compliance/ai_evaluation.json": {
-      "sha256": "59223c59810bc0971a90e9d39459fd2cc9f8e23344572f838ac7c246f2ad1f6b",
+      "sha256": "ea66f7f373d411ee6cca415fcc8547dbfddf33a9e8fd6b2cbea9d82fa153de39",
       "bytes": 1619
     },
     "artifacts/compliance/control_plane.json": {
-      "sha256": "54070d9f4c0d55a756d97592e4c5314ba37e717059aad2277c91ccfb7c9bcfed",
-      "bytes": 2858
+      "sha256": "0cb9de07e66b1b0d1e0146f6d12d7a073af98646535be1f8fcf011bf786b78f3",
+      "bytes": 4546
     },
     "artifacts/compliance/operations_status.json": {
-      "sha256": "b0104b1efd216181c9cc8312d27afd815c7dd32f8ba414add4c16a5e601c2249",
-      "bytes": 1726
+      "sha256": "1728d6d21665e8d602eef48929d8c594dacfe4c67b26cc2f8c42382461f38b99",
+      "bytes": 3999
     },
     "artifacts/product_runtime/latest_ai_intelligence_brief.json": {
-      "sha256": "f9baf44b99d7fda80932431327e41a53120f726129c48a507ab70fd8ad4130fb",
+      "sha256": "070118a8c5983531b8310482e1653e621b2115300d585c649fc29c710541dad8",
       "bytes": 4555
     },
     "docs/SIGNATURE_ALGORITHM.md": {
@@ -222,8 +222,8 @@
       "bytes": 1396
     },
     "docs/ENTERPRISE_OPERATING_MODEL.md": {
-      "sha256": "6c63f78c1c440ccf38f4d10836380b8147240e9ecbe1c807b1711c7f0a50a010",
-      "bytes": 4672
+      "sha256": "98888a251de392c004a0f20196445bf10003cd75fda2345610575e6f01f98ef9",
+      "bytes": 4984
     },
     "docs/OPERATIONS_RUNBOOK.md": {
       "sha256": "4e616ef0a70b552922c7a9d2e93c20b70b752602aea660734ad94ca42da4ed50",
@@ -270,8 +270,8 @@
       "bytes": 1092
     },
     "config/operations.json": {
-      "sha256": "f1ece10b7720fb7653db7c8bba638b4355b9d68263e91242ef9a70caaec98a28",
-      "bytes": 353
+      "sha256": "2ee7fb1b49133a947dc317003c199186798bae892da68815113fcbbf74686215",
+      "bytes": 518
     },
     "schemas/aurum_readiness.schema.json": {
       "sha256": "ab82654d9277bfde10fafc5bf2b56871093e61fba8bcf127fb1cc0cdd9d39dce",
@@ -298,12 +298,12 @@
       "bytes": 2550
     },
     "schemas/aurum_control_plane.schema.json": {
-      "sha256": "1bbc6f9cdca72e6aa36d81339c251676c5436987c9c75c42cdb0de5a0183f208",
-      "bytes": 2090
+      "sha256": "2f045341bdbcf23a1a3f3159714cb5c18c185df9f71a01946a6ef76083b02854",
+      "bytes": 2458
     },
     "schemas/aurum_operations.schema.json": {
-      "sha256": "768551abaf5cdd565f6f326b40818edc1255938dd58069d9ed906bb02aa0fdaf",
-      "bytes": 1043
+      "sha256": "198c0067c4fea5d9e96300b1170aabc9b99e37460622d9cc9e35beaf0a61c57f",
+      "bytes": 1584
     },
     "artifacts/compliance/sbom.json": {
       "sha256": "f087643b3258f8c845cb2e96893d67c6b597bd96d15cbb7f33f1b6ff08dea755",

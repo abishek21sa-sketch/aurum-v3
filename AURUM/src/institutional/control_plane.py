@@ -55,6 +55,24 @@ def build_control_plane(root: Path, evidence: Mapping[str, Any] | None = None) -
     repository_passed = sum(item["status"] in accepted_statuses for item in repository_areas)
     deployment_summary = preflight.get("summary", {})
     customer_controls = enterprise.get("required_customer_evidence", [])
+    enterprise_controls = {item.get("control_id"): item for item in enterprise.get("controls", [])}
+    customer_acceptance_controls = [
+        {
+            "control_id": control_id,
+            "label": label,
+            "owner": enterprise_controls.get(control_id, {}).get("owner", "customer_platform"),
+            "status": enterprise_controls.get(control_id, {}).get("status", "REQUIRED"),
+            "evidence": enterprise_controls.get(control_id, {}).get("evidence", "Customer evidence required."),
+        }
+        for control_id, label in (
+            ("identity.sso", "SSO/OIDC or SAML integration and break-glass procedure"),
+            ("identity.rbac_enforcement", "RBAC and segregation-of-duties enforcement evidence"),
+            ("tenancy.isolation", "Tenant-isolation evidence for shared deployments"),
+            ("evidence.immutable_storage", "Immutable retention, access logs, legal hold, backup, and restore evidence"),
+            ("operations.slo_and_support", "Approved SLO/RTO/RPO, incident response, support, and change records"),
+        )
+    ]
+    customer_passed = sum(item["status"] in {"PASS", "EVIDENCED"} for item in customer_acceptance_controls)
     return {
         "schema_version": CONTROL_PLANE_SCHEMA_VERSION,
         "service": "AURUM enterprise control plane",
@@ -66,10 +84,10 @@ def build_control_plane(root: Path, evidence: Mapping[str, Any] | None = None) -
         "execution_enabled": False,
         "repository_control_coverage": _coverage(repository_passed, len(repository_areas)),
         "deployment_preflight_coverage": _coverage(int(deployment_summary.get("passed_checks", 0)), int(deployment_summary.get("total_checks", 0))),
-        "customer_acceptance_coverage": _coverage(0, len(customer_controls)),
+        "customer_acceptance_coverage": _coverage(customer_passed, len(customer_acceptance_controls)),
         "repository_areas": repository_areas,
         "deployment": {"research_gate": preflight.get("research_gate"), "production_gate": preflight.get("production_gate"), "blockers": preflight.get("blockers", [])},
-        "customer_acceptance": {"status": "EVIDENCE_REQUIRED", "required_evidence": customer_controls},
+        "customer_acceptance": {"status": "PASS" if customer_passed == len(customer_acceptance_controls) else "EVIDENCE_REQUIRED", "required_evidence": customer_controls, "controls": customer_acceptance_controls},
         "next_actions": [
             "Bind the production profile to immutable image digests and signed provenance.",
             "Integrate customer SSO/RBAC, tenant isolation, immutable evidence storage, and access logging.",

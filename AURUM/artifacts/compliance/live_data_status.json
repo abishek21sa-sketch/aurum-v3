@@ -69,7 +69,7 @@
     ],
     "payload_sha256": "9d40d684e27d131e922ffbf6d46a4d5c583f443c30fce6dfd3c704c729a2b222",
     "provider": "repository_fixture",
-    "received_at_utc": "2026-09-06T00:14:10Z",
+    "received_at_utc": "2026-09-06T04:49:19Z",
     "request_id": "reference-fixture",
     "row_count": 5,
     "schema_version": "1.0",

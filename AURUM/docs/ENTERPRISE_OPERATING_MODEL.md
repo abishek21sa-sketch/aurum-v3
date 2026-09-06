@@ -26,6 +26,11 @@ The FastAPI surface exposes twelve read-only contracts:
 | `/v1/platform/control-plane` | Unified six-area summary with separate repository, deployment, and customer denominators. |
 | `/v1/platform/operations-status` | SLO, RTO/RPO, retention, support, alerting, recovery, and change-control status. |
 
+The operations contract also emits a five-item customer evidence register.
+Each item identifies its owner, required configuration fields, missing fields,
+and `REQUIRED` or `EVIDENCED` status. This makes the remaining handoff work
+machine-checkable without treating repository placeholders as customer approval.
+
 `READY_FOR_HUMAN_REVIEW` means the evidence package is internally coherent.
 It does not mean investment approval, research promotion, or authorization to
 send an order.

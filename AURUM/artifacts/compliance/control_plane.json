@@ -1,6 +1,43 @@
 {
   "claim_boundary": "This control plane distinguishes repository evidence from deployment and customer acceptance. It is not a certification, investment approval, or production authorization.",
   "customer_acceptance": {
+    "controls": [
+      {
+        "control_id": "identity.sso",
+        "evidence": "Gateway/identity integration is not supplied by the repository.",
+        "label": "SSO/OIDC or SAML integration and break-glass procedure",
+        "owner": "customer_platform",
+        "status": "DEPLOYMENT_REQUIRED"
+      },
+      {
+        "control_id": "identity.rbac_enforcement",
+        "evidence": "Role policy is declared; enforcement belongs at the service and gateway boundary.",
+        "label": "RBAC and segregation-of-duties enforcement evidence",
+        "owner": "customer_platform",
+        "status": "DEPLOYMENT_REQUIRED"
+      },
+      {
+        "control_id": "tenancy.isolation",
+        "evidence": "Multi-tenant data partitioning and tenant-scoped keys are not enabled in this research build.",
+        "label": "Tenant-isolation evidence for shared deployments",
+        "owner": "aurum_product",
+        "status": "RESEARCH_SINGLE_TENANT"
+      },
+      {
+        "control_id": "evidence.immutable_storage",
+        "evidence": "Exports are hash-linked; WORM/retention storage must be bound by deployment.",
+        "label": "Immutable retention, access logs, legal hold, backup, and restore evidence",
+        "owner": "customer_platform",
+        "status": "DEPLOYMENT_REQUIRED"
+      },
+      {
+        "control_id": "operations.slo_and_support",
+        "evidence": "RTO, RPO, SLO, on-call, and support commitments must be approved per customer.",
+        "label": "Approved SLO/RTO/RPO, incident response, support, and change records",
+        "owner": "aurum_operations",
+        "status": "CUSTOMER_APPROVAL_REQUIRED"
+      }
+    ],
     "required_evidence": [
       "SSO/OIDC or SAML integration test and break-glass procedure",
       "RBAC and segregation-of-duties test evidence",
@@ -29,7 +66,7 @@
     "total": 14
   },
   "execution_enabled": false,
-  "generated_at_utc": "2026-09-06T00:14:13Z",
+  "generated_at_utc": "2026-09-06T04:49:31Z",
   "next_actions": [
     "Bind the production profile to immutable image digests and signed provenance.",
     "Integrate customer SSO/RBAC, tenant isolation, immutable evidence storage, and access logging.",

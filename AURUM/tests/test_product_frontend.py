@@ -23,6 +23,8 @@ def test_product_frontend_contains_command_center_surface_and_safety_copy():
         "Control plane",
         "/api/control-plane",
         "/api/operations/status",
+        "Customer evidence register",
+        "customer_evidence_register",
         "/api/ai/brief",
         "/api/ai/ask",
         "/api/preflight",

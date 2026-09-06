@@ -3,7 +3,7 @@
   "$id": "https://aurum.local/schemas/aurum_operations.schema.json",
   "title": "AURUM Enterprise Operations Contract",
   "type": "object",
-  "required": ["schema_version", "service", "status", "static_repository_controls", "customer_operating_configuration", "customer_configuration_complete", "required_customer_evidence", "execution_enabled", "research_promotion"],
+  "required": ["schema_version", "service", "status", "static_repository_controls", "customer_operating_configuration", "customer_configuration_complete", "customer_evidence_register", "required_customer_evidence", "execution_enabled", "research_promotion"],
   "properties": {
     "schema_version": {"const": "1.0"},
     "service": {"const": "AURUM enterprise operations contract"},
@@ -11,6 +11,7 @@
     "static_repository_controls": {"type": "array"},
     "customer_operating_configuration": {"type": "object"},
     "customer_configuration_complete": {"type": "boolean"},
+    "customer_evidence_register": {"type": "array", "minItems": 5, "items": {"type": "object", "required": ["evidence_id", "label", "owner", "required_fields", "missing_fields", "status"], "properties": {"evidence_id": {"type": "string"}, "label": {"type": "string"}, "owner": {"type": "string"}, "required_fields": {"type": "array", "items": {"type": "string"}}, "missing_fields": {"type": "array", "items": {"type": "string"}}, "status": {"enum": ["EVIDENCED", "REQUIRED"]}}, "additionalProperties": false}},
     "required_customer_evidence": {"type": "array", "minItems": 1, "items": {"type": "string"}},
     "execution_enabled": {"const": false},
     "research_promotion": {"const": "RESEARCH_ONLY"}

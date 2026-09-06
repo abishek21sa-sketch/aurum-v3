@@ -1,18 +1,98 @@
 {
   "claim_boundary": "Repository contracts describe operational ownership; they do not prove uptime, recovery performance, or customer approval.",
   "customer_configuration_complete": false,
+  "customer_evidence_register": [
+    {
+      "evidence_id": "availability_slo_alerting",
+      "label": "Approved availability SLO and alert routing",
+      "missing_fields": [
+        "slo_target",
+        "alert_route"
+      ],
+      "owner": "customer_operations",
+      "required_fields": [
+        "slo_target",
+        "alert_route"
+      ],
+      "status": "REQUIRED"
+    },
+    {
+      "evidence_id": "recovery_objectives_drill",
+      "label": "Approved RTO/RPO and successful backup/restore drill",
+      "missing_fields": [
+        "rto_minutes",
+        "rpo_minutes",
+        "backup_restore_drill_id"
+      ],
+      "owner": "customer_operations",
+      "required_fields": [
+        "rto_minutes",
+        "rpo_minutes",
+        "backup_restore_drill_id"
+      ],
+      "status": "REQUIRED"
+    },
+    {
+      "evidence_id": "retention_legal_hold",
+      "label": "Retention, legal hold, and deletion-approval record",
+      "missing_fields": [
+        "retention_days",
+        "legal_hold_record",
+        "deletion_approval_record"
+      ],
+      "owner": "customer_compliance",
+      "required_fields": [
+        "retention_days",
+        "legal_hold_record",
+        "deletion_approval_record"
+      ],
+      "status": "REQUIRED"
+    },
+    {
+      "evidence_id": "support_escalation",
+      "label": "Named support owner and incident escalation path",
+      "missing_fields": [
+        "support_owner",
+        "incident_escalation_path"
+      ],
+      "owner": "customer_support",
+      "required_fields": [
+        "support_owner",
+        "incident_escalation_path"
+      ],
+      "status": "REQUIRED"
+    },
+    {
+      "evidence_id": "change_rollback",
+      "label": "Change-approval and rollback record",
+      "missing_fields": [
+        "change_approval_record",
+        "rollback_plan_reference"
+      ],
+      "owner": "customer_change_control",
+      "required_fields": [
+        "change_approval_record",
+        "rollback_plan_reference"
+      ],
+      "status": "REQUIRED"
+    }
+  ],
   "customer_operating_configuration": {
     "alert_route": "CUSTOMER_CONFIGURATION_REQUIRED",
     "backup_restore_drill_id": null,
     "change_approval_record": null,
+    "deletion_approval_record": null,
+    "incident_escalation_path": "CUSTOMER_CONFIGURATION_REQUIRED",
+    "legal_hold_record": null,
     "retention_days": null,
+    "rollback_plan_reference": null,
     "rpo_minutes": null,
     "rto_minutes": null,
     "slo_target": "CUSTOMER_APPROVAL_REQUIRED",
     "support_owner": "CUSTOMER_CONFIGURATION_REQUIRED"
   },
   "execution_enabled": false,
-  "generated_at_utc": "2026-09-06T00:14:13Z",
+  "generated_at_utc": "2026-09-06T04:49:31Z",
   "required_customer_evidence": [
     "Approved availability SLO and alert routing",
     "Approved RTO/RPO and successful backup/restore drill",

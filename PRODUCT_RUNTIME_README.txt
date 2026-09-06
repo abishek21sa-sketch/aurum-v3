@@ -42,6 +42,9 @@ The API also exposes read-only integration contracts:
   /v1/platform/ai-evaluation    AI grounding and safety contract checks
   /v1/platform/control-plane    six-area readiness summary with separate denominators
   /v1/platform/operations-status SLO, recovery, retention, and support contract
+The operations response includes a five-item customer evidence register with
+owners, required fields, missing fields, and REQUIRED/EVIDENCED status. The
+control-plane response includes the five enterprise acceptance controls.
 Readiness is for human review, not investment approval. The current build is
 RESEARCH_ONLY and execution_enabled=false.
 

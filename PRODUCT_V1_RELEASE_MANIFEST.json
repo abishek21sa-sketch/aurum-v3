@@ -34,7 +34,9 @@
     "MODEL_VALIDATION=READY_FOR_INDEPENDENT_REVIEW",
     "ENTERPRISE_PLATFORM=INTEGRATION_READY_NOT_PRODUCTION",
     "AURUM_PREFLIGHT_CHECKS=13/14",
-    "AURUM_PREFLIGHT_BLOCKERS=1"
+    "AURUM_PREFLIGHT_BLOCKERS=1",
+    "CUSTOMER_EVIDENCE_REGISTER=5_OPERATIONAL_ITEMS_REQUIRED",
+    "ENTERPRISE_ACCEPTANCE_REGISTER=5_CONTROLS_REQUIRED"
   ],
   "windows_status": "Target Windows environment verified: engineering and product acceptance PASS; launchers remain available for local rerun",
   "product_sections": ["market_regime", "portfolio_workspace", "risk_lab", "constraints", "baselines", "frontier", "walk_forward_research", "data_provenance", "governance", "ai_intelligence", "governed_live_data", "model_validation", "enterprise_platform", "enterprise_readiness", "deployment_preflight", "control_plane", "operations_contract", "audit_lineage", "evidence_bundle", "supply_chain_sbom"],
