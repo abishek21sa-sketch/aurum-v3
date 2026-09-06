@@ -26,6 +26,16 @@
       "summary": "No private-key or environment-secret files are present"
     },
     {
+      "check_id": "security.weak_default_credentials",
+      "details": {
+        "findings": []
+      },
+      "domain": "security",
+      "severity": "INFO",
+      "status": "PASS",
+      "summary": "No weak database credential defaults are present"
+    },
+    {
       "check_id": "delivery.github_acceptance_workflow",
       "details": {
         "present": true
@@ -101,6 +111,16 @@
       "summary": "Application containers declare a non-root runtime user"
     },
     {
+      "check_id": "deployment.container_hardening",
+      "details": {
+        "missing_hardening": []
+      },
+      "domain": "container_security",
+      "severity": "INFO",
+      "status": "PASS",
+      "summary": "Production services drop capabilities and prevent privilege escalation"
+    },
+    {
       "check_id": "deployment.api_healthcheck",
       "details": {
         "configured": true
@@ -133,7 +153,7 @@
   ],
   "decision_id": "MARS-812FA013EB90FFA1",
   "execution_enabled": false,
-  "generated_at_utc": "2026-09-05T18:48:58Z",
+  "generated_at_utc": "2026-09-06T00:14:10Z",
   "overall_status": "PRODUCTION_BLOCKED",
   "production_gate": "BLOCKED",
   "required_actions": [
@@ -149,8 +169,8 @@
   "service": "AURUM deployment boundary",
   "summary": {
     "failed_checks": 1,
-    "passed_checks": 11,
+    "passed_checks": 13,
     "production_blockers": 1,
-    "total_checks": 12
+    "total_checks": 14
   }
 }

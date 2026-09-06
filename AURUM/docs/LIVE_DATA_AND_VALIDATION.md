@@ -16,14 +16,19 @@ quality alone does not enable the optimizer feed.
 
 The status contract is available at `/v1/platform/data-status` and is also
 written to `artifacts/compliance/live_data_status.json` by the acceptance run.
+Each snapshot receives a provider-neutral normalized receipt with a request ID,
+received timestamp, ticker set, and payload SHA-256. Receipts are secret-free
+and support replay, reconciliation, and audit correlation without coupling the
+core product to a vendor SDK.
 
 ## AI provider contract
 
 AURUM Intelligence uses local grounded reasoning by default. A live model is
 opt-in and requires explicit provider, live-enable, external-transmission
-approval, and managed API-key configuration. The model receives a compact
-decision context and can only return interpretation; it cannot change solver
-outputs, authorize execution, or promote research.
+approval, and managed API-key configuration. A separate live-evaluation flag
+is required before a control-plane evaluation may call that provider. The model
+receives a compact decision context and can only return interpretation; it
+cannot change solver outputs, authorize execution, or promote research.
 
 ## Independent validation packet
 
@@ -34,6 +39,15 @@ separation. A passing packet means `READY_FOR_INDEPENDENT_REVIEW`, never
 independent approval. The packet is available at
 `/v1/platform/model-validation` and is retained as
 `artifacts/compliance/model_validation.json`.
+
+## Control-plane and operations contracts
+
+`/v1/platform/control-plane` reports repository, deployment, and customer
+acceptance coverage using separate denominators. `/v1/platform/operations-status`
+reports the customer-owned SLO, RTO/RPO, retention, support, alerting,
+backup/restore, and change-management fields. The default operations result is
+`CUSTOMER_CONFIGURATION_REQUIRED` until those values are approved and
+evidenced by the deployment owner.
 
 ## Promotion boundary
 

@@ -45,6 +45,8 @@ def test_platform_control_endpoints_expose_machine_contracts():
     model_validation = client.get("/v1/platform/model-validation")
     enterprise_status = client.get("/v1/platform/enterprise-status")
     ai_evaluation = client.get("/v1/platform/ai-evaluation")
+    control_plane = client.get("/v1/platform/control-plane")
+    operations_status = client.get("/v1/platform/operations-status")
     preflight = client.get("/v1/platform/deployment-preflight")
 
     assert readiness.status_code == 200
@@ -66,6 +68,12 @@ def test_platform_control_endpoints_expose_machine_contracts():
     assert enterprise_status.json()["execution_enabled"] is False
     assert ai_evaluation.status_code == 200
     assert ai_evaluation.json()["status"] == "PASS"
+    assert control_plane.status_code == 200
+    assert control_plane.json()["status"] == "RESEARCH_READY_INTEGRATION_IN_PROGRESS"
+    assert control_plane.json()["repository_control_coverage"]["total"] == 6
+    assert control_plane.json()["execution_enabled"] is False
+    assert operations_status.status_code == 200
+    assert operations_status.json()["status"] == "CUSTOMER_CONFIGURATION_REQUIRED"
     assert preflight.status_code == 200
     assert preflight.json()["research_gate"] == "PASS"
     assert preflight.json()["execution_enabled"] is False

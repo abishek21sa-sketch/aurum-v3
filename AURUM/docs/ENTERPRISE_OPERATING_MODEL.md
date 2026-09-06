@@ -9,7 +9,7 @@ regulatory control system.
 
 ## Control-plane endpoints
 
-The FastAPI surface exposes nine read-only contracts:
+The FastAPI surface exposes twelve read-only contracts:
 
 | Endpoint | Purpose |
 | --- | --- |
@@ -22,6 +22,9 @@ The FastAPI surface exposes nine read-only contracts:
 | `/v1/platform/data-status` | Governed provider mode, snapshot freshness, ticker completeness, and optimizer-feed approval. |
 | `/v1/platform/model-validation` | Reproducible internal checks prepared for independent model validation. |
 | `/v1/platform/enterprise-status` | SSO, tenancy, immutable storage, SLO, and customer-owned integration status. |
+| `/v1/platform/ai-evaluation` | Grounding, output-boundary, and external-transmission contract checks. |
+| `/v1/platform/control-plane` | Unified six-area summary with separate repository, deployment, and customer denominators. |
+| `/v1/platform/operations-status` | SLO, RTO/RPO, retention, support, alerting, recovery, and change-control status. |
 
 `READY_FOR_HUMAN_REVIEW` means the evidence package is internally coherent.
 It does not mean investment approval, research promotion, or authorization to

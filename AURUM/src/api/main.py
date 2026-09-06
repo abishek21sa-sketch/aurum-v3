@@ -17,6 +17,8 @@ from src.institutional.live_data_contract import build_live_data_status
 from src.institutional.model_validation import build_model_validation
 from src.institutional.enterprise_platform import build_enterprise_platform_status
 from src.institutional.ai_evaluation import build_ai_evaluation
+from src.institutional.control_plane import build_control_plane
+from src.institutional.operations_contract import build_operations_status
 from scripts.product_adapter import compute as compute_product_decision
 
 from src.api.routes_market import router as market_router
@@ -47,6 +49,12 @@ def _cached_reference_evidence():
 def _cached_product_decision():
     """Cache the UI decision payload used by read-only AI control endpoints."""
     return compute_product_decision()
+
+
+@lru_cache(maxsize=1)
+def _cached_control_plane():
+    """Reuse the read-only control-plane summary across API requests."""
+    return build_control_plane(_project_root(), _cached_reference_evidence())
 
 
 @app.get("/")
@@ -144,6 +152,18 @@ def platform_ai_evaluation():
     """Return the AI grounding and safety contract evaluation."""
     root = _project_root()
     return build_ai_evaluation(root, _cached_product_decision())
+
+
+@app.get("/v1/platform/control-plane", tags=["Platform controls"])
+def platform_control_plane():
+    """Return the unified six-area readiness summary with separate denominators."""
+    return _cached_control_plane()
+
+
+@app.get("/v1/platform/operations-status", tags=["Platform controls"])
+def platform_operations_status():
+    """Return SLO, recovery, retention, support, and change-control status."""
+    return build_operations_status(_project_root())
 
 
 @app.get("/v1/platform/role-policy", tags=["Platform controls"])

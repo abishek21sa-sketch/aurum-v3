@@ -1,0 +1,49 @@
+{
+  "claim_boundary": "Repository contracts describe operational ownership; they do not prove uptime, recovery performance, or customer approval.",
+  "customer_configuration_complete": false,
+  "customer_operating_configuration": {
+    "alert_route": "CUSTOMER_CONFIGURATION_REQUIRED",
+    "backup_restore_drill_id": null,
+    "change_approval_record": null,
+    "retention_days": null,
+    "rpo_minutes": null,
+    "rto_minutes": null,
+    "slo_target": "CUSTOMER_APPROVAL_REQUIRED",
+    "support_owner": "CUSTOMER_CONFIGURATION_REQUIRED"
+  },
+  "execution_enabled": false,
+  "generated_at_utc": "2026-09-06T00:14:13Z",
+  "required_customer_evidence": [
+    "Approved availability SLO and alert routing",
+    "Approved RTO/RPO and successful backup/restore drill",
+    "Retention, legal hold, and deletion-approval record",
+    "Named support owner and incident escalation path",
+    "Change-approval and rollback record"
+  ],
+  "research_promotion": "RESEARCH_ONLY",
+  "schema_version": "1.0",
+  "service": "AURUM enterprise operations contract",
+  "static_repository_controls": [
+    {
+      "control_id": "operations.runbook",
+      "evidence": "docs/OPERATIONS_RUNBOOK.md",
+      "status": "PASS"
+    },
+    {
+      "control_id": "operations.disaster_recovery",
+      "evidence": "docs/DISASTER_RECOVERY.md",
+      "status": "PASS"
+    },
+    {
+      "control_id": "operations.observability_endpoint",
+      "evidence": "/v1/platform/observability",
+      "status": "PASS"
+    },
+    {
+      "control_id": "operations.production_profile",
+      "evidence": "docker-compose.production.yml",
+      "status": "PASS"
+    }
+  ],
+  "status": "CUSTOMER_CONFIGURATION_REQUIRED"
+}

@@ -40,6 +40,8 @@ The API also exposes read-only integration contracts:
   /v1/platform/model-validation independent-review packet
   /v1/platform/enterprise-status deployment/customer control ownership
   /v1/platform/ai-evaluation    AI grounding and safety contract checks
+  /v1/platform/control-plane    six-area readiness summary with separate denominators
+  /v1/platform/operations-status SLO, recovery, retention, and support contract
 Readiness is for human review, not investment approval. The current build is
 RESEARCH_ONLY and execution_enabled=false.
 

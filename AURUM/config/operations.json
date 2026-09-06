@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "service_tier": "research",
+  "slo_target": "CUSTOMER_APPROVAL_REQUIRED",
+  "rto_minutes": null,
+  "rpo_minutes": null,
+  "retention_days": null,
+  "support_owner": "CUSTOMER_CONFIGURATION_REQUIRED",
+  "alert_route": "CUSTOMER_CONFIGURATION_REQUIRED",
+  "backup_restore_drill_id": null,
+  "change_approval_record": null
+}

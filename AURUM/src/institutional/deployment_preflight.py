@@ -63,6 +63,16 @@ def _secret_filename_findings(root: Path) -> list[str]:
     return sorted(findings)
 
 
+def _default_credential_findings(root: Path) -> list[str]:
+    """Reject weak database defaults even when they live in an example file."""
+    findings: list[str] = []
+    pattern = re.compile(r"^\s*(POSTGRES_PASSWORD|REDIS_PASSWORD)\s*(?:=|:)\s*(aurum|password|secret|changeme)\s*$", re.IGNORECASE | re.MULTILINE)
+    for path in (root / ".env.example", root / "docker-compose.yml", root / "docker-compose.production.yml"):
+        if path.is_file() and pattern.search(path.read_text(encoding="utf-8")):
+            findings.append(path.relative_to(root).as_posix())
+    return sorted(findings)
+
+
 def build_deployment_preflight(root: Path) -> dict[str, Any]:
     """Return repository-proven deployment controls without persisting state."""
     compose_path = root / "docker-compose.production.yml"
@@ -87,6 +97,8 @@ def build_deployment_preflight(root: Path) -> dict[str, Any]:
     checks.append(_check("boundary.research_execution_disabled", "governance", "PASS" if execution_safe else "FAIL", "INFO" if execution_safe else "CRITICAL", "Research build remains fail-closed for execution", execution_enabled=governance.get("execution_enabled"), research_promotion=governance.get("research_promotion")))
     secret_findings = _secret_filename_findings(root)
     checks.append(_check("security.repository_secret_hygiene", "security", "PASS" if not secret_findings else "FAIL", "INFO" if not secret_findings else "CRITICAL", "No private-key or environment-secret files are present", findings=secret_findings))
+    default_credential_findings = _default_credential_findings(root)
+    checks.append(_check("security.weak_default_credentials", "security", "PASS" if not default_credential_findings else "FAIL", "INFO" if not default_credential_findings else "CRITICAL", "No weak database credential defaults are present", findings=default_credential_findings))
 
     workflow = root.parent / ".github" / "workflows" / "aurum-acceptance.yml"
     checks.append(_check("delivery.github_acceptance_workflow", "delivery", "PASS" if workflow.is_file() else "FAIL", "INFO" if workflow.is_file() else "HIGH", "Repository contains an automated acceptance workflow", present=workflow.is_file()))
@@ -106,6 +118,8 @@ def build_deployment_preflight(root: Path) -> dict[str, Any]:
         if not re.search(r"^\s*USER\s+\S+", content, flags=re.MULTILINE):
             missing_non_root.append(name)
     checks.append(_check("deployment.non_root_containers", "container_security", "PASS" if not missing_non_root else "FAIL", "INFO" if not missing_non_root else "HIGH", "Application containers declare a non-root runtime user", missing_user_declarations=missing_non_root))
+    hardened_services = [service for service in ("redis", "timescaledb", "api", "dashboard") if "no-new-privileges:true" not in _service_block(compose, service) or "cap_drop:" not in _service_block(compose, service)]
+    checks.append(_check("deployment.container_hardening", "container_security", "PASS" if not hardened_services else "FAIL", "INFO" if not hardened_services else "HIGH", "Production services drop capabilities and prevent privilege escalation", missing_hardening=hardened_services))
     api_block = _service_block(compose, "api")
     api_healthcheck = "healthcheck:" in api_block
     checks.append(_check("deployment.api_healthcheck", "reliability", "PASS" if api_healthcheck else "FAIL", "INFO" if api_healthcheck else "HIGH", "API service has a deployment health check", configured=api_healthcheck))

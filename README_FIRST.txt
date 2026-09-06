@@ -13,11 +13,11 @@ Evidence: AURUM\artifacts\product_runtime\latest_product_evidence.json
 
 VALIDATION STATE
 ----------------
-Engineering regression: 37 selected tests passed in the build environment
+Engineering regression: 46 selected tests passed in the build environment
 Product runtime acceptance: PASS
 MARS-CVaR release evidence: PASS
 Enterprise readiness contract: READY_FOR_HUMAN_REVIEW
-Release manifest verification: PASS (68/68 files; secret/VCS hygiene clean)
+Release evidence: PASS (77/77 checks; secret/VCS hygiene clean)
 Evidence bundle export: PASS (portable, hash-linked, retention-aware)
 Software bill of materials: PASS (CycloneDX 1.5; 121 pinned components)
 Walk-forward promotion state: RESEARCH_ONLY
@@ -28,8 +28,11 @@ Governed live data: REFERENCE_ONLY (fail-closed; no optimizer feed enabled)
 AI evaluation: PASS (6/6 grounding and safety contract checks)
 Model validation: READY_FOR_INDEPENDENT_REVIEW (not an approval)
 Enterprise platform: INTEGRATION_READY_NOT_PRODUCTION
-Deployment preflight: research boundary PASS; production gate BLOCKED at 11/12
-until immutable production image digests and deployment-owned controls are approved
+Deployment preflight: research boundary PASS; production gate BLOCKED at 13/14
+until immutable production image digests are supplied and deployment-owned controls
+are approved
+Unified control plane: 6/6 repository controls covered; deployment 13/14;
+customer acceptance 0/5 (customer configuration required)
 
 The product surface preserves the repository-native MARS-CVaR LP and adds
 regime, portfolio, risk, baseline, stress, provenance, governance, and AI
@@ -48,6 +51,8 @@ Enterprise control-plane endpoints are available from the API:
   /v1/platform/model-validation
   /v1/platform/enterprise-status
   /v1/platform/ai-evaluation
+  /v1/platform/control-plane
+  /v1/platform/operations-status
 
 The product-facing AI endpoints are also available from the runtime:
   /api/ai/status

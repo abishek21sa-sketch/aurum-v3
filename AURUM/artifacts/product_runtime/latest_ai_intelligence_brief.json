@@ -29,7 +29,7 @@
     "execution_enabled": false,
     "executive_summary": "AURUM Intelligence reads this decision as a risk-aware, evidence-bounded portfolio lens. It is responding to a 50% stress input with a modeled 0.457% reference-period return and 36.38% L1 turnover. The AI is interpreting the repository-native evidence; it is not producing a market forecast.",
     "external_transmission": false,
-    "generated_at_utc": "2026-09-05T18:55:54Z",
+    "generated_at_utc": "2026-09-06T00:23:49Z",
     "grounding": [
       "Current MARS-CVaR decision payload",
       "Market/regime transition evidence",
@@ -37,6 +37,8 @@
       "Walk-forward validation and governance state"
     ],
     "headline": "Stress regime lens \u00b7 human review required",
+    "live_model_requested": false,
+    "live_model_status": "DISABLED",
     "mode": "LOCAL_GROUNDED",
     "provider_mode": "LOCAL_GROUNDED",
     "question": null,
@@ -71,12 +73,16 @@
     "configuration": {
       "api_key_present": false,
       "external_approval_flag_enabled": false,
-      "live_flag_enabled": false
+      "live_flag_enabled": false,
+      "model": "gpt-4o-mini",
+      "provider": "local",
+      "timeout_seconds": 20.0
     },
     "execution_enabled": false,
     "external_transmission": false,
     "grounding": "Current MARS-CVaR decision, regime evidence, CVaR lab, walk-forward validation, and governance state.",
     "live_model_enabled": false,
+    "live_provider_state": "DISABLED",
     "model": "AURUM grounded analyst",
     "operator_note": "Local evidence-grounded reasoning is active; no portfolio data leaves this runtime.",
     "provider_label": "Grounded analyst active",

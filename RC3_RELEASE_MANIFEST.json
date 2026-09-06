@@ -22,7 +22,7 @@
   "windows_entrypoint": "RUN_ACCEPTANCE.cmd",
   "user_command": ".\\RUN_ACCEPTANCE.cmd",
   "powershell_policy_dependency": false,
-  "patch_reason": "Added governed live-data controls, an AI grounding evaluation contract, independent model-validation packet, enterprise platform integration status, immutable-image production profile, recovery runbooks, responsive command-center frontend, and visible evidence-grounded AURUM Intelligence while preserving research-only execution boundaries.",
+  "patch_reason": "Added governed live-data controls, an AI grounding evaluation contract, independent model-validation packet, enterprise platform integration status, unified control-plane and operations contracts, immutable-image production profile, recovery runbooks, responsive command-center frontend, and visible evidence-grounded AURUM Intelligence while preserving research-only execution boundaries.",
   "enterprise_controls": [
     "/v1/platform/readiness",
     "/v1/platform/observability",
@@ -32,7 +32,9 @@
     "/v1/platform/data-status",
     "/v1/platform/model-validation",
     "/v1/platform/enterprise-status",
-    "/v1/platform/ai-evaluation"
+    "/v1/platform/ai-evaluation",
+    "/v1/platform/control-plane",
+    "/v1/platform/operations-status"
   ],
   "ai_surface": [
     "/api/ai/status",
@@ -43,6 +45,8 @@
   "governed_data_contract": "/v1/platform/data-status",
   "model_validation_contract": "/v1/platform/model-validation",
   "enterprise_platform_contract": "/v1/platform/enterprise-status",
+  "control_plane_contract": "/v1/platform/control-plane",
+  "operations_contract": "/v1/platform/operations-status",
   "promotion_state": "RESEARCH_ONLY",
   "execution_enabled": false
 }

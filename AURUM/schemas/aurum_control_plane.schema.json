@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aurum.local/schemas/aurum_control_plane.schema.json",
+  "title": "AURUM Enterprise Control Plane",
+  "type": "object",
+  "required": ["schema_version", "service", "status", "production_blocked", "execution_enabled", "repository_control_coverage", "deployment_preflight_coverage", "customer_acceptance_coverage", "repository_areas", "deployment", "customer_acceptance"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "service": {"const": "AURUM enterprise control plane"},
+    "status": {"const": "RESEARCH_READY_INTEGRATION_IN_PROGRESS"},
+    "production_blocked": {"type": "boolean"},
+    "research_promotion": {"const": "RESEARCH_ONLY"},
+    "execution_enabled": {"const": false},
+    "repository_control_coverage": {"$ref": "#/$defs/coverage"},
+    "deployment_preflight_coverage": {"$ref": "#/$defs/coverage"},
+    "customer_acceptance_coverage": {"$ref": "#/$defs/coverage"},
+    "repository_areas": {"type": "array", "minItems": 6, "items": {"type": "object", "required": ["area", "status", "evidence"], "properties": {"area": {"type": "string"}, "status": {"type": "string"}, "evidence": {"type": "string"}}, "additionalProperties": false}},
+    "deployment": {"type": "object", "required": ["research_gate", "production_gate", "blockers"], "properties": {"research_gate": {"type": "string"}, "production_gate": {"type": "string"}, "blockers": {"type": "array", "items": {"type": "string"}}}, "additionalProperties": false},
+    "customer_acceptance": {"type": "object", "required": ["status", "required_evidence"], "properties": {"status": {"type": "string"}, "required_evidence": {"type": "array", "items": {"type": "string"}}}, "additionalProperties": false}
+  },
+  "$defs": {"coverage": {"type": "object", "required": ["passed", "total", "percent"], "properties": {"passed": {"type": "integer", "minimum": 0}, "total": {"type": "integer", "minimum": 0}, "percent": {"type": "number", "minimum": 0, "maximum": 100}}, "additionalProperties": false}},
+  "additionalProperties": true
+}

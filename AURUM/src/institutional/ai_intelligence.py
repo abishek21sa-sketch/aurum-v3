@@ -19,6 +19,8 @@ from typing import Any
 
 AI_SCHEMA_VERSION = "1.0"
 MAX_QUESTION_LENGTH = 1200
+MAX_MODEL_TEXT_LENGTH = 1600
+MAX_MODEL_LIST_ITEMS = 4
 
 
 def _now_utc() -> str:
@@ -47,6 +49,10 @@ def _live_configuration(root: Path) -> dict[str, Any]:
     has_api_key = bool(os.getenv("OPENAI_API_KEY", "").strip())
     provider = os.getenv("AURUM_AI_PROVIDER", "local").strip().lower()
     model = os.getenv("AURUM_AI_MODEL", "").strip() or str(settings.get("default_model", "gpt-4o-mini"))
+    try:
+        timeout_seconds = max(3.0, min(60.0, float(os.getenv("AURUM_AI_TIMEOUT_SECONDS", "20"))))
+    except ValueError:
+        timeout_seconds = 20.0
     allowed = provider == "openai" and live_enabled and external_approved and has_api_key
     return {
         "allowed": allowed,
@@ -55,6 +61,7 @@ def _live_configuration(root: Path) -> dict[str, Any]:
         "live_enabled": live_enabled,
         "external_approved": external_approved,
         "api_key_present": has_api_key,
+        "timeout_seconds": timeout_seconds,
     }
 
 
@@ -90,7 +97,11 @@ def build_ai_status(root: Path) -> dict[str, Any]:
         "research_promotion": "RESEARCH_ONLY",
         "safety_boundary": "AI interprets evidence for human review; it cannot change solver outputs, authorize orders, or promote research.",
         "operator_note": note,
+        "live_provider_state": "CONFIGURED_NOT_PROBED" if config["allowed"] else "DISABLED",
         "configuration": {
+            "provider": config["provider"],
+            "model": config["model"],
+            "timeout_seconds": config["timeout_seconds"],
             "live_flag_enabled": config["live_enabled"],
             "external_approval_flag_enabled": config["external_approved"],
             "api_key_present": config["api_key_present"],
@@ -250,14 +261,41 @@ def _parse_json_response(content: str) -> dict[str, Any] | None:
     return value if isinstance(value, dict) else None
 
 
-def _optional_live_overlay(root: Path, question: str, decision: dict[str, Any], base: dict[str, Any]) -> dict[str, Any] | None:
+def _bounded_text(value: Any) -> str:
+    return str(value or "").strip()[:MAX_MODEL_TEXT_LENGTH]
+
+
+def _bounded_list(value: Any) -> list[str]:
+    if not isinstance(value, list):
+        return []
+    return [_bounded_text(item) for item in value[:MAX_MODEL_LIST_ITEMS] if _bounded_text(item)]
+
+
+def _validated_overlay(parsed: dict[str, Any]) -> dict[str, Any] | None:
+    """Accept only the small, typed response surface used by the UI."""
+    allowed = {
+        "executive_summary": _bounded_text(parsed.get("executive_summary")),
+        "decision_rationale": _bounded_list(parsed.get("decision_rationale")),
+        "risk_flags": _bounded_list(parsed.get("risk_flags")),
+        "what_would_change_my_view": _bounded_list(parsed.get("what_would_change_my_view")),
+        "review_focus": _bounded_list(parsed.get("review_focus")),
+        "confidence": _bounded_text(parsed.get("confidence")),
+    }
+    if not allowed["executive_summary"]:
+        return None
+    if not any(allowed[key] for key in ("decision_rationale", "risk_flags", "review_focus")):
+        return None
+    return {key: value for key, value in allowed.items() if value}
+
+
+def _optional_live_overlay(root: Path, question: str, decision: dict[str, Any], base: dict[str, Any]) -> tuple[dict[str, Any] | None, str]:
     config = _live_configuration(root)
     if not config["allowed"]:
-        return None
+        return None, "DISABLED"
     try:
         from openai import OpenAI
 
-        client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
+        client = OpenAI(api_key=os.environ["OPENAI_API_KEY"], timeout=config["timeout_seconds"], max_retries=1)
         prompt = (
             "You are the AURUM research-only CIO analyst. Use only the supplied JSON. "
             "Do not invent market facts, returns, or events. Do not give an order or execution instruction. "
@@ -273,47 +311,53 @@ def _optional_live_overlay(root: Path, question: str, decision: dict[str, Any], 
                 {"role": "user", "content": prompt},
             ],
             temperature=0.1,
+            max_tokens=900,
+            response_format={"type": "json_object"},
         )
         parsed = _parse_json_response(response.choices[0].message.content)
         if not parsed:
-            return None
-        overlay = {
-            key: parsed[key]
-            for key in ("executive_summary", "decision_rationale", "risk_flags", "what_would_change_my_view", "review_focus", "confidence")
-            if key in parsed
-        }
+            return None, "ERROR_INVALID_JSON"
+        overlay = _validated_overlay(parsed)
         if not overlay:
-            return None
+            return None, "ERROR_SCHEMA"
         overlay.update({"mode": "OPENAI_LIVE", "provider_mode": "OPENAI_LIVE", "external_transmission": True})
-        return overlay
+        return overlay, "USED"
     except Exception:
-        # A live model is an enhancement, never a dependency or a silent source
-        # of stale data.  The caller will return the grounded local brief.
-        return None
+        # A live model is an enhancement, never a dependency. The caller
+        # returns the grounded local brief and exposes this state explicitly.
+        return None, "ERROR_FALLBACK"
 
 
-def build_ai_brief(root: Path, decision: dict[str, Any], question: str = "") -> dict[str, Any]:
+def build_ai_brief(root: Path, decision: dict[str, Any], question: str = "", *, allow_live: bool = True) -> dict[str, Any]:
     """Build a grounded brief, optionally overlaying an explicitly enabled LLM."""
     base = _local_brief(decision)
     question = str(question or "").strip()[:MAX_QUESTION_LENGTH]
-    overlay = _optional_live_overlay(root, question, decision, base)
+    overlay, live_state = _optional_live_overlay(root, question, decision, base) if allow_live else (None, "DISABLED_BY_CALLER")
     if overlay:
         base.update(overlay)
+    base["live_model_status"] = live_state
+    if live_state.startswith("ERROR"):
+        base["operator_note"] = "The explicitly configured live model failed to return a valid response; AURUM returned the local grounded brief."
+        base["live_model_requested"] = True
+    else:
+        base["live_model_requested"] = live_state == "USED"
     base["question"] = question or None
     return base
 
 
-def answer_ai_question(root: Path, decision: dict[str, Any], question: str) -> dict[str, Any]:
+def answer_ai_question(root: Path, decision: dict[str, Any], question: str, *, allow_live: bool = True) -> dict[str, Any]:
     """Answer a bounded Ask AURUM question against the current decision."""
     question = str(question or "").strip()[:MAX_QUESTION_LENGTH]
     if not question:
         question = "What is the most important thing to review in this decision?"
-    brief = build_ai_brief(root, decision, question)
+    brief = build_ai_brief(root, decision, question, allow_live=allow_live)
     if brief.get("mode") == "OPENAI_LIVE":
         answer = brief.get("executive_summary", "")
     else:
         normalized = question.lower()
-        if any(token in normalized for token in ("risk", "fragile", "downside", "tail", "crash")):
+        if any(token in normalized for token in ("order", "trade", "execute", "buy", "sell", "rebalance", "broker")):
+            answer = "AURUM is research-only: it cannot place, authorize, or transmit orders. Any allocation change remains a human-reviewed analytical output."
+        elif any(token in normalized for token in ("risk", "fragile", "downside", "tail", "crash")):
             answer = " ".join(brief["risk_flags"][:2])
         elif any(token in normalized for token in ("why", "allocation", "move", "change", "portfolio")):
             answer = " ".join(brief["decision_rationale"][:2])

@@ -20,6 +20,9 @@ def test_deployment_preflight_preserves_research_boundary_and_reports_production
     assert "deployment.non_root_containers" not in payload["blockers"]
     assert "deployment.api_healthcheck" not in payload["blockers"]
     assert "deployment.ingress_boundary" not in payload["blockers"]
+    assert "deployment.container_hardening" not in payload["blockers"]
+    weak_default = next(check for check in payload["checks"] if check["check_id"] == "security.weak_default_credentials")
+    assert weak_default["status"] == "PASS"
 
 
 def test_deployment_preflight_endpoint_is_machine_readable():

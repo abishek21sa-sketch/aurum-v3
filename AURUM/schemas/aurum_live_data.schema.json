@@ -3,7 +3,7 @@
   "$id": "https://aurum.local/schemas/aurum_live_data.schema.json",
   "title": "AURUM Governed Market Data Status",
   "type": "object",
-  "required": ["schema_version", "service", "status", "mode", "provider", "quality", "optimizer_feed_enabled", "fail_closed_policy"],
+  "required": ["schema_version", "service", "status", "mode", "provider", "quality", "optimizer_feed_enabled", "snapshot_receipt", "provider_contract", "fail_closed_policy"],
   "properties": {
     "schema_version": {"const": "1.0"},
     "service": {"const": "AURUM governed market data"},
@@ -11,10 +11,41 @@
     "mode": {"type": "string"},
     "provider": {"type": "string"},
     "snapshot_path": {"type": "string"},
+    "snapshot_present": {"type": "boolean"},
+    "snapshot_receipt": {
+      "type": "object",
+      "required": ["schema_version", "provider", "request_id", "received_at_utc", "row_count", "tickers", "payload_sha256", "credentials_in_receipt", "network_fetch_performed"],
+      "properties": {
+        "schema_version": {"const": "1.0"},
+        "provider": {"type": "string"},
+        "request_id": {"type": "string"},
+        "received_at_utc": {"type": "string"},
+        "row_count": {"type": "integer", "minimum": 0},
+        "tickers": {"type": "array", "items": {"type": "string"}},
+        "normalized_fields": {"type": "array", "items": {"type": "string"}},
+        "payload_sha256": {"type": "string", "minLength": 64, "maxLength": 64},
+        "credentials_in_receipt": {"const": false},
+        "network_fetch_performed": {"type": "boolean"}
+      },
+      "additionalProperties": false
+    },
     "live_requested": {"type": "boolean"},
     "optimizer_feed_enabled": {"type": "boolean"},
     "external_fetch_enabled": {"type": "boolean"},
     "approval_required": {"type": "boolean"},
+    "provider_contract": {
+      "type": "object",
+      "required": ["adapter_entrypoint", "provider_configured", "request_id_required_when_live", "reconciliation_required_before_optimizer_feed", "credentials_in_receipt"],
+      "properties": {
+        "adapter_entrypoint": {"type": "string"},
+        "provider_configured": {"type": "boolean"},
+        "request_id_required_when_live": {"const": true},
+        "reconciliation_required_before_optimizer_feed": {"const": true},
+        "credentials_in_receipt": {"const": false}
+      },
+      "additionalProperties": false
+    },
+    "data_class": {"type": "string"},
     "note": {"type": "string"},
     "quality": {"type": "object"},
     "fail_closed_policy": {"type": "string"}

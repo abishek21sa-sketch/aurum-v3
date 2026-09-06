@@ -19,7 +19,7 @@ services:
     container_name: aurum-timescaledb
     environment:
       POSTGRES_USER: aurum
-      POSTGRES_PASSWORD: aurum
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-dev-only-not-for-production}
       POSTGRES_DB: aurum
     ports:
       - "5434:5432"
@@ -41,7 +41,7 @@ services:
       - "8000:8000"
     environment:
       - AURUM_ENV=development
-      - TIMESCALE_DATABASE_URL=postgresql://aurum:aurum@timescaledb:5432/aurum
+      - TIMESCALE_DATABASE_URL=postgresql://aurum:${POSTGRES_PASSWORD:-dev-only-not-for-production}@timescaledb:5432/aurum
       - REDIS_URL=redis://redis:6379/0
     volumes:
       - .:/app
@@ -61,7 +61,7 @@ services:
       - "8501:8501"
     environment:
       - AURUM_ENV=development
-      - TIMESCALE_DATABASE_URL=postgresql://aurum:aurum@timescaledb:5432/aurum
+      - TIMESCALE_DATABASE_URL=postgresql://aurum:${POSTGRES_PASSWORD:-dev-only-not-for-production}@timescaledb:5432/aurum
       - REDIS_URL=redis://redis:6379/0
     volumes:
       - .:/app
@@ -81,7 +81,7 @@ services:
     container_name: aurum-portfolio-os
     environment:
       - AURUM_ENV=development
-      - TIMESCALE_DATABASE_URL=postgresql://aurum:aurum@timescaledb:5432/aurum
+      - TIMESCALE_DATABASE_URL=postgresql://aurum:${POSTGRES_PASSWORD:-dev-only-not-for-production}@timescaledb:5432/aurum
       - REDIS_URL=redis://redis:6379/0
     volumes:
       - .:/app
@@ -100,7 +100,7 @@ services:
     container_name: aurum-reliability
     environment:
       - AURUM_ENV=development
-      - TIMESCALE_DATABASE_URL=postgresql://aurum:aurum@timescaledb:5432/aurum
+      - TIMESCALE_DATABASE_URL=postgresql://aurum:${POSTGRES_PASSWORD:-dev-only-not-for-production}@timescaledb:5432/aurum
       - REDIS_URL=redis://redis:6379/0
     volumes:
       - .:/app
@@ -119,7 +119,7 @@ services:
     container_name: aurum-research-firm
     environment:
       - AURUM_ENV=development
-      - TIMESCALE_DATABASE_URL=postgresql://aurum:aurum@timescaledb:5432/aurum
+      - TIMESCALE_DATABASE_URL=postgresql://aurum:${POSTGRES_PASSWORD:-dev-only-not-for-production}@timescaledb:5432/aurum
       - REDIS_URL=redis://redis:6379/0
     volumes:
       - .:/app

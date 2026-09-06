@@ -5,6 +5,7 @@
   "max_llm_calls_per_run": 2,
   "default_model": "gpt-4o-mini",
   "low_cost_model": "gpt-4o-mini",
+  "timeout_seconds": 20,
   "live_provider": {
     "provider": "openai",
     "enabled_by_default": false,
@@ -16,7 +17,9 @@
     "contract_checks_required": true,
     "execution_authorization_from_ai": false,
     "research_promotion_from_ai": false,
-    "live_provider_smoke_test_requires_operator": true
+    "live_provider_smoke_test_requires_operator": true,
+    "live_evaluation_requires_explicit_flag": true,
+    "live_evaluation_flag": "AURUM_AI_RUN_LIVE_EVAL"
   },
   "phase5b": {
     "enabled": true,

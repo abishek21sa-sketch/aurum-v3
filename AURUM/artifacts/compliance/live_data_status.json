@@ -1,5 +1,6 @@
 {
   "approval_required": true,
+  "data_class": "BUNDLED_REFERENCE_DATA",
   "external_fetch_enabled": false,
   "fail_closed_policy": "No live snapshot may be replaced by bundled reference data without an explicit operator mode change.",
   "live_requested": false,
@@ -7,6 +8,13 @@
   "note": "Reference data is active; live acquisition is not requested.",
   "optimizer_feed_enabled": false,
   "provider": "repository_fixture",
+  "provider_contract": {
+    "adapter_entrypoint": "src/institutional/live_data_ingestion.py:normalize_provider_rows",
+    "credentials_in_receipt": false,
+    "provider_configured": true,
+    "reconciliation_required_before_optimizer_feed": true,
+    "request_id_required_when_live": true
+  },
   "quality": {
     "checks": {
       "freshness_within_sla": false,
@@ -47,5 +55,31 @@
   "schema_version": "1.0",
   "service": "AURUM governed market data",
   "snapshot_path": "data/live/latest_live_market_snapshot.csv",
+  "snapshot_present": true,
+  "snapshot_receipt": {
+    "credentials_in_receipt": false,
+    "network_fetch_performed": false,
+    "normalized_fields": [
+      "ticker",
+      "timestamp",
+      "open",
+      "high",
+      "low",
+      "close"
+    ],
+    "payload_sha256": "9d40d684e27d131e922ffbf6d46a4d5c583f443c30fce6dfd3c704c729a2b222",
+    "provider": "repository_fixture",
+    "received_at_utc": "2026-09-06T00:14:10Z",
+    "request_id": "reference-fixture",
+    "row_count": 5,
+    "schema_version": "1.0",
+    "tickers": [
+      "BTC-USD",
+      "GLD",
+      "QQQ",
+      "SPY",
+      "TLT"
+    ]
+  },
   "status": "REFERENCE_ONLY"
 }

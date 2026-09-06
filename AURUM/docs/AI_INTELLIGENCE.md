@@ -22,14 +22,22 @@ $env:AURUM_AI_PROVIDER = "openai"
 $env:AURUM_AI_LIVE_ENABLED = "true"
 $env:AURUM_AI_EXTERNAL_APPROVED = "true"
 $env:OPENAI_API_KEY = "<managed-secret>"
+$env:AURUM_AI_TIMEOUT_SECONDS = "20"
 ```
 
 `AURUM_AI_MODEL` can override the configured model. Without all three explicit flags/credentials, AURUM stays in local grounded mode. The live overlay is an interpretation layer only; it does not change the decision payload or governance state. API keys must come from the operator's secret manager or process environment and must never be committed to the repository.
+
+Live evaluation is a separate action. Set `AURUM_AI_RUN_LIVE_EVAL=true` only
+for an operator-approved smoke/evaluation run. Readiness, control-plane, and
+observability requests never trigger a paid or external model call implicitly.
+Live responses are bounded, JSON-shaped, and retain the local execution and
+research-promotion safety fields.
 
 ## Runtime endpoints
 
 - `GET /api/ai/status` — active provider mode and safety boundary.
 - `GET /api/ai/brief` — grounded CIO brief for the current control values.
 - `GET /api/ai/ask?question=...` — bounded answer against the current evidence.
+- `GET /v1/platform/ai-evaluation` — grounding and safety contract evaluation.
 
 The product UI exposes these capabilities in the `AURUM Intelligence` workspace and on the Overview screen.

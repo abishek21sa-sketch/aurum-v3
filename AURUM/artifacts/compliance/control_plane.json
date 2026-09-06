@@ -1,0 +1,82 @@
+{
+  "claim_boundary": "This control plane distinguishes repository evidence from deployment and customer acceptance. It is not a certification, investment approval, or production authorization.",
+  "customer_acceptance": {
+    "required_evidence": [
+      "SSO/OIDC or SAML integration test and break-glass procedure",
+      "RBAC and segregation-of-duties test evidence",
+      "Tenant-isolation test evidence if multiple customers share a deployment",
+      "Immutable retention, access logs, legal hold, backup, and restore evidence",
+      "Approved SLO/RTO/RPO, incident response, support, and change-management records"
+    ],
+    "status": "EVIDENCE_REQUIRED"
+  },
+  "customer_acceptance_coverage": {
+    "passed": 0,
+    "percent": 0.0,
+    "total": 5
+  },
+  "decision_id": "MARS-812FA013EB90FFA1",
+  "deployment": {
+    "blockers": [
+      "deployment.image_provenance_pinned"
+    ],
+    "production_gate": "BLOCKED",
+    "research_gate": "PASS"
+  },
+  "deployment_preflight_coverage": {
+    "passed": 13,
+    "percent": 92.9,
+    "total": 14
+  },
+  "execution_enabled": false,
+  "generated_at_utc": "2026-09-06T00:14:13Z",
+  "next_actions": [
+    "Bind the production profile to immutable image digests and signed provenance.",
+    "Integrate customer SSO/RBAC, tenant isolation, immutable evidence storage, and access logging.",
+    "Run approved live-data provider, outage, reconciliation, and freshness drills before optimizer use.",
+    "Complete independent model validation and committee sign-off separately from optimization authorization.",
+    "Approve customer SLO/RTO/RPO, backup/restore, incident, support, and change-management evidence."
+  ],
+  "production_blocked": true,
+  "repository_areas": [
+    {
+      "area": "ai_intelligence",
+      "evidence": "/v1/platform/ai-evaluation",
+      "status": "PASS"
+    },
+    {
+      "area": "governed_live_data",
+      "evidence": "/v1/platform/data-status",
+      "status": "REFERENCE_ONLY"
+    },
+    {
+      "area": "model_validation",
+      "evidence": "/v1/platform/model-validation",
+      "status": "READY_FOR_INDEPENDENT_REVIEW"
+    },
+    {
+      "area": "enterprise_platform",
+      "evidence": "/v1/platform/enterprise-status",
+      "status": "INTEGRATION_READY_NOT_PRODUCTION"
+    },
+    {
+      "area": "deployment_controls",
+      "evidence": "/v1/platform/deployment-preflight",
+      "status": "PASS"
+    },
+    {
+      "area": "customer_packaging",
+      "evidence": "/v1/platform/readiness",
+      "status": "PASS"
+    }
+  ],
+  "repository_control_coverage": {
+    "passed": 6,
+    "percent": 100.0,
+    "total": 6
+  },
+  "research_promotion": "RESEARCH_ONLY",
+  "schema_version": "1.0",
+  "service": "AURUM enterprise control plane",
+  "status": "RESEARCH_READY_INTEGRATION_IN_PROGRESS"
+}

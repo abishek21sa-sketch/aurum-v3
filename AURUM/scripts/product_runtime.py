@@ -33,6 +33,8 @@ from src.institutional.ai_intelligence import (  # noqa: E402
     build_ai_status,
 )
 from src.institutional.live_data_contract import build_live_data_status  # noqa: E402
+from src.institutional.control_plane import build_control_plane  # noqa: E402
+from src.institutional.operations_contract import build_operations_status  # noqa: E402
 
 
 ARTIFACT = ROOT / "artifacts" / "product_runtime" / "latest_product_evidence.json"
@@ -120,6 +122,10 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, json.dumps(answer_ai_question(ROOT, _decision_from_query(query), question), default=str).encode())
             if parsed.path == "/api/data/status":
                 return self._send(200, json.dumps(build_live_data_status(ROOT), default=str).encode())
+            if parsed.path == "/api/control-plane":
+                return self._send(200, json.dumps(build_control_plane(ROOT), default=str).encode())
+            if parsed.path == "/api/operations/status":
+                return self._send(200, json.dumps(build_operations_status(ROOT), default=str).encode())
             if parsed.path == "/api/decision":
                 query = parse_qs(parsed.query)
                 params = _params_from_query(query)
@@ -189,6 +195,8 @@ def acceptance() -> None:
             "/api/ai/brief",
             "/api/ai/ask?question=What%20is%20the%20main%20risk%3F",
             "/api/data/status",
+            "/api/control-plane",
+            "/api/operations/status",
             "/download/evidence.json",
         ):
             with urllib.request.urlopen(f"http://127.0.0.1:{port}{path}", timeout=20) as response:

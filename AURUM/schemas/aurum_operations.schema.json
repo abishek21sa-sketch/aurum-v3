@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aurum.local/schemas/aurum_operations.schema.json",
+  "title": "AURUM Enterprise Operations Contract",
+  "type": "object",
+  "required": ["schema_version", "service", "status", "static_repository_controls", "customer_operating_configuration", "customer_configuration_complete", "required_customer_evidence", "execution_enabled", "research_promotion"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "service": {"const": "AURUM enterprise operations contract"},
+    "status": {"enum": ["PASS", "CUSTOMER_CONFIGURATION_REQUIRED", "INCOMPLETE"]},
+    "static_repository_controls": {"type": "array"},
+    "customer_operating_configuration": {"type": "object"},
+    "customer_configuration_complete": {"type": "boolean"},
+    "required_customer_evidence": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "execution_enabled": {"const": false},
+    "research_promotion": {"const": "RESEARCH_ONLY"}
+  },
+  "additionalProperties": true
+}

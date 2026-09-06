@@ -15,6 +15,8 @@ import os
 from pathlib import Path
 from typing import Any, Iterable
 
+from src.institutional.live_data_ingestion import build_ingestion_receipt
+
 
 LIVE_DATA_SCHEMA_VERSION = "1.0"
 DEFAULT_SNAPSHOT = "data/live/latest_live_market_snapshot.csv"
@@ -128,8 +130,9 @@ def build_live_data_status(root: Path) -> dict[str, Any]:
     freshness_minutes = int(os.getenv("AURUM_MARKET_DATA_FRESHNESS_MINUTES", "30"))
     snapshot_path = root / os.getenv("AURUM_MARKET_DATA_SNAPSHOT", DEFAULT_SNAPSHOT)
     required = _required_tickers(root)
+    rows = _read_snapshot(snapshot_path)
     quality = validate_snapshot_rows(
-        _read_snapshot(snapshot_path),
+        rows,
         required,
         freshness_minutes=freshness_minutes,
     )
@@ -152,6 +155,11 @@ def build_live_data_status(root: Path) -> dict[str, Any]:
     else:
         status = "PASS"
         note = "Live snapshot passed quality checks and the optimizer feed is explicitly approved."
+    receipt = build_ingestion_receipt(
+        rows,
+        provider=provider,
+        request_id="reference-fixture" if not live_requested else os.getenv("AURUM_MARKET_DATA_REQUEST_ID", "missing-request-id"),
+    )
     return {
         "schema_version": LIVE_DATA_SCHEMA_VERSION,
         "service": "AURUM governed market data",
@@ -159,10 +167,20 @@ def build_live_data_status(root: Path) -> dict[str, Any]:
         "mode": mode,
         "provider": provider,
         "snapshot_path": str(snapshot_path.relative_to(root)).replace("\\", "/") if snapshot_path.is_relative_to(root) else str(snapshot_path),
+        "snapshot_present": snapshot_path.is_file(),
+        "snapshot_receipt": receipt,
         "live_requested": live_requested,
         "optimizer_feed_enabled": feed_enabled,
         "external_fetch_enabled": live_requested and provider_configured,
         "approval_required": True,
+        "provider_contract": {
+            "adapter_entrypoint": "src/institutional/live_data_ingestion.py:normalize_provider_rows",
+            "provider_configured": provider_configured,
+            "request_id_required_when_live": True,
+            "reconciliation_required_before_optimizer_feed": True,
+            "credentials_in_receipt": False,
+        },
+        "data_class": "BUNDLED_REFERENCE_DATA" if not live_requested else "LIVE_PROVIDER_DATA",
         "note": note,
         "quality": quality,
         "fail_closed_policy": "No live snapshot may be replaced by bundled reference data without an explicit operator mode change.",
