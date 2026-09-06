@@ -94,3 +94,27 @@ evidence.
 
 The synthetic status contract is available at /v1/platform/synthetic-ml-status;
 the product runtime exposes /api/synthetic-ml/status.
+
+## Public data evidence lane
+
+The project also supports a separate public-data intake path for authoritative
+research inputs. `scripts/ingest_public_data.py` captures SEC EDGAR company
+facts, FDIC BankFind institution records, U.S. Treasury Fiscal Data, and an
+optional one-year public market-price snapshot through the existing research
+adapter. Every captured artifact is hashed in
+`artifacts/public_data/public_data_manifest.json` and exposed read-only at
+`/v1/platform/public-data-status` and `/api/public-data/status`.
+
+Public snapshots are real public records, not customer evidence. They remain
+`RESEARCH_ONLY`; they do not enable the optimizer feed, prove realized returns,
+or replace customer-owned controls. FRED is intentionally not fetched by
+default because its official API requires an API key. Run the intake only when
+network access is explicitly available and review the source URLs and
+timestamps in the manifest before using any snapshot.
+
+The public-source registry points to SEC EDGAR APIs
+(https://www.sec.gov/search-filings/edgar-application-programming-interfaces),
+FDIC BankFind API/bulk data
+(https://banks.data.fdic.gov/bankfind-suite/bulkData), and Treasury Fiscal Data
+(https://fiscaldata.treasury.gov/). These links are source documentation, not
+claims that the project has customer authorization or production entitlements.

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aurum.local/schemas/aurum_public_data_manifest.schema.json",
+  "title": "AURUM Public Data Manifest",
+  "type": "object",
+  "required": ["schema_version", "service", "status", "data_class", "external_fetch_performed", "optimizer_feed_enabled", "promotion_state", "sources", "errors", "claim_boundary"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "service": {"const": "AURUM public data evidence intake"},
+    "generated_at_utc": {"type": "string"},
+    "status": {"enum": ["PASS", "PARTIAL", "FAIL"]},
+    "data_class": {"const": "PUBLIC_AUTHORITATIVE_DATA"},
+    "external_fetch_performed": {"type": "boolean"},
+    "optimizer_feed_enabled": {"const": false},
+    "promotion_state": {"const": "RESEARCH_ONLY"},
+    "sources": {"type": "array"},
+    "errors": {"type": "array"},
+    "claim_boundary": {"type": "string"}
+  },
+  "additionalProperties": true
+}

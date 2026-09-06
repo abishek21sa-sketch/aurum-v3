@@ -13,11 +13,11 @@ Evidence: AURUM\artifacts\product_runtime\latest_product_evidence.json
 
 VALIDATION STATE
 ----------------
-Engineering regression: 46 selected tests passed in the build environment
+Engineering regression: 60 selected tests passed in the build environment
 Product runtime acceptance: PASS
 MARS-CVaR release evidence: PASS
 Enterprise readiness contract: READY_FOR_HUMAN_REVIEW
-Release evidence: PASS (77/77 checks; secret/VCS hygiene clean)
+Release evidence: PASS (106/106 checks; secret/VCS hygiene clean)
 Evidence bundle export: PASS (portable, hash-linked, retention-aware)
 Software bill of materials: PASS (CycloneDX 1.5; 121 pinned components)
 Walk-forward promotion state: RESEARCH_ONLY
@@ -35,6 +35,8 @@ Unified control plane: 6/6 repository controls covered; deployment 13/14;
 customer acceptance 0/5 (customer configuration required)
 Customer evidence register: 5 enterprise controls + 5 operational evidence
 items, all explicitly owned and currently REQUIRED/approval-gated
+Public data evidence: PASS (6 public sources; 1,260 market rows; chronological
+return/volatility/drawdown validation; no-lookahead PASS; optimizer feed disabled)
 
 EXTERNAL EVIDENCE INTAKE
 ------------------------
@@ -66,6 +68,15 @@ customer, causal, or realized-performance evidence.
 Modeled, synthetic, simulated, historical, optimized, and realized evidence
 remain distinct. Human review is required; no orders are emitted.
 
+Public data evidence lane: when network access is available, run
+  .\AURUM\scripts\ingest_public_data.py
+It snapshots SEC EDGAR company facts, FDIC BankFind institutions, Treasury
+Fiscal Data, and a research-only public market feed. Every source is timestamped
+and SHA-256 hashed in
+AURUM\artifacts\public_data\public_data_manifest.json. Public snapshots are
+real public records, but they do not replace customer evidence, production
+entitlements, or independent validation.
+
 Enterprise control-plane endpoints are available from the API:
   /v1/platform/readiness
   /v1/platform/observability
@@ -73,6 +84,7 @@ Enterprise control-plane endpoints are available from the API:
   /v1/platform/audit/lineage
   /v1/platform/deployment-preflight
   /v1/platform/data-status
+  /v1/platform/public-data-status
   /v1/platform/model-validation
   /v1/platform/enterprise-status
   /v1/platform/ai-evaluation

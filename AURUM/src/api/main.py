@@ -21,6 +21,7 @@ from src.institutional.control_plane import build_control_plane
 from src.institutional.external_evidence import build_customer_evidence_status, build_production_image_provenance
 from src.institutional.operations_contract import build_operations_status
 from src.institutional.synthetic_ml import build_synthetic_dataset_status
+from src.institutional.public_data import build_public_data_status
 from scripts.product_adapter import compute as compute_product_decision
 
 from src.api.routes_market import router as market_router
@@ -133,6 +134,12 @@ def platform_data_status():
     """Return governed market-data mode, freshness, and fail-closed status."""
     root = Path(__file__).resolve().parents[2]
     return build_live_data_status(root)
+
+
+@app.get("/v1/platform/public-data-status", tags=["Platform controls"])
+def platform_public_data_status():
+    """Return integrity and provenance status for captured public snapshots."""
+    return build_public_data_status(Path(__file__).resolve().parents[2])
 
 
 @app.get("/v1/platform/model-validation", tags=["Platform controls"])

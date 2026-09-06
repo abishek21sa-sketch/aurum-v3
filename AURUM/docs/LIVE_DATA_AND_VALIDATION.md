@@ -40,6 +40,21 @@ independent approval. The packet is available at
 `/v1/platform/model-validation` and is retained as
 `artifacts/compliance/model_validation.json`.
 
+## Public data evidence lane
+
+For research inputs that can be sourced publicly, run
+`scripts/ingest_public_data.py`. The intake captures SEC EDGAR company facts,
+FDIC BankFind institution records, U.S. Treasury Fiscal Data, and an optional
+public market-price snapshot. It records the exact URL, retrieval timestamp,
+byte count, SHA-256, source classification, and record count in
+`artifacts/public_data/public_data_manifest.json`. The read-only status
+contract is `/v1/platform/public-data-status`.
+
+SEC, FDIC, and Treasury snapshots are public source data; the market-price
+adapter is explicitly marked third-party research data. None of these sources
+automatically enables the optimizer feed. Missing or failed sources are
+recorded as `PARTIAL`/`FAIL`, never silently replaced by synthetic rows.
+
 ## Control-plane and operations contracts
 
 `/v1/platform/control-plane` reports repository, deployment, and customer

@@ -73,7 +73,7 @@
   "data_class": "SIMULATED_SYNTHETIC_DATA",
   "dataset_id": "AURUM-SYNTHETIC-ML-10000-V1",
   "execution_enabled": false,
-  "generated_at_utc": "2026-09-06T14:13:28Z",
+  "generated_at_utc": "2026-09-06T16:59:38Z",
   "promotion_state": "RESEARCH_ONLY",
   "regression": {
     "coefficients": [

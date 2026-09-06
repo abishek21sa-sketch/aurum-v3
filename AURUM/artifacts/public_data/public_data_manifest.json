@@ -1,0 +1,99 @@
+{
+  "claim_boundary": "Public snapshots support research and feature validation; they do not establish causal forecasts, customer approval, or realized investment performance.",
+  "data_class": "PUBLIC_AUTHORITATIVE_DATA",
+  "derived_validations": [
+    {
+      "artifact": "artifacts/public_data/public_market_validation.json",
+      "bytes": 2577,
+      "sha256": "c33ee170b2c5c29d4ec44be5626f72e87f8ff6a83dd1747f3e3d526bbb5069f1",
+      "status": "PASS",
+      "validation_id": "public_market_math"
+    }
+  ],
+  "errors": [],
+  "external_fetch_performed": true,
+  "generated_at_utc": "2026-09-06T16:55:01Z",
+  "optimizer_feed_enabled": false,
+  "promotion_state": "RESEARCH_ONLY",
+  "schema_version": "1.0",
+  "service": "AURUM public data evidence intake",
+  "sources": [
+    {
+      "artifact": "artifacts/public_data/sec_companyfacts_CIK0000789019.json",
+      "authority": "U.S. Securities and Exchange Commission",
+      "bytes": 4881196,
+      "note": "SEC public JSON; request used a declared User-Agent.",
+      "record_count": 565,
+      "retrieved_at_utc": "2026-09-06T16:54:50Z",
+      "sha256": "f8aae2965b20ad0df44bdf7ccbedf797d275b6b8dc030154a7a311361bb7246f",
+      "source_id": "sec_companyfacts_CIK0000789019",
+      "source_type": "PUBLIC_REGULATORY_XBRL",
+      "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000789019.json",
+      "status": "PASS"
+    },
+    {
+      "artifact": "artifacts/public_data/sec_companyfacts_CIK0000019617.json",
+      "authority": "U.S. Securities and Exchange Commission",
+      "bytes": 7928922,
+      "note": "SEC public JSON; request used a declared User-Agent.",
+      "record_count": 936,
+      "retrieved_at_utc": "2026-09-06T16:54:50Z",
+      "sha256": "446944cc53bbe032ec5fef84994ee9353d619e3b94026a053ba6dbdb515b472a",
+      "source_id": "sec_companyfacts_CIK0000019617",
+      "source_type": "PUBLIC_REGULATORY_XBRL",
+      "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000019617.json",
+      "status": "PASS"
+    },
+    {
+      "artifact": "artifacts/public_data/sec_companyfacts_CIK0000070858.json",
+      "authority": "U.S. Securities and Exchange Commission",
+      "bytes": 6855712,
+      "note": "SEC public JSON; request used a declared User-Agent.",
+      "record_count": 899,
+      "retrieved_at_utc": "2026-09-06T16:54:50Z",
+      "sha256": "09485a3e3ee3e776493c937617a4aeccb1164cb9f108745e3299a6de210d6093",
+      "source_id": "sec_companyfacts_CIK0000070858",
+      "source_type": "PUBLIC_REGULATORY_XBRL",
+      "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000070858.json",
+      "status": "PASS"
+    },
+    {
+      "artifact": "artifacts/public_data/fdic_institutions.json",
+      "authority": "Federal Deposit Insurance Corporation",
+      "bytes": 15082,
+      "record_count": 100,
+      "retrieved_at_utc": "2026-09-06T16:54:50Z",
+      "sha256": "9dd2c796cd6284a45e082827fa30667ceba4833dcac280d24aac7afe65f4d0c7",
+      "source_id": "fdic_institutions",
+      "source_type": "PUBLIC_BANK_REGULATORY_DATA",
+      "source_url": "https://banks.data.fdic.gov/api/institutions?fields=NAME,CERT,ACTIVE,ASSET,DEP,STALP,STNAME&limit=100&format=json",
+      "status": "PASS"
+    },
+    {
+      "artifact": "artifacts/public_data/treasury_debt_to_penny.json",
+      "authority": "U.S. Department of the Treasury, Fiscal Data",
+      "bytes": 16145,
+      "record_count": 100,
+      "retrieved_at_utc": "2026-09-06T16:54:50Z",
+      "sha256": "8e0f355170e60fbcfe1b8ac2220ca9ae95070e82604014958be4aceaa3e40a27",
+      "source_id": "treasury_debt_to_penny",
+      "source_type": "PUBLIC_GOVERNMENT_FINANCE_DATA",
+      "source_url": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/debt_to_penny?fields=record_date,debt_held_public_amt,intragov_hold_amt,tot_pub_debt_out_amt&sort=-record_date&page[size]=100&format=json",
+      "status": "PASS"
+    },
+    {
+      "artifact": "artifacts/public_data/market_prices.csv",
+      "authority": "Yahoo Finance public market feed via yfinance",
+      "bytes": 165222,
+      "note": "Third-party public market feed; not an authoritative regulatory source.",
+      "record_count": 1260,
+      "retrieved_at_utc": "2026-09-06T16:54:50Z",
+      "sha256": "b6e13d41b3bf6ea41a087bab4e995a01c6673f0dd9c6d49dfde61ee420ba3930",
+      "source_id": "market_prices_yfinance",
+      "source_type": "PUBLIC_MARKET_DATA_RESEARCH_ONLY",
+      "source_url": "https://finance.yahoo.com/",
+      "status": "PASS"
+    }
+  ],
+  "status": "PASS"
+}

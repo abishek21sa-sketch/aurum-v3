@@ -40,9 +40,11 @@
     "EXTERNAL_EVIDENCE_INTAKE=SHAPE_HASH_APPROVER_TIMESTAMP_VALIDATED",
     "PRODUCTION_PROVENANCE_INTAKE=SHA256_DIGEST_AND_ATTESTATION_REQUIRED",
     "SYNTHETIC_ML_DATASET=10000_ROWS_DETERMINISTIC_EDGE_CASE_COVERAGE",
-    "SYNTHETIC_ML_VALIDATION=CHRONOLOGICAL_RIDGE_AND_NEAREST_CENTROID"
+    "SYNTHETIC_ML_VALIDATION=CHRONOLOGICAL_RIDGE_AND_NEAREST_CENTROID",
+    "PUBLIC_DATA_EVIDENCE=SEC_FDIC_TREASURY_AND_RESEARCH_MARKET_SNAPSHOTS",
+    "PUBLIC_DATA_MATH=CHRONOLOGICAL_RETURN_VOLATILITY_DRAWDOWN_NO_LOOKAHEAD"
   ],
   "windows_status": "Target Windows environment verified: engineering and product acceptance PASS; launchers remain available for local rerun",
-  "product_sections": ["market_regime", "portfolio_workspace", "risk_lab", "constraints", "baselines", "frontier", "walk_forward_research", "data_provenance", "governance", "ai_intelligence", "governed_live_data", "model_validation", "synthetic_ml_lab", "enterprise_platform", "enterprise_readiness", "deployment_preflight", "control_plane", "operations_contract", "external_evidence_intake", "production_image_provenance", "audit_lineage", "evidence_bundle", "supply_chain_sbom"],
+  "product_sections": ["market_regime", "portfolio_workspace", "risk_lab", "constraints", "baselines", "frontier", "walk_forward_research", "data_provenance", "governance", "ai_intelligence", "governed_live_data", "public_data_evidence", "public_market_math", "model_validation", "synthetic_ml_lab", "enterprise_platform", "enterprise_readiness", "deployment_preflight", "control_plane", "operations_contract", "external_evidence_intake", "production_image_provenance", "audit_lineage", "evidence_bundle", "supply_chain_sbom"],
   "claim_boundary": "Engineering/product evidence only unless an underlying source explicitly establishes a stronger class. Human review remains required; research promotion remains separate from optimization authorization."
 }

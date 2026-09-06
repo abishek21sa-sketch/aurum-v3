@@ -1,0 +1,81 @@
+{
+  "chronological_split": {
+    "method": "unique_calendar_dates_80_20",
+    "no_lookahead": true,
+    "test_rows": 255,
+    "test_start_date": "2026-06-25",
+    "train_end_date": "2026-06-24",
+    "train_rows": 1005
+  },
+  "claim_boundary": "Descriptive public-price statistics and chronological partition checks do not establish causal forecasts, alpha, or realized investment performance.",
+  "data_class": "PUBLIC_MARKET_DATA_RESEARCH_ONLY",
+  "duplicate_rows": 0,
+  "execution_enabled": false,
+  "invalid_rows": 0,
+  "per_ticker": [
+    {
+      "annualized_volatility": 0.12497971474266201,
+      "daily_volatility": 0.007872982003258965,
+      "end_timestamp": "2026-09-04T04:00:00Z",
+      "max_drawdown": -0.10063753708366141,
+      "mean_daily_return": 0.0006695681424809537,
+      "rows": 252,
+      "start_timestamp": "2025-09-05T04:00:00Z",
+      "ticker": "DIA"
+    },
+    {
+      "annualized_volatility": 0.2918959535542968,
+      "daily_volatility": 0.018387716709779275,
+      "end_timestamp": "2026-09-04T04:00:00Z",
+      "max_drawdown": -0.26404517857029663,
+      "mean_daily_return": 0.0009912633258021563,
+      "rows": 252,
+      "start_timestamp": "2025-09-05T04:00:00Z",
+      "ticker": "GLD"
+    },
+    {
+      "annualized_volatility": 0.1960660175085627,
+      "daily_volatility": 0.012350998163773635,
+      "end_timestamp": "2026-09-04T04:00:00Z",
+      "max_drawdown": -0.12188368097556401,
+      "mean_daily_return": 0.0009592598525582803,
+      "rows": 252,
+      "start_timestamp": "2025-09-05T04:00:00Z",
+      "ticker": "QQQ"
+    },
+    {
+      "annualized_volatility": 0.1280390555782068,
+      "daily_volatility": 0.008065702361036015,
+      "end_timestamp": "2026-09-04T04:00:00Z",
+      "max_drawdown": -0.09133132097249053,
+      "mean_daily_return": 0.000725565451159237,
+      "rows": 252,
+      "start_timestamp": "2025-09-05T04:00:00Z",
+      "ticker": "SPY"
+    },
+    {
+      "annualized_volatility": 0.09416625820374294,
+      "daily_volatility": 0.00593191669287142,
+      "end_timestamp": "2026-09-04T04:00:00Z",
+      "max_drawdown": -0.11633716455028176,
+      "mean_daily_return": -0.0002788512478073223,
+      "rows": 252,
+      "start_timestamp": "2025-09-05T04:00:00Z",
+      "ticker": "TLT"
+    }
+  ],
+  "promotion_state": "RESEARCH_ONLY",
+  "row_count": 1260,
+  "schema_version": "1.0",
+  "service": "AURUM public market math validation",
+  "source_artifact": "artifacts/public_data/market_prices.csv",
+  "status": "PASS",
+  "ticker_count": 5,
+  "tickers": [
+    "DIA",
+    "GLD",
+    "QQQ",
+    "SPY",
+    "TLT"
+  ]
+}

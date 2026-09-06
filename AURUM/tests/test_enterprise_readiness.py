@@ -50,6 +50,7 @@ def test_platform_control_endpoints_expose_machine_contracts():
     customer_evidence = client.get("/v1/platform/customer-evidence")
     image_provenance = client.get("/v1/platform/image-provenance")
     synthetic_ml = client.get("/v1/platform/synthetic-ml-status")
+    public_data = client.get("/v1/platform/public-data-status")
     preflight = client.get("/v1/platform/deployment-preflight")
 
     assert readiness.status_code == 200
@@ -84,6 +85,10 @@ def test_platform_control_endpoints_expose_machine_contracts():
     assert synthetic_ml.status_code == 200
     assert synthetic_ml.json()["status"] == "PASS"
     assert synthetic_ml.json()["data_class"] == "SIMULATED_SYNTHETIC_DATA"
+    assert public_data.status_code == 200
+    assert public_data.json()["status"] == "PASS"
+    assert public_data.json()["data_class"] == "PUBLIC_AUTHORITATIVE_DATA"
+    assert public_data.json()["optimizer_feed_enabled"] is False
     assert preflight.status_code == 200
     assert preflight.json()["research_gate"] == "PASS"
     assert preflight.json()["execution_enabled"] is False
