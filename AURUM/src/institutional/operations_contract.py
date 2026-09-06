@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from datetime import datetime, timezone
 import json
+import os
 from pathlib import Path
 from typing import Any
 
@@ -50,7 +51,10 @@ def _utc_now() -> str:
 
 
 def _load_config(root: Path) -> dict[str, Any]:
-    path = root / "config" / "operations.json"
+    configured = os.environ.get("AURUM_OPERATIONS_CONFIG_FILE")
+    path = Path(configured).expanduser() if configured else root / "config" / "operations.json"
+    if configured and not path.is_absolute():
+        path = root / path
     if not path.is_file():
         return {}
     try:

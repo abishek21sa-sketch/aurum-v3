@@ -59,6 +59,7 @@ External evidence is supplied out-of-band through environment variables rather
 than committed to the repository:
   AURUM_CUSTOMER_EVIDENCE_FILE
   AURUM_PRODUCTION_PROVENANCE_FILE
+  AURUM_OPERATIONS_CONFIG_FILE
 The corresponding config/*.example.json files document the required fields.
 The intake checks control IDs, SHA-256 formatting, approval metadata, signed
 provenance metadata, and immutable image references. It does not manufacture

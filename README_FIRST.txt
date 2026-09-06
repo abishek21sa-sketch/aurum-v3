@@ -42,6 +42,7 @@ Customer-owned evidence is never fabricated or committed. Before a deployment
 acceptance run, point the process at real, approved manifests:
   $env:AURUM_CUSTOMER_EVIDENCE_FILE = "C:\\secure\\customer_evidence.json"
   $env:AURUM_PRODUCTION_PROVENANCE_FILE = "C:\\secure\\production_image_provenance.json"
+  $env:AURUM_OPERATIONS_CONFIG_FILE = "C:\\secure\\operations.json"
 Use AURUM\\config\\customer_evidence.example.json and
 AURUM\\config\\production_image_provenance.example.json as shape templates.
 Each customer control needs an evidence URI, SHA-256, approver, UTC approval

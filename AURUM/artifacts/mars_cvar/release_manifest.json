@@ -50,8 +50,8 @@
       "bytes": 7186
     },
     "src/institutional/operations_contract.py": {
-      "sha256": "22f0e87adac5275ef66230c75e33c405b5330d54ff7d0a2c91afa4bf19ef66aa",
-      "bytes": 5612
+      "sha256": "5c2149b86686a7d6816f1b4d0f2d04f2bac6c3ce3c70de6d7e64a951e12573cd",
+      "bytes": 5808
     },
     "src/institutional/external_evidence.py": {
       "sha256": "761db11bad1167570c6d2c56130d265db725d8ca55633b676c297017d1ec34b6",
@@ -150,8 +150,8 @@
       "bytes": 6048
     },
     "tests/test_external_evidence.py": {
-      "sha256": "d07a99b8f4ecf97f7274cce402ff90c3a9516f3d6e64c190fe4de44e7a880142",
-      "bytes": 4627
+      "sha256": "c47f9cf4f6ea7fd92d7590189630ddabc862d30e70293a219d9244a50892860e",
+      "bytes": 5865
     },
     "tests/test_release_verifier.py": {
       "sha256": "574668e8698f14281112d39a54698e074132cb6afabb671ba7b4fb24c5d2e96f",
@@ -174,7 +174,7 @@
       "bytes": 6064
     },
     "artifacts/mars_cvar/governance_evidence.json": {
-      "sha256": "9c55488186c1ea04b2a8c270c637f72e168c7ec2eea546a70a4b1d42257d2522",
+      "sha256": "6be079701ad24cb7330e2388fafe4261eafb2437b6c8e9e9e91856f2ea15175c",
       "bytes": 4767
     },
     "artifacts/mars_cvar/turnover_sensitivity.csv": {
@@ -186,39 +186,39 @@
       "bytes": 872
     },
     "artifacts/compliance/deployment_preflight.json": {
-      "sha256": "69a0edd17c91f83cb2541120ddd14d21c5adb7a7e16624471460deb77676a888",
+      "sha256": "3d396cbe61a4f02868493e790e9e202cbe3f94880f774561c2fc33878fcd3d07",
       "bytes": 5793
     },
     "artifacts/compliance/live_data_status.json": {
-      "sha256": "09441602d67bb1986162a9de62c912b04c47f4474b2339082fd1429921564688",
+      "sha256": "9227e2a536f0ffebb34b74ecfebac747073c5f81c9ac6c02df90042cae6061d4",
       "bytes": 2395
     },
     "artifacts/compliance/model_validation.json": {
-      "sha256": "40c653de320ab76f3471add49779cabff1fb382876dc92f3057f1508a67647ed",
+      "sha256": "caa116c5535524d7d5573059386cd1e0409c883a5fce689c73dee58e132bffd3",
       "bytes": 3015
     },
     "artifacts/compliance/enterprise_platform.json": {
-      "sha256": "8e3cbe5961d91261bba6a467c36ca7b8f0387fda4af6fd3c2708132a4aef3031",
+      "sha256": "3050bb9a92e95d0a6534f3ce28c4cf31337bd00a2cff72395e38ff06074eb0c1",
       "bytes": 2451
     },
     "artifacts/compliance/ai_evaluation.json": {
-      "sha256": "6e2c0b17cfa9cb021bcdebca12a81f17b6648fc24d672fb905b1fce786fe5ea6",
+      "sha256": "bfcf32dcc855b25921823ec65cb0804a81f65756f65764f02051f03f899ed4bd",
       "bytes": 1619
     },
     "artifacts/compliance/control_plane.json": {
-      "sha256": "294e266da19fd62c88825377193942200d1dfe7234dc43ed997a6c90983b1da8",
+      "sha256": "5f82076b9e7f740b45a616952ad68c0767c5672ed80b313ad252474dfeb6bfad",
       "bytes": 12881
     },
     "artifacts/compliance/operations_status.json": {
-      "sha256": "7a37bb9223365b1507abc83baafe44667688f748cc112c40a9c731faea38c7ff",
+      "sha256": "533831dcc9355ce01aaffc0414a538a5c1c1482be04d7c68afe288369850a548",
       "bytes": 3999
     },
     "artifacts/compliance/customer_evidence_status.json": {
-      "sha256": "02a549f7e00327207c185a305122af52a9d75379bc864bce8f6de72632c7ced7",
+      "sha256": "a354e5e5098ea84ac8e65de6e8c45526b54ab2cbf434ebc02129d4f70546bb1a",
       "bytes": 2356
     },
     "artifacts/compliance/production_image_provenance_status.json": {
-      "sha256": "493f5ee7ef66edc6355e7acdad68b45d26f1e5cb97c9a3471e51a5456cf865dd",
+      "sha256": "e251b5de1eb4c9f32e768f11aebafcfbaa64899a7c73d006c01aaa8a46867463",
       "bytes": 800
     },
     "artifacts/product_runtime/latest_ai_intelligence_brief.json": {
@@ -254,12 +254,12 @@
       "bytes": 2251
     },
     "docs/LIVE_DATA_AND_VALIDATION.md": {
-      "sha256": "080312fbceae7d905cd046f4bff0c968c0d313f5fd914dd3eeed540fbb2cd13a",
-      "bytes": 3992
+      "sha256": "5fa7bc2485f777c8ea6dad782de0b445050b5e3f187c9ed474f59542ec5e9c4a",
+      "bytes": 4065
     },
     "docs/ENTERPRISE_CUSTOMER_READINESS.md": {
-      "sha256": "a43f04b1a94b00956831a50f3cd9878b4ce2307dd00ce491566da393f683d688",
-      "bytes": 2695
+      "sha256": "ebf46b23e9029c8d176ce8a46b39c78743a3e1555457617acc72a2317797ea34",
+      "bytes": 2761
     },
     "docker-compose.yml": {
       "sha256": "59778e7097ddbb3e731b2b205d6189f05791954abd63d15590530b786b7dea6f",

@@ -60,6 +60,7 @@ review, and deployment-owned controls are separate gates.
 Customer acceptance evidence and production image provenance are intentionally
 out-of-band. Set `AURUM_CUSTOMER_EVIDENCE_FILE` and
 `AURUM_PRODUCTION_PROVENANCE_FILE` to customer/deployment-owned JSON manifests
+and `AURUM_OPERATIONS_CONFIG_FILE` to the approved operating-values file
 before running acceptance. The repository includes
 `config/customer_evidence.example.json` and
 `config/production_image_provenance.example.json` as non-authoritative shape

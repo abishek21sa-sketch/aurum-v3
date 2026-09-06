@@ -10,6 +10,7 @@ from src.institutional.external_evidence import (
     build_customer_evidence_status,
     build_production_image_provenance,
 )
+from src.institutional.operations_contract import build_operations_status
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -99,6 +100,33 @@ def test_manifest_schema_version_is_required(tmp_path, monkeypatch):
 
     assert result["manifest_schema_valid"] is False
     assert result["status"] == "REQUIRED"
+
+
+def test_operations_configuration_can_be_supplied_out_of_band(tmp_path, monkeypatch):
+    operations_path = tmp_path / "operations.json"
+    operations_path.write_text(json.dumps({
+        "schema_version": "1.0",
+        "service_tier": "enterprise",
+        "slo_target": "99.9% monthly",
+        "rto_minutes": 60,
+        "rpo_minutes": 15,
+        "retention_days": 365,
+        "support_owner": "customer-operations",
+        "alert_route": "on-call-primary",
+        "backup_restore_drill_id": "restore-drill-2026-09",
+        "change_approval_record": "change-record-2026-09",
+        "legal_hold_record": "legal-hold-policy-2026-09",
+        "deletion_approval_record": "deletion-approval-2026-09",
+        "incident_escalation_path": "sev1-on-call",
+        "rollback_plan_reference": "rollback-plan-2026-09",
+    }), encoding="utf-8")
+    monkeypatch.setenv("AURUM_OPERATIONS_CONFIG_FILE", str(operations_path))
+
+    result = build_operations_status(ROOT)
+
+    assert result["status"] == "PASS"
+    assert result["customer_configuration_complete"] is True
+    assert all(item["status"] == "EVIDENCED" for item in result["customer_evidence_register"])
 
 
 def test_external_evidence_api_endpoints_are_read_only_and_fail_closed():

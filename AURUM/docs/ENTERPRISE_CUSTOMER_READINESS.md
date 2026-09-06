@@ -39,6 +39,7 @@ through process-local environment variables:
 ```powershell
 $env:AURUM_CUSTOMER_EVIDENCE_FILE = "C:\\secure\\customer_evidence.json"
 $env:AURUM_PRODUCTION_PROVENANCE_FILE = "C:\\secure\\production_image_provenance.json"
+$env:AURUM_OPERATIONS_CONFIG_FILE = "C:\\secure\\operations.json"
 .\RUN_ACCEPTANCE.cmd
 ```
 
