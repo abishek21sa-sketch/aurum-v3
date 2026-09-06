@@ -42,6 +42,8 @@ The API also exposes read-only integration contracts:
   /v1/platform/ai-evaluation    AI grounding and safety contract checks
   /v1/platform/control-plane    six-area readiness summary with separate denominators
   /v1/platform/operations-status SLO, recovery, retention, and support contract
+  /v1/platform/customer-evidence customer-owned acceptance evidence intake
+  /v1/platform/image-provenance immutable image and signed-provenance intake
 The operations response includes a five-item customer evidence register with
 owners, required fields, missing fields, and REQUIRED/EVIDENCED status. The
 control-plane response includes the five enterprise acceptance controls.
@@ -52,6 +54,15 @@ The repository includes docker-compose.production.yml as a deployment
 contract. It is intentionally parameterized for immutable image digests and
 external secrets; the production gate remains blocked until an operator
 supplies deployment-owned values and approvals.
+
+External evidence is supplied out-of-band through environment variables rather
+than committed to the repository:
+  AURUM_CUSTOMER_EVIDENCE_FILE
+  AURUM_PRODUCTION_PROVENANCE_FILE
+The corresponding config/*.example.json files document the required fields.
+The intake checks control IDs, SHA-256 formatting, approval metadata, signed
+provenance metadata, and immutable image references. It does not manufacture
+customer approvals or independently verify a remote authority.
 
 The release gate also writes:
   AURUM/artifacts/product_runtime/enterprise_evidence_bundle.json

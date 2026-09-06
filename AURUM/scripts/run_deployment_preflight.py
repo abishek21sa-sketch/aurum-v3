@@ -10,6 +10,7 @@ from src.institutional.enterprise_platform import build_enterprise_platform_stat
 from src.institutional.ai_evaluation import build_ai_evaluation
 from src.institutional.control_plane import build_control_plane
 from src.institutional.operations_contract import build_operations_status
+from src.institutional.external_evidence import build_customer_evidence_status, build_production_image_provenance
 from src.institutional.live_data_contract import build_live_data_status
 from src.institutional.model_validation import build_model_validation
 from src.institutional.mars_cvar_product import build_reference_product_evidence
@@ -31,6 +32,8 @@ def main() -> int:
         "ai_evaluation": build_ai_evaluation(ROOT),
         "control_plane": build_control_plane(ROOT, evidence),
         "operations_status": build_operations_status(ROOT),
+        "customer_evidence_status": build_customer_evidence_status(ROOT),
+        "production_image_provenance_status": build_production_image_provenance(ROOT),
     }
     for name, value in generated.items():
         artifact = ROOT / "artifacts" / "compliance" / f"{name}.json"

@@ -25,6 +25,8 @@ def test_product_frontend_contains_command_center_surface_and_safety_copy():
         "/api/operations/status",
         "Customer evidence register",
         "customer_evidence_register",
+        "external_evidence",
+        "production_images",
         "/api/ai/brief",
         "/api/ai/ask",
         "/api/preflight",

@@ -8,6 +8,8 @@ import re
 from pathlib import Path
 from typing import Any
 
+from src.institutional.external_evidence import build_production_image_provenance
+
 
 PREFLIGHT_SCHEMA_VERSION = "1.0"
 _SKIP_DIRS = {".git", ".hg", ".svn", ".venv", "__pycache__", ".pytest_cache", ".pytest_acceptance_tmp"}
@@ -79,6 +81,7 @@ def build_deployment_preflight(root: Path) -> dict[str, Any]:
     if not compose_path.is_file():
         compose_path = root / "docker-compose.yml"
     compose = compose_path.read_text(encoding="utf-8") if compose_path.is_file() else ""
+    provenance = build_production_image_provenance(root)
     dockerfiles = {
         "Dockerfile.api": (root / "Dockerfile.api"),
         "Dockerfile.dashboard": (root / "Dockerfile.dashboard"),
@@ -106,9 +109,11 @@ def build_deployment_preflight(root: Path) -> dict[str, Any]:
     checks.append(_check("operations.recovery_plan_present", "operations", "PASS" if (root / "docs/DISASTER_RECOVERY.md").is_file() else "FAIL", "INFO" if (root / "docs/DISASTER_RECOVERY.md").is_file() else "HIGH", "Disaster-recovery contract is present"))
     checks.append(_check("deployment.production_profile_present", "deployment", "PASS" if (root / "configs/prod.yaml").is_file() else "FAIL", "INFO" if (root / "configs/prod.yaml").is_file() else "HIGH", "Production configuration profile exists"))
 
-    images = re.findall(r"^\s*image:\s*(\S+)", compose, flags=re.MULTILINE)
+    compose_images = re.findall(r"^\s*image:\s*(\S+)", compose, flags=re.MULTILINE)
+    images = list(provenance.get("images", {}).values()) if provenance.get("status") == "EVIDENCED" else compose_images
+    images = [image for image in images if image]
     unpinned = [image for image in images if "@sha256:" not in image]
-    checks.append(_check("deployment.image_provenance_pinned", "supply_chain", "PASS" if not unpinned else "FAIL", "INFO" if not unpinned else "HIGH", "Production container images are pinned by immutable digest", images=images, unpinned_images=unpinned))
+    checks.append(_check("deployment.image_provenance_pinned", "supply_chain", "PASS" if not unpinned else "FAIL", "INFO" if not unpinned else "HIGH", "Production container images are pinned by immutable digest", images=images, compose_images=compose_images, unpinned_images=unpinned, provenance_status=provenance.get("status"), provenance_source=provenance.get("source"), provenance_manifest=provenance.get("manifest_path")))
     default_credential = bool(re.search(r"POSTGRES_PASSWORD\s*(?:=|:)\s*aurum\b", compose, flags=re.IGNORECASE))
     checks.append(_check("deployment.external_secret_injection", "security", "PASS" if not default_credential else "FAIL", "INFO" if not default_credential else "CRITICAL", "Database credentials are supplied by deployment secret management", default_credential_present=default_credential))
 

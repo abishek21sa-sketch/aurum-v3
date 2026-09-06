@@ -54,3 +54,25 @@ evidenced by the deployment owner.
 The optimizer may be analytically authorized while research promotion remains
 `RESEARCH_ONLY`. Independent validation, live-data approval, human committee
 review, and deployment-owned controls are separate gates.
+
+## External evidence intake
+
+Customer acceptance evidence and production image provenance are intentionally
+out-of-band. Set `AURUM_CUSTOMER_EVIDENCE_FILE` and
+`AURUM_PRODUCTION_PROVENANCE_FILE` to customer/deployment-owned JSON manifests
+before running acceptance. The repository includes
+`config/customer_evidence.example.json` and
+`config/production_image_provenance.example.json` as non-authoritative shape
+templates; the real manifests must not be committed with secrets or private
+customer records.
+
+The customer manifest covers `identity.sso`, `identity.rbac_enforcement`,
+`tenancy.isolation`, `evidence.immutable_storage`, and
+`operations.slo_and_support`. Each record requires an evidence URI, the
+SHA-256 of the underlying evidence, an approver, a UTC approval timestamp, and
+a verification record. The provenance manifest requires signed attestation
+metadata plus `@sha256:` references for `AURUM_REDIS_IMAGE`,
+`AURUM_TIMESCALE_IMAGE`, `AURUM_API_IMAGE`, and `AURUM_DASHBOARD_IMAGE`.
+`/v1/platform/customer-evidence` and `/v1/platform/image-provenance` expose
+the read-only validation results. Shape validation is not independent trust;
+the customer and deployment owner remain responsible for authenticity.

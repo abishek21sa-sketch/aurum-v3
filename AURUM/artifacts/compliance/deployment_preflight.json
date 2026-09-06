@@ -72,12 +72,21 @@
     {
       "check_id": "deployment.image_provenance_pinned",
       "details": {
+        "compose_images": [
+          "${AURUM_REDIS_IMAGE:?Set",
+          "${AURUM_TIMESCALE_IMAGE:?Set",
+          "${AURUM_API_IMAGE:?Set",
+          "${AURUM_DASHBOARD_IMAGE:?Set"
+        ],
         "images": [
           "${AURUM_REDIS_IMAGE:?Set",
           "${AURUM_TIMESCALE_IMAGE:?Set",
           "${AURUM_API_IMAGE:?Set",
           "${AURUM_DASHBOARD_IMAGE:?Set"
         ],
+        "provenance_manifest": "config/production_image_provenance.json",
+        "provenance_source": "REPOSITORY",
+        "provenance_status": "REQUIRED",
         "unpinned_images": [
           "${AURUM_REDIS_IMAGE:?Set",
           "${AURUM_TIMESCALE_IMAGE:?Set",
@@ -153,7 +162,7 @@
   ],
   "decision_id": "MARS-812FA013EB90FFA1",
   "execution_enabled": false,
-  "generated_at_utc": "2026-09-06T04:49:18Z",
+  "generated_at_utc": "2026-09-06T06:09:54Z",
   "overall_status": "PRODUCTION_BLOCKED",
   "production_gate": "BLOCKED",
   "required_actions": [

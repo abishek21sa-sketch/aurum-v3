@@ -11,6 +11,7 @@ from src.institutional.enterprise_platform import build_enterprise_platform_stat
 from src.institutional.ai_evaluation import build_ai_evaluation
 from src.institutional.control_plane import build_control_plane
 from src.institutional.operations_contract import build_operations_status
+from src.institutional.external_evidence import build_customer_evidence_status, build_production_image_provenance
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -123,6 +124,8 @@ def test_governed_payloads_validate_against_public_schemas():
         "aurum_live_data.schema.json": __import__("src.institutional.live_data_contract", fromlist=["build_live_data_status"]).build_live_data_status(ROOT),
         "aurum_control_plane.schema.json": build_control_plane(ROOT),
         "aurum_operations.schema.json": build_operations_status(ROOT),
+        "aurum_customer_evidence.schema.json": build_customer_evidence_status(ROOT),
+        "aurum_production_image_provenance.schema.json": build_production_image_provenance(ROOT),
     }
     for filename, payload in payloads.items():
         schema = json.loads((ROOT / "schemas" / filename).read_text(encoding="utf-8"))

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aurum.local/schemas/aurum_production_image_provenance.schema.json",
+  "title": "AURUM Production Image Provenance Intake",
+  "type": "object",
+  "required": ["schema_version", "service", "status", "images", "metadata_checks"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "service": {"const": "AURUM production image provenance intake"},
+    "generated_at_utc": {"type": "string"},
+    "status": {"enum": ["EVIDENCED", "REQUIRED"]},
+    "source": {"type": "string"},
+    "manifest_present": {"type": "boolean"},
+    "manifest_path": {"type": "string"},
+    "images": {"type": "object", "required": ["AURUM_REDIS_IMAGE", "AURUM_TIMESCALE_IMAGE", "AURUM_API_IMAGE", "AURUM_DASHBOARD_IMAGE"], "properties": {"AURUM_REDIS_IMAGE": {"type": ["string", "null"]}, "AURUM_TIMESCALE_IMAGE": {"type": ["string", "null"]}, "AURUM_API_IMAGE": {"type": ["string", "null"]}, "AURUM_DASHBOARD_IMAGE": {"type": ["string", "null"]}}, "additionalProperties": false},
+    "metadata_checks": {"type": "object", "required": ["required_attestation_metadata", "all_images_pinned_by_sha256", "deployment_binding_present"], "properties": {"required_attestation_metadata": {"type": "boolean"}, "all_images_pinned_by_sha256": {"type": "boolean"}, "deployment_binding_present": {"type": "boolean"}}, "additionalProperties": false},
+    "claim_boundary": {"type": "string"}
+  },
+  "additionalProperties": false
+}

@@ -36,6 +36,20 @@ customer acceptance 0/5 (customer configuration required)
 Customer evidence register: 5 enterprise controls + 5 operational evidence
 items, all explicitly owned and currently REQUIRED/approval-gated
 
+EXTERNAL EVIDENCE INTAKE
+------------------------
+Customer-owned evidence is never fabricated or committed. Before a deployment
+acceptance run, point the process at real, approved manifests:
+  $env:AURUM_CUSTOMER_EVIDENCE_FILE = "C:\\secure\\customer_evidence.json"
+  $env:AURUM_PRODUCTION_PROVENANCE_FILE = "C:\\secure\\production_image_provenance.json"
+Use AURUM\\config\\customer_evidence.example.json and
+AURUM\\config\\production_image_provenance.example.json as shape templates.
+Each customer control needs an evidence URI, SHA-256, approver, UTC approval
+timestamp, and verification record. Image provenance additionally needs a
+signed attestation and sha256-pinned references for all four production images.
+The intake validates shape and metadata locally; customer authority and
+independent verification remain external responsibilities.
+
 The product surface preserves the repository-native MARS-CVaR LP and adds
 regime, portfolio, risk, baseline, stress, provenance, governance, and AI
 intelligence views. The AI layer interprets the current evidence payload; it
@@ -55,6 +69,8 @@ Enterprise control-plane endpoints are available from the API:
   /v1/platform/ai-evaluation
   /v1/platform/control-plane
   /v1/platform/operations-status
+  /v1/platform/customer-evidence
+  /v1/platform/image-provenance
 
 The product-facing AI endpoints are also available from the runtime:
   /api/ai/status

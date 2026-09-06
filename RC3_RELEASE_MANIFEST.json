@@ -34,7 +34,9 @@
     "/v1/platform/enterprise-status",
     "/v1/platform/ai-evaluation",
     "/v1/platform/control-plane",
-    "/v1/platform/operations-status"
+    "/v1/platform/operations-status",
+    "/v1/platform/customer-evidence",
+    "/v1/platform/image-provenance"
   ],
   "ai_surface": [
     "/api/ai/status",
@@ -47,6 +49,9 @@
   "enterprise_platform_contract": "/v1/platform/enterprise-status",
   "control_plane_contract": "/v1/platform/control-plane",
   "operations_contract": "/v1/platform/operations-status",
+  "customer_evidence_contract": "/v1/platform/customer-evidence",
+  "production_image_provenance_contract": "/v1/platform/image-provenance",
+  "external_evidence_intake": "ENVIRONMENT_ONLY_SHAPE_HASH_APPROVER_TIMESTAMP_VALIDATED",
   "customer_acceptance_register": "control-plane.customer_acceptance.controls",
   "operations_evidence_register": "operations-status.customer_evidence_register",
   "promotion_state": "RESEARCH_ONLY",

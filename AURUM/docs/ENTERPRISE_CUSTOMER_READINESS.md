@@ -31,6 +31,24 @@ customer deployment.
 6. Approved SLO/RTO/RPO, monitoring and alert routing, incident response,
    backup/restore drill, support ownership, and change-management records.
 
+## Supplying external evidence
+
+The repository cannot create customer approvals. Supply authentic records
+through process-local environment variables:
+
+```powershell
+$env:AURUM_CUSTOMER_EVIDENCE_FILE = "C:\\secure\\customer_evidence.json"
+$env:AURUM_PRODUCTION_PROVENANCE_FILE = "C:\\secure\\production_image_provenance.json"
+.\RUN_ACCEPTANCE.cmd
+```
+
+Use the two `config/*.example.json` files for the required shape. The intake
+requires a URI, SHA-256, approver, UTC approval timestamp, and verification
+record for each customer control. Image provenance also requires a signed
+attestation and digest-pinned references for every production image. Results
+appear in the control plane and compliance artifacts, while the original
+customer records stay out of Git.
+
 ## Pilot exit criteria
 
 A pilot is not complete until the customer can reproduce a decision ID and

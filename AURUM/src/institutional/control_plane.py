@@ -15,8 +15,10 @@ from src.institutional.ai_evaluation import build_ai_evaluation
 from src.institutional.deployment_preflight import build_deployment_preflight
 from src.institutional.enterprise_platform import build_enterprise_platform_status
 from src.institutional.enterprise_readiness import build_enterprise_readiness
+from src.institutional.external_evidence import build_customer_evidence_status, build_production_image_provenance
 from src.institutional.live_data_contract import build_live_data_status
 from src.institutional.model_validation import build_model_validation
+from src.institutional.operations_contract import build_operations_status
 
 
 CONTROL_PLANE_SCHEMA_VERSION = "1.0"
@@ -42,6 +44,9 @@ def build_control_plane(root: Path, evidence: Mapping[str, Any] | None = None) -
     model_validation = build_model_validation(root, evidence)
     enterprise = build_enterprise_platform_status(root)
     ai_evaluation = build_ai_evaluation(root)
+    customer_evidence = build_customer_evidence_status(root)
+    image_provenance = build_production_image_provenance(root)
+    operations = build_operations_status(root)
 
     repository_areas = [
         {"area": "ai_intelligence", "status": ai_evaluation["status"], "evidence": "/v1/platform/ai-evaluation"},
@@ -56,13 +61,15 @@ def build_control_plane(root: Path, evidence: Mapping[str, Any] | None = None) -
     deployment_summary = preflight.get("summary", {})
     customer_controls = enterprise.get("required_customer_evidence", [])
     enterprise_controls = {item.get("control_id"): item for item in enterprise.get("controls", [])}
+    external_controls = {item.get("control_id"): item for item in customer_evidence.get("controls", [])}
     customer_acceptance_controls = [
         {
             "control_id": control_id,
             "label": label,
             "owner": enterprise_controls.get(control_id, {}).get("owner", "customer_platform"),
-            "status": enterprise_controls.get(control_id, {}).get("status", "REQUIRED"),
-            "evidence": enterprise_controls.get(control_id, {}).get("evidence", "Customer evidence required."),
+            "status": external_controls.get(control_id, {}).get("status", "REQUIRED"),
+            "evidence": external_controls.get(control_id, {}).get("evidence_uri") or enterprise_controls.get(control_id, {}).get("evidence", "Customer evidence required."),
+            "approval_record": external_controls.get(control_id, {}).get("verification_record"),
         }
         for control_id, label in (
             ("identity.sso", "SSO/OIDC or SAML integration and break-glass procedure"),
@@ -85,9 +92,11 @@ def build_control_plane(root: Path, evidence: Mapping[str, Any] | None = None) -
         "repository_control_coverage": _coverage(repository_passed, len(repository_areas)),
         "deployment_preflight_coverage": _coverage(int(deployment_summary.get("passed_checks", 0)), int(deployment_summary.get("total_checks", 0))),
         "customer_acceptance_coverage": _coverage(customer_passed, len(customer_acceptance_controls)),
+        "operations_evidence_coverage": _coverage(sum(item.get("status") == "EVIDENCED" for item in operations.get("customer_evidence_register", [])), len(operations.get("customer_evidence_register", []))),
         "repository_areas": repository_areas,
         "deployment": {"research_gate": preflight.get("research_gate"), "production_gate": preflight.get("production_gate"), "blockers": preflight.get("blockers", [])},
         "customer_acceptance": {"status": "PASS" if customer_passed == len(customer_acceptance_controls) else "EVIDENCE_REQUIRED", "required_evidence": customer_controls, "controls": customer_acceptance_controls},
+        "external_evidence": {"customer": customer_evidence, "production_images": image_provenance, "operations": operations},
         "next_actions": [
             "Bind the production profile to immutable image digests and signed provenance.",
             "Integrate customer SSO/RBAC, tenant isolation, immutable evidence storage, and access logging.",

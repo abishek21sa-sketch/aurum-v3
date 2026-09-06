@@ -3,39 +3,44 @@
   "customer_acceptance": {
     "controls": [
       {
+        "approval_record": null,
         "control_id": "identity.sso",
         "evidence": "Gateway/identity integration is not supplied by the repository.",
         "label": "SSO/OIDC or SAML integration and break-glass procedure",
         "owner": "customer_platform",
-        "status": "DEPLOYMENT_REQUIRED"
+        "status": "REQUIRED"
       },
       {
+        "approval_record": null,
         "control_id": "identity.rbac_enforcement",
         "evidence": "Role policy is declared; enforcement belongs at the service and gateway boundary.",
         "label": "RBAC and segregation-of-duties enforcement evidence",
         "owner": "customer_platform",
-        "status": "DEPLOYMENT_REQUIRED"
+        "status": "REQUIRED"
       },
       {
+        "approval_record": null,
         "control_id": "tenancy.isolation",
         "evidence": "Multi-tenant data partitioning and tenant-scoped keys are not enabled in this research build.",
         "label": "Tenant-isolation evidence for shared deployments",
         "owner": "aurum_product",
-        "status": "RESEARCH_SINGLE_TENANT"
+        "status": "REQUIRED"
       },
       {
+        "approval_record": null,
         "control_id": "evidence.immutable_storage",
         "evidence": "Exports are hash-linked; WORM/retention storage must be bound by deployment.",
         "label": "Immutable retention, access logs, legal hold, backup, and restore evidence",
         "owner": "customer_platform",
-        "status": "DEPLOYMENT_REQUIRED"
+        "status": "REQUIRED"
       },
       {
+        "approval_record": null,
         "control_id": "operations.slo_and_support",
         "evidence": "RTO, RPO, SLO, on-call, and support commitments must be approved per customer.",
         "label": "Approved SLO/RTO/RPO, incident response, support, and change records",
         "owner": "aurum_operations",
-        "status": "CUSTOMER_APPROVAL_REQUIRED"
+        "status": "REQUIRED"
       }
     ],
     "required_evidence": [
@@ -66,7 +71,231 @@
     "total": 14
   },
   "execution_enabled": false,
-  "generated_at_utc": "2026-09-06T04:49:31Z",
+  "external_evidence": {
+    "customer": {
+      "claim_boundary": "Shape and hash metadata are validated locally; customer authority and the underlying evidence remain external responsibilities.",
+      "controls": [
+        {
+          "approved_at_utc": null,
+          "approved_by": null,
+          "control_id": "identity.sso",
+          "evidence_sha256": null,
+          "evidence_uri": null,
+          "label": "SSO/OIDC or SAML integration and break-glass procedure",
+          "owner": "customer_platform",
+          "status": "REQUIRED",
+          "verification_record": null
+        },
+        {
+          "approved_at_utc": null,
+          "approved_by": null,
+          "control_id": "identity.rbac_enforcement",
+          "evidence_sha256": null,
+          "evidence_uri": null,
+          "label": "RBAC and segregation-of-duties enforcement evidence",
+          "owner": "customer_platform",
+          "status": "REQUIRED",
+          "verification_record": null
+        },
+        {
+          "approved_at_utc": null,
+          "approved_by": null,
+          "control_id": "tenancy.isolation",
+          "evidence_sha256": null,
+          "evidence_uri": null,
+          "label": "Tenant-isolation evidence for shared deployments",
+          "owner": "aurum_product",
+          "status": "REQUIRED",
+          "verification_record": null
+        },
+        {
+          "approved_at_utc": null,
+          "approved_by": null,
+          "control_id": "evidence.immutable_storage",
+          "evidence_sha256": null,
+          "evidence_uri": null,
+          "label": "Immutable retention, access logs, legal hold, backup, and restore evidence",
+          "owner": "customer_platform",
+          "status": "REQUIRED",
+          "verification_record": null
+        },
+        {
+          "approved_at_utc": null,
+          "approved_by": null,
+          "control_id": "operations.slo_and_support",
+          "evidence_sha256": null,
+          "evidence_uri": null,
+          "label": "Approved SLO/RTO/RPO, incident response, support, and change records",
+          "owner": "aurum_operations",
+          "status": "REQUIRED",
+          "verification_record": null
+        }
+      ],
+      "coverage": {
+        "passed": 0,
+        "percent": 0.0,
+        "total": 5
+      },
+      "generated_at_utc": "2026-09-06T06:09:58Z",
+      "manifest_path": "config/customer_evidence.json",
+      "manifest_present": false,
+      "schema_version": "1.0",
+      "service": "AURUM customer evidence intake",
+      "source": "REPOSITORY",
+      "status": "REQUIRED"
+    },
+    "operations": {
+      "claim_boundary": "Repository contracts describe operational ownership; they do not prove uptime, recovery performance, or customer approval.",
+      "customer_configuration_complete": false,
+      "customer_evidence_register": [
+        {
+          "evidence_id": "availability_slo_alerting",
+          "label": "Approved availability SLO and alert routing",
+          "missing_fields": [
+            "slo_target",
+            "alert_route"
+          ],
+          "owner": "customer_operations",
+          "required_fields": [
+            "slo_target",
+            "alert_route"
+          ],
+          "status": "REQUIRED"
+        },
+        {
+          "evidence_id": "recovery_objectives_drill",
+          "label": "Approved RTO/RPO and successful backup/restore drill",
+          "missing_fields": [
+            "rto_minutes",
+            "rpo_minutes",
+            "backup_restore_drill_id"
+          ],
+          "owner": "customer_operations",
+          "required_fields": [
+            "rto_minutes",
+            "rpo_minutes",
+            "backup_restore_drill_id"
+          ],
+          "status": "REQUIRED"
+        },
+        {
+          "evidence_id": "retention_legal_hold",
+          "label": "Retention, legal hold, and deletion-approval record",
+          "missing_fields": [
+            "retention_days",
+            "legal_hold_record",
+            "deletion_approval_record"
+          ],
+          "owner": "customer_compliance",
+          "required_fields": [
+            "retention_days",
+            "legal_hold_record",
+            "deletion_approval_record"
+          ],
+          "status": "REQUIRED"
+        },
+        {
+          "evidence_id": "support_escalation",
+          "label": "Named support owner and incident escalation path",
+          "missing_fields": [
+            "support_owner",
+            "incident_escalation_path"
+          ],
+          "owner": "customer_support",
+          "required_fields": [
+            "support_owner",
+            "incident_escalation_path"
+          ],
+          "status": "REQUIRED"
+        },
+        {
+          "evidence_id": "change_rollback",
+          "label": "Change-approval and rollback record",
+          "missing_fields": [
+            "change_approval_record",
+            "rollback_plan_reference"
+          ],
+          "owner": "customer_change_control",
+          "required_fields": [
+            "change_approval_record",
+            "rollback_plan_reference"
+          ],
+          "status": "REQUIRED"
+        }
+      ],
+      "customer_operating_configuration": {
+        "alert_route": "CUSTOMER_CONFIGURATION_REQUIRED",
+        "backup_restore_drill_id": null,
+        "change_approval_record": null,
+        "deletion_approval_record": null,
+        "incident_escalation_path": "CUSTOMER_CONFIGURATION_REQUIRED",
+        "legal_hold_record": null,
+        "retention_days": null,
+        "rollback_plan_reference": null,
+        "rpo_minutes": null,
+        "rto_minutes": null,
+        "slo_target": "CUSTOMER_APPROVAL_REQUIRED",
+        "support_owner": "CUSTOMER_CONFIGURATION_REQUIRED"
+      },
+      "execution_enabled": false,
+      "generated_at_utc": "2026-09-06T06:09:58Z",
+      "required_customer_evidence": [
+        "Approved availability SLO and alert routing",
+        "Approved RTO/RPO and successful backup/restore drill",
+        "Retention, legal hold, and deletion-approval record",
+        "Named support owner and incident escalation path",
+        "Change-approval and rollback record"
+      ],
+      "research_promotion": "RESEARCH_ONLY",
+      "schema_version": "1.0",
+      "service": "AURUM enterprise operations contract",
+      "static_repository_controls": [
+        {
+          "control_id": "operations.runbook",
+          "evidence": "docs/OPERATIONS_RUNBOOK.md",
+          "status": "PASS"
+        },
+        {
+          "control_id": "operations.disaster_recovery",
+          "evidence": "docs/DISASTER_RECOVERY.md",
+          "status": "PASS"
+        },
+        {
+          "control_id": "operations.observability_endpoint",
+          "evidence": "/v1/platform/observability",
+          "status": "PASS"
+        },
+        {
+          "control_id": "operations.production_profile",
+          "evidence": "docker-compose.production.yml",
+          "status": "PASS"
+        }
+      ],
+      "status": "CUSTOMER_CONFIGURATION_REQUIRED"
+    },
+    "production_images": {
+      "claim_boundary": "Image references and attestation metadata are shape-validated locally; registry signatures and deployment binding require external verification.",
+      "generated_at_utc": "2026-09-06T06:09:58Z",
+      "images": {
+        "AURUM_API_IMAGE": null,
+        "AURUM_DASHBOARD_IMAGE": null,
+        "AURUM_REDIS_IMAGE": null,
+        "AURUM_TIMESCALE_IMAGE": null
+      },
+      "manifest_path": "config/production_image_provenance.json",
+      "manifest_present": false,
+      "metadata_checks": {
+        "all_images_pinned_by_sha256": false,
+        "deployment_binding_present": false,
+        "required_attestation_metadata": false
+      },
+      "schema_version": "1.0",
+      "service": "AURUM production image provenance intake",
+      "source": "REPOSITORY",
+      "status": "REQUIRED"
+    }
+  },
+  "generated_at_utc": "2026-09-06T06:09:58Z",
   "next_actions": [
     "Bind the production profile to immutable image digests and signed provenance.",
     "Integrate customer SSO/RBAC, tenant isolation, immutable evidence storage, and access logging.",
@@ -74,6 +303,11 @@
     "Complete independent model validation and committee sign-off separately from optimization authorization.",
     "Approve customer SLO/RTO/RPO, backup/restore, incident, support, and change-management evidence."
   ],
+  "operations_evidence_coverage": {
+    "passed": 0,
+    "percent": 0.0,
+    "total": 5
+  },
   "production_blocked": true,
   "repository_areas": [
     {

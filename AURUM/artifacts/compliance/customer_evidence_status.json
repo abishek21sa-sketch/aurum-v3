@@ -1,0 +1,72 @@
+{
+  "claim_boundary": "Shape and hash metadata are validated locally; customer authority and the underlying evidence remain external responsibilities.",
+  "controls": [
+    {
+      "approved_at_utc": null,
+      "approved_by": null,
+      "control_id": "identity.sso",
+      "evidence_sha256": null,
+      "evidence_uri": null,
+      "label": "SSO/OIDC or SAML integration and break-glass procedure",
+      "owner": "customer_platform",
+      "status": "REQUIRED",
+      "verification_record": null
+    },
+    {
+      "approved_at_utc": null,
+      "approved_by": null,
+      "control_id": "identity.rbac_enforcement",
+      "evidence_sha256": null,
+      "evidence_uri": null,
+      "label": "RBAC and segregation-of-duties enforcement evidence",
+      "owner": "customer_platform",
+      "status": "REQUIRED",
+      "verification_record": null
+    },
+    {
+      "approved_at_utc": null,
+      "approved_by": null,
+      "control_id": "tenancy.isolation",
+      "evidence_sha256": null,
+      "evidence_uri": null,
+      "label": "Tenant-isolation evidence for shared deployments",
+      "owner": "aurum_product",
+      "status": "REQUIRED",
+      "verification_record": null
+    },
+    {
+      "approved_at_utc": null,
+      "approved_by": null,
+      "control_id": "evidence.immutable_storage",
+      "evidence_sha256": null,
+      "evidence_uri": null,
+      "label": "Immutable retention, access logs, legal hold, backup, and restore evidence",
+      "owner": "customer_platform",
+      "status": "REQUIRED",
+      "verification_record": null
+    },
+    {
+      "approved_at_utc": null,
+      "approved_by": null,
+      "control_id": "operations.slo_and_support",
+      "evidence_sha256": null,
+      "evidence_uri": null,
+      "label": "Approved SLO/RTO/RPO, incident response, support, and change records",
+      "owner": "aurum_operations",
+      "status": "REQUIRED",
+      "verification_record": null
+    }
+  ],
+  "coverage": {
+    "passed": 0,
+    "percent": 0.0,
+    "total": 5
+  },
+  "generated_at_utc": "2026-09-06T06:09:58Z",
+  "manifest_path": "config/customer_evidence.json",
+  "manifest_present": false,
+  "schema_version": "1.0",
+  "service": "AURUM customer evidence intake",
+  "source": "REPOSITORY",
+  "status": "REQUIRED"
+}

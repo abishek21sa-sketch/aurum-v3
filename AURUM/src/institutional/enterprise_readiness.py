@@ -35,6 +35,7 @@ REQUIRED_ARTIFACTS = (
     "src/institutional/ai_evaluation.py",
     "src/institutional/control_plane.py",
     "src/institutional/operations_contract.py",
+    "src/institutional/external_evidence.py",
     "scripts/run_deployment_preflight.py",
     "artifacts/mars_cvar/walk_forward_evidence.json",
     "artifacts/mars_cvar/release_manifest.json",
@@ -46,6 +47,8 @@ REQUIRED_ARTIFACTS = (
     "artifacts/compliance/ai_evaluation.json",
     "artifacts/compliance/control_plane.json",
     "artifacts/compliance/operations_status.json",
+    "artifacts/compliance/customer_evidence_status.json",
+    "artifacts/compliance/production_image_provenance_status.json",
     "config/operations.json",
     "docker-compose.yml",
     "Dockerfile.api",
@@ -65,6 +68,10 @@ REQUIRED_ARTIFACTS = (
     "schemas/aurum_live_data.schema.json",
     "schemas/aurum_control_plane.schema.json",
     "schemas/aurum_operations.schema.json",
+    "schemas/aurum_customer_evidence.schema.json",
+    "schemas/aurum_production_image_provenance.schema.json",
+    "config/customer_evidence.example.json",
+    "config/production_image_provenance.example.json",
     "artifacts/compliance/sbom.json",
 )
 

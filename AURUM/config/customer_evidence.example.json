@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "customer": "CUSTOMER_CONFIGURATION_REQUIRED",
+  "controls": {
+    "identity.sso": {
+      "evidence_uri": "CUSTOMER_CONFIGURATION_REQUIRED",
+      "evidence_sha256": "CUSTOMER_CONFIGURATION_REQUIRED",
+      "approved_by": "CUSTOMER_CONFIGURATION_REQUIRED",
+      "approved_at_utc": "CUSTOMER_CONFIGURATION_REQUIRED",
+      "verification_record": "CUSTOMER_CONFIGURATION_REQUIRED"
+    },
+    "identity.rbac_enforcement": {
+      "evidence_uri": "CUSTOMER_CONFIGURATION_REQUIRED",
+      "evidence_sha256": "CUSTOMER_CONFIGURATION_REQUIRED",
+      "approved_by": "CUSTOMER_CONFIGURATION_REQUIRED",
+      "approved_at_utc": "CUSTOMER_CONFIGURATION_REQUIRED",
+      "verification_record": "CUSTOMER_CONFIGURATION_REQUIRED"
+    },
+    "tenancy.isolation": {
+      "evidence_uri": "CUSTOMER_CONFIGURATION_REQUIRED",
+      "evidence_sha256": "CUSTOMER_CONFIGURATION_REQUIRED",
+      "approved_by": "CUSTOMER_CONFIGURATION_REQUIRED",
+      "approved_at_utc": "CUSTOMER_CONFIGURATION_REQUIRED",
+      "verification_record": "CUSTOMER_CONFIGURATION_REQUIRED"
+    },
+    "evidence.immutable_storage": {
+      "evidence_uri": "CUSTOMER_CONFIGURATION_REQUIRED",
+      "evidence_sha256": "CUSTOMER_CONFIGURATION_REQUIRED",
+      "approved_by": "CUSTOMER_CONFIGURATION_REQUIRED",
+      "approved_at_utc": "CUSTOMER_CONFIGURATION_REQUIRED",
+      "verification_record": "CUSTOMER_CONFIGURATION_REQUIRED"
+    },
+    "operations.slo_and_support": {
+      "evidence_uri": "CUSTOMER_CONFIGURATION_REQUIRED",
+      "evidence_sha256": "CUSTOMER_CONFIGURATION_REQUIRED",
+      "approved_by": "CUSTOMER_CONFIGURATION_REQUIRED",
+      "approved_at_utc": "CUSTOMER_CONFIGURATION_REQUIRED",
+      "verification_record": "CUSTOMER_CONFIGURATION_REQUIRED"
+    }
+  }
+}

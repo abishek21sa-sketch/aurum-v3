@@ -18,6 +18,7 @@ from src.institutional.model_validation import build_model_validation
 from src.institutional.enterprise_platform import build_enterprise_platform_status
 from src.institutional.ai_evaluation import build_ai_evaluation
 from src.institutional.control_plane import build_control_plane
+from src.institutional.external_evidence import build_customer_evidence_status, build_production_image_provenance
 from src.institutional.operations_contract import build_operations_status
 from scripts.product_adapter import compute as compute_product_decision
 
@@ -164,6 +165,18 @@ def platform_control_plane():
 def platform_operations_status():
     """Return SLO, recovery, retention, support, and change-control status."""
     return build_operations_status(_project_root())
+
+
+@app.get("/v1/platform/customer-evidence", tags=["Platform controls"])
+def platform_customer_evidence():
+    """Return the fail-closed customer acceptance evidence intake status."""
+    return build_customer_evidence_status(_project_root())
+
+
+@app.get("/v1/platform/image-provenance", tags=["Platform controls"])
+def platform_image_provenance():
+    """Return immutable image and signed-provenance intake status."""
+    return build_production_image_provenance(_project_root())
 
 
 @app.get("/v1/platform/role-policy", tags=["Platform controls"])
