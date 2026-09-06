@@ -74,8 +74,8 @@
       "bytes": 11360
     },
     "scripts/product_frontend.py": {
-      "sha256": "cc4aaf6ba21482bffdb770a3f83297d55ef8535162d2636c962d9e6d9f451715",
-      "bytes": 52134
+      "sha256": "d0d9f10eb8c80aebac8260bfcbcfaf8d0f9e89337065e7b49f7b84d8e0f4eeff",
+      "bytes": 62332
     },
     "scripts/ingest_public_data.py": {
       "sha256": "2fd87c2ab75b7a2db26f19470dbb84adeaf84cf073f29050c73a035850e25d2e",
@@ -158,8 +158,8 @@
       "bytes": 4537
     },
     "tests/test_product_frontend.py": {
-      "sha256": "a80da115805f890c6ce464e534b94220e156a3ea4f64803df3b0db5dcfab356b",
-      "bytes": 1201
+      "sha256": "1be416e34e027ee70021d012c7ef19c37569b9140729cfef348b06493ec7e486",
+      "bytes": 1310
     },
     "tests/test_ai_intelligence.py": {
       "sha256": "67834a52de73cf7bf7b75ba2217b58694eb823d82aa1f3d313421da751d6593c",
@@ -202,7 +202,7 @@
       "bytes": 6064
     },
     "artifacts/mars_cvar/governance_evidence.json": {
-      "sha256": "c6d1018bec5f4bc307db16f08d1f058f0c636d9f79afb33016a1309b9f8d729b",
+      "sha256": "0faa870826af65a54e985264222b96db03ed8f4cea3b761a9c55142220f07098",
       "bytes": 4767
     },
     "artifacts/mars_cvar/turnover_sensitivity.csv": {
@@ -214,43 +214,43 @@
       "bytes": 872
     },
     "artifacts/compliance/deployment_preflight.json": {
-      "sha256": "8e1c101dd91ad04d91bc72a5f804538d5e57e7d693a6d6f658314be5f566e450",
+      "sha256": "7294ad0af2e006d6f174a05dd972d357eceb03ae0f31d571bce6839c3af6b6d3",
       "bytes": 5793
     },
     "artifacts/compliance/live_data_status.json": {
-      "sha256": "96ef568193cee392ac6b7a80b4402c02d028af73d63a3ff0dff546209210ca78",
+      "sha256": "d0548d7d51a4564508395bd7b2c247e116e5943b12cf63771e93512cee15dbec",
       "bytes": 2395
     },
     "artifacts/compliance/model_validation.json": {
-      "sha256": "65624af96597b999aa999da3cda2454a62ad2acfeca33cbb18059b1625fd2a42",
+      "sha256": "d0eacb0b0249c018a4450a02875187d02f8adf47d77c4ebf0ddc1efe54c4ff29",
       "bytes": 3015
     },
     "artifacts/compliance/enterprise_platform.json": {
-      "sha256": "d29829ea96c8a2aba223a2739331c4eaf0e7df70d935131db0f2066716340a04",
+      "sha256": "811a8a2b0cc40ef30ffd0dfc74f0afad7aa6826c3ec07bd33a7f361faa3da226",
       "bytes": 2451
     },
     "artifacts/compliance/ai_evaluation.json": {
-      "sha256": "2410d3414e221c25684fdb880283ca8d8c7e9df331eb364e263de88ed1b33427",
+      "sha256": "a09bb2d8ed41614b2b796d3c78893a43891988a6d243a51fa306f27c2bfb53ee",
       "bytes": 1619
     },
     "artifacts/compliance/control_plane.json": {
-      "sha256": "8396939473018ce5ce3116d087b305e9effcb656dd9f89cffbd310a0c80833da",
+      "sha256": "8501c36552ae7b7c08a73c62dafea134be7bda2ee9b6e409648c457a868fa26f",
       "bytes": 12881
     },
     "artifacts/compliance/operations_status.json": {
-      "sha256": "ca774c29274f1fe49a08dbf6df59a4bd97d74c712b085c4567c3d209d0ddf5dc",
+      "sha256": "f1ce50926e0670d87f52beb253f8d969abb4c047fd4a7d47b1881ff91d8c1a16",
       "bytes": 3999
     },
     "artifacts/compliance/customer_evidence_status.json": {
-      "sha256": "e65b8f92c954cbb1325883a1e28c34fa6658caa4e78aa854f6eb868e994d90b1",
+      "sha256": "200e9a612fd3797743cdbb32717addd52b9e08febbf6e8b5b4f6078e594751e0",
       "bytes": 2356
     },
     "artifacts/compliance/production_image_provenance_status.json": {
-      "sha256": "12425a40edae921aaa82ce0739b28ba21f58506b642eb40becc8f142f0670d8c",
+      "sha256": "b3083b20f95d3ceb03a7b3b14bf905a0046befcc812f452b43e9c45d9de972bf",
       "bytes": 800
     },
     "artifacts/product_runtime/latest_ai_intelligence_brief.json": {
-      "sha256": "74b55cef0ef6a9e98bdddc48b27a5d21fb1711edf525d6686b686a08e5c771bd",
+      "sha256": "49b73db800c8f11b020217fc554815cbe06e77ebe2b4c24b9846feffb73e1b98",
       "bytes": 4555
     },
     "artifacts/synthetic/synthetic_ml_dataset.csv": {
@@ -258,11 +258,11 @@
       "bytes": 2610017
     },
     "artifacts/synthetic/synthetic_ml_dataset_manifest.json": {
-      "sha256": "b677b5ff2f1ff41b830b6d42b9c93d8db83fd4366aa0e2f434cfbb5ba744869a",
+      "sha256": "d9100d5a5bf6a83e808c9447c61b1dd3ce5875a2263fe8bb8c47612544121178",
       "bytes": 2170
     },
     "artifacts/synthetic/synthetic_ml_validation.json": {
-      "sha256": "ae4697f23a61ae7c68a305bd0a88a6a1dd0d710e53935e5fd507832076a63206",
+      "sha256": "a122463d1406f2daabda400d512765e8f11eb7379885254acfc755ee86565145",
       "bytes": 3395
     },
     "docs/SIGNATURE_ALGORITHM.md": {

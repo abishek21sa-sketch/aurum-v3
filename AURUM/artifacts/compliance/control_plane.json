@@ -136,7 +136,7 @@
         "percent": 0.0,
         "total": 5
       },
-      "generated_at_utc": "2026-09-06T17:00:08Z",
+      "generated_at_utc": "2026-09-06T17:49:56Z",
       "manifest_path": "config/customer_evidence.json",
       "manifest_present": false,
       "manifest_schema_valid": false,
@@ -239,7 +239,7 @@
         "support_owner": "CUSTOMER_CONFIGURATION_REQUIRED"
       },
       "execution_enabled": false,
-      "generated_at_utc": "2026-09-06T17:00:08Z",
+      "generated_at_utc": "2026-09-06T17:49:56Z",
       "required_customer_evidence": [
         "Approved availability SLO and alert routing",
         "Approved RTO/RPO and successful backup/restore drill",
@@ -276,7 +276,7 @@
     },
     "production_images": {
       "claim_boundary": "Image references and attestation metadata are shape-validated locally; registry signatures and deployment binding require external verification.",
-      "generated_at_utc": "2026-09-06T17:00:08Z",
+      "generated_at_utc": "2026-09-06T17:49:56Z",
       "images": {
         "AURUM_API_IMAGE": null,
         "AURUM_DASHBOARD_IMAGE": null,
@@ -297,7 +297,7 @@
       "status": "REQUIRED"
     }
   },
-  "generated_at_utc": "2026-09-06T17:00:08Z",
+  "generated_at_utc": "2026-09-06T17:49:56Z",
   "next_actions": [
     "Bind the production profile to immutable image digests and signed provenance.",
     "Integrate customer SSO/RBAC, tenant isolation, immutable evidence storage, and access logging.",

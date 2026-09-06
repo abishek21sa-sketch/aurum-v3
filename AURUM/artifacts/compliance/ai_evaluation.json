@@ -34,7 +34,7 @@
   "claim_boundary": "Contract checks validate grounding and safety boundaries; they do not prove model quality, factual accuracy, or investment performance.",
   "decision_id": "MARS-812FA013EB90FFA1",
   "execution_enabled": false,
-  "generated_at_utc": "2026-09-06T16:59:58Z",
+  "generated_at_utc": "2026-09-06T17:49:40Z",
   "live_evaluation_requested": false,
   "live_provider_evaluation": "SKIPPED_NO_EXPLICIT_LIVE_MODEL",
   "provider_mode": "LOCAL_GROUNDED",

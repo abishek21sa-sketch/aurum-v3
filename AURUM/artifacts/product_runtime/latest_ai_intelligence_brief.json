@@ -29,7 +29,7 @@
     "execution_enabled": false,
     "executive_summary": "AURUM Intelligence reads this decision as a risk-aware, evidence-bounded portfolio lens. It is responding to a 50% stress input with a modeled 0.457% reference-period return and 36.38% L1 turnover. The AI is interpreting the repository-native evidence; it is not producing a market forecast.",
     "external_transmission": false,
-    "generated_at_utc": "2026-09-06T17:02:30Z",
+    "generated_at_utc": "2026-09-06T17:39:41Z",
     "grounding": [
       "Current MARS-CVaR decision payload",
       "Market/regime transition evidence",

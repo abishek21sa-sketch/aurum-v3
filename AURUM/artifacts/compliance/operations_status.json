@@ -92,7 +92,7 @@
     "support_owner": "CUSTOMER_CONFIGURATION_REQUIRED"
   },
   "execution_enabled": false,
-  "generated_at_utc": "2026-09-06T17:00:08Z",
+  "generated_at_utc": "2026-09-06T17:49:56Z",
   "required_customer_evidence": [
     "Approved availability SLO and alert routing",
     "Approved RTO/RPO and successful backup/restore drill",
