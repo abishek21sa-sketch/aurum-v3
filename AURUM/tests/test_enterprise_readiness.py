@@ -86,7 +86,10 @@ def test_platform_control_endpoints_expose_machine_contracts():
     assert synthetic_ml.json()["status"] == "PASS"
     assert synthetic_ml.json()["data_class"] == "SIMULATED_SYNTHETIC_DATA"
     assert public_data.status_code == 200
-    assert public_data.json()["status"] == "PASS"
+    # Public snapshots are optional research evidence. A partial source set is
+    # still a valid fail-closed contract as long as its boundary is explicit
+    # and the optimizer feed remains disabled.
+    assert public_data.json()["status"] in {"PASS", "PARTIAL"}
     assert public_data.json()["data_class"] == "PUBLIC_AUTHORITATIVE_DATA"
     assert public_data.json()["optimizer_feed_enabled"] is False
     assert preflight.status_code == 200

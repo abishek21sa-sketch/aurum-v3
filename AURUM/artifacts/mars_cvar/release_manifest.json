@@ -158,8 +158,8 @@
       "bytes": 1188
     },
     "tests/test_enterprise_readiness.py": {
-      "sha256": "ab48619fe423e28111aeb82e6e3ecb001055a471bba42f1cb92abb293d442d1e",
-      "bytes": 4537
+      "sha256": "542518981e83f28da1011b04f5c2a24b69a8aa7a14849b62f9b570a3a11fb350",
+      "bytes": 4753
     },
     "tests/test_product_frontend.py": {
       "sha256": "d9a7284f29acb351a053821c83d98979c18885662555b897e6b9199992ff9b94",
