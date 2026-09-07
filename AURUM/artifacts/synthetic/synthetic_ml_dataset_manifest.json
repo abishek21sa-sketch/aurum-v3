@@ -61,7 +61,7 @@
     "volume_zscore"
   ],
   "file": "artifacts/synthetic/synthetic_ml_dataset.csv",
-  "generated_at_utc": "2026-09-06T17:49:24Z",
+  "generated_at_utc": "2026-09-07T13:24:41Z",
   "generator": "src/institutional/synthetic_ml.py:generate_synthetic_dataset",
   "optimizer_feed_enabled": false,
   "purpose": [
