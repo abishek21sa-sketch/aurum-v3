@@ -9,11 +9,17 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import sys
 from pathlib import Path
 from typing import Any
 
 
 ROOT = Path(__file__).resolve().parents[1]
+# When a script is launched by path, Python puts ``scripts/`` on
+# ``sys.path`` rather than the project root.  Make the verifier independent
+# of the caller's working directory and CI runner environment.
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 MANIFEST = ROOT / "artifacts/mars_cvar/release_manifest.json"
 SKIP_DIRS = {".git", ".hg", ".svn", ".venv", "__pycache__", ".pytest_cache"}
 SECRET_FILE_NAMES = {".env", ".env.local", ".env.production", "id_rsa", "id_ed25519"}
