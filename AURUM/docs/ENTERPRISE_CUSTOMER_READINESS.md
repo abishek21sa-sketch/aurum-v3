@@ -1,4 +1,4 @@
-# Fortune-50 customer readiness packet
+# Enterprise customer readiness packet
 
 This document is the handoff checklist for a design partner, security team,
 and investment-governance committee. It intentionally distinguishes evidence

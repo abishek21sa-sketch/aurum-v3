@@ -1,5 +1,10 @@
 # AURUM Quantitative Risk and Portfolio Intelligence
 
+This consolidated release is the AURUM v3 product line. The GitHub-facing
+documentation index is at the repository root; the detailed technical guides
+are in docs/MATHEMATICAL_FOUNDATIONS.md, docs/AI_ML_SYSTEM.md,
+docs/EVOLUTION_FROM_AURUM_V1_V2.md, and docs/NEXT_LEVEL_REQUIREMENTS.md.
+
 AURUM is a human-gated quantitative portfolio research workstation. Its
 signature decision system is MARS-CVaR: Markov regime evidence, probability-
 weighted return scenarios, a convex CVaR linear program, turnover penalties,
