@@ -155,7 +155,7 @@ const baseLoadControlPlane=loadControlPlane;loadControlPlane=async function(){aw
 </script>
 </body></html>'''
     bridge = """<script>
-window.__AURUM_API_BASE__=(window.__AURUM_API_BASE__||'https://aurum-market-intelligence-api.onrender.com').replace(/\\/$/,'');
+window.__AURUM_API_BASE__=(window.__AURUM_API_BASE__||((location.hostname==='localhost'||location.hostname==='127.0.0.1')?'':'https://aurum-market-intelligence-api.onrender.com')).replace(/\\/$/,'');
 const _aurumFetch=window.fetch.bind(window);
 window.fetch=(input,init)=>{const url=typeof input==='string'?input:input.url;return url.startsWith('/api/')||url.startsWith('/download/')?_aurumFetch(window.__AURUM_API_BASE__+url,init):_aurumFetch(input,init)};
 </script>"""
