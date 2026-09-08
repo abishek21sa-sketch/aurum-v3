@@ -1,4 +1,5 @@
 from __future__ import annotations
+import os
 
 from pathlib import Path
 
@@ -9,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PROJECT = "AURUM - Quantitative Risk and Portfolio Intelligence"
 ALGORITHM = "MARS-CVaR"
 SUBTITLE = "An institutional quantitative research workstation for regime evidence, tail-risk allocation, and human-gated portfolio governance."
-PORT = 8811
+PORT = int(os.getenv("PORT", "8811"))
 THEME = "aurum"
 CONTROLS = [
     {"key": "stress_probability", "label": "Next-regime stress probability", "default": 0.50, "min": 0, "max": 1, "step": 0.05},

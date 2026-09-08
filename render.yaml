@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: aurum-market-intelligence-api
+    runtime: python
+    plan: free
+    buildCommand: pip install ./AURUM
+    startCommand: python AURUM/scripts/product_runtime.py --serve --no-browser
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.14.7
+      - key: AURUM_CORS_ORIGIN
+        value: "*"

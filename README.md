@@ -40,6 +40,15 @@ synthetic ML coverage, an AI research layer, and a research-operations loop.
 
 ## Verification
 
+## Deployment
+
+Deploy the repository root to Vercel using `vercel.json`; the build generates
+the full AURUM research workstation at `/app`. Deploy the same repository as a
+Render Blueprint, where the product runtime honors `$PORT` and exposes
+`/health`. The Vercel artifact routes its API and evidence-download calls to
+the Render service through a browser bridge, while keeping research-only and
+human-gated boundaries intact.
+
 From the extracted project directory on Windows:
 
     RUN_PRODUCT_ACCEPTANCE.cmd
