@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
+import os
 from pathlib import Path
 import sys
 import threading
@@ -107,8 +108,15 @@ class Handler(BaseHTTPRequestHandler):
         self.send_response(code)
         self.send_header("Content-Type", ctype)
         self.send_header("Content-Length", str(len(body)))
+        self.send_header("Access-Control-Allow-Origin", os.getenv("AURUM_CORS_ORIGIN", "*"))
+        self.send_header("Access-Control-Allow-Methods", "GET,OPTIONS")
+        self.send_header("Access-Control-Allow-Headers", "Content-Type,X-Request-ID")
         self.end_headers()
         self.wfile.write(body)
+
+    def do_OPTIONS(self) -> None:
+        self.request_id = "preflight"
+        self._send(204, b"")
 
     def do_GET(self) -> None:
         parsed = urlparse(self.path)
@@ -194,8 +202,10 @@ class Handler(BaseHTTPRequestHandler):
 def serve(*, open_browser: bool = True) -> None:
     if not ARTIFACT.exists():
         prepare_demo()
-    server = ThreadingHTTPServer(("127.0.0.1", PORT), Handler)
-    url = f"http://127.0.0.1:{PORT}/"
+    host = os.getenv("HOST", "0.0.0.0")
+    port = int(os.getenv("PORT", str(PORT)))
+    server = ThreadingHTTPServer((host, port), Handler)
+    url = f"http://{host}:{port}/"
     print(f"PRODUCT_RUNTIME_READY={url}", flush=True)
     if open_browser:
         webbrowser.open(url, new=2)

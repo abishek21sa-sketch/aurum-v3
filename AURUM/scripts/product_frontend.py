@@ -154,4 +154,10 @@ function renderClosureRegister(payload,operations){const enterprise=(payload?.cu
 const baseLoadControlPlane=loadControlPlane;loadControlPlane=async function(){await baseLoadControlPlane();renderClosureRegister(state.controlPlane,state.operations)}
 </script>
 </body></html>'''
+    bridge = """<script>
+window.__AURUM_API_BASE__=(window.__AURUM_API_BASE__||((location.hostname==='localhost'||location.hostname==='127.0.0.1')?'':'https://aurum-market-intelligence-api.onrender.com')).replace(/\\/$/,'');
+const _aurumFetch=window.fetch.bind(window);
+window.fetch=(input,init)=>{const url=typeof input==='string'?input:input.url;return url.startsWith('/api/')||url.startsWith('/download/')?_aurumFetch(window.__AURUM_API_BASE__+url,init):_aurumFetch(input,init)};
+</script>"""
+    page = page.replace("<head>", "<head>" + bridge, 1)
     return page.replace("__PROJECT__", json.dumps(project)[1:-1]).replace("__SUBTITLE__", json.dumps(subtitle)[1:-1]).replace("__CONTROLS__", json.dumps(controls))

@@ -1,15 +1,14 @@
 from __future__ import annotations
+import os
 
 from pathlib import Path
-
-from src.institutional.mars_cvar_product import build_reference_product_evidence
 
 
 ROOT = Path(__file__).resolve().parents[1]
 PROJECT = "AURUM - Quantitative Risk and Portfolio Intelligence"
 ALGORITHM = "MARS-CVaR"
 SUBTITLE = "An institutional quantitative research workstation for regime evidence, tail-risk allocation, and human-gated portfolio governance."
-PORT = 8811
+PORT = int(os.getenv("PORT", "8811"))
 THEME = "aurum"
 CONTROLS = [
     {"key": "stress_probability", "label": "Next-regime stress probability", "default": 0.50, "min": 0, "max": 1, "step": 0.05},
@@ -43,6 +42,8 @@ def _display_metrics(raw: dict) -> list[list[str]]:
 
 
 def compute(params: dict | None = None) -> dict:
+    from src.institutional.mars_cvar_product import build_reference_product_evidence
+
     params = _merged_params(params or DEFAULTS)
     evidence = build_reference_product_evidence(ROOT, **params)
     raw = evidence["decision"]
