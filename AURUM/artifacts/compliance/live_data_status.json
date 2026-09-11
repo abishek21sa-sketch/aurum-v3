@@ -18,29 +18,23 @@
   "quality": {
     "checks": {
       "freshness_within_sla": false,
-      "numeric_prices_valid": false,
-      "required_tickers_present": true,
+      "numeric_prices_valid": true,
+      "required_tickers_present": false,
       "timestamps_valid": false,
       "unique_tickers": true
     },
     "freshness_sla_minutes": 30,
-    "invalid_rows": [
-      "SPY:invalid_timestamp",
-      "QQQ:invalid_timestamp",
-      "TLT:invalid_timestamp",
-      "GLD:invalid_timestamp",
-      "BTC-USD:invalid_timestamp"
-    ],
+    "invalid_rows": [],
     "latest_age_minutes": null,
     "latest_timestamp_utc": null,
-    "missing_tickers": [],
-    "observed_tickers": [
+    "missing_tickers": [
       "BTC-USD",
       "GLD",
       "QQQ",
       "SPY",
       "TLT"
     ],
+    "observed_tickers": [],
     "required_tickers": [
       "SPY",
       "QQQ",
@@ -48,14 +42,14 @@
       "GLD",
       "BTC-USD"
     ],
-    "row_count": 5,
+    "row_count": 0,
     "schema_version": "1.0",
     "status": "FAIL"
   },
   "schema_version": "1.0",
   "service": "AURUM governed market data",
   "snapshot_path": "data/live/latest_live_market_snapshot.csv",
-  "snapshot_present": true,
+  "snapshot_present": false,
   "snapshot_receipt": {
     "credentials_in_receipt": false,
     "network_fetch_performed": false,
@@ -67,19 +61,13 @@
       "low",
       "close"
     ],
-    "payload_sha256": "9d40d684e27d131e922ffbf6d46a4d5c583f443c30fce6dfd3c704c729a2b222",
+    "payload_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
     "provider": "repository_fixture",
-    "received_at_utc": "2026-09-07T13:25:00Z",
+    "received_at_utc": "2026-09-11T13:31:48Z",
     "request_id": "reference-fixture",
-    "row_count": 5,
+    "row_count": 0,
     "schema_version": "1.0",
-    "tickers": [
-      "BTC-USD",
-      "GLD",
-      "QQQ",
-      "SPY",
-      "TLT"
-    ]
+    "tickers": []
   },
   "status": "REFERENCE_ONLY"
 }

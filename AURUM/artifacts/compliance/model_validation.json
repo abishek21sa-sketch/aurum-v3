@@ -2,7 +2,7 @@
   "claim_boundary": "Internal checks prepare an independent validation packet; they do not constitute independent validation or investment approval.",
   "decision_id": "MARS-812FA013EB90FFA1",
   "execution_enabled": false,
-  "generated_at_utc": "2026-09-07T13:25:00Z",
+  "generated_at_utc": "2026-09-11T13:31:48Z",
   "independent_review_required": true,
   "internal_checks": [
     {

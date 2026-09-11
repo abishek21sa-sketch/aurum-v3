@@ -12,25 +12,13 @@ def main():
     env={**os.environ,'PYTHONPATH':str(ROOT)}
     # Keep pytest's disposable workspace off synced/protected folders such as OneDrive.
     acceptance_tmp = Path(tempfile.gettempdir()) / f'aurum_rc3_pytest_acceptance_{uuid.uuid4().hex}'
-    test_files = [
-        'tests/test_signature_algorithm.py',
-        'tests/test_mars_cvar_institutional_bridge.py',
-        'tests/test_mars_cvar_validation.py',
-        'tests/test_mars_cvar_api_ui.py',
-        'tests/test_mars_cvar_walk_forward.py',
-        'tests/test_mars_cvar_product.py',
-        'tests/test_enterprise_readiness.py',
-        'tests/test_deployment_preflight.py',
-        'tests/test_product_frontend.py',
-        'tests/test_ai_intelligence.py',
-        'tests/test_governed_controls.py',
-        'tests/test_external_evidence.py',
-        'tests/test_synthetic_ml.py',
-        'tests/test_public_data.py',
-        'tests/test_release_verifier.py',
-        'tests/test_evidence_bundle.py',
-        'tests/test_sbom.py',
-    ]
+    # Discover every tests/test_*.py rather than hand-listing them: a hardcoded list here
+    # previously left 6 real test files (test_anomaly_detector, test_market_stream,
+    # test_python314_regime_compat, test_regimes, test_research_operations, test_signals)
+    # silently unrun by this acceptance gate since whoever wrote the list didn't update it
+    # when those files were added -- they all pass once collected (verified locally after
+    # fixing the unrelated src/ namespace-package issue below).
+    test_files = sorted(str(p.relative_to(ROOT)).replace('\\', '/') for p in (ROOT / 'tests').glob('test_*.py'))
     for script in ['mars_cvar_governance_evidence.py','mars_cvar_walk_forward_evidence.py','run_mars_cvar_institutional.py','generate_synthetic_ml_dataset.py','run_synthetic_ml_validation.py','run_deployment_preflight.py']:
         run(py,ROOT/'scripts'/script,env=env)
     run(py,ROOT/'scripts'/'generate_sbom.py',env=env)

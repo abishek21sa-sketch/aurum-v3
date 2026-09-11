@@ -40,7 +40,7 @@
     }
   ],
   "execution_enabled": false,
-  "generated_at_utc": "2026-09-07T13:25:00Z",
+  "generated_at_utc": "2026-09-11T13:31:48Z",
   "identity_mode": "DEPLOYMENT_SSO_REQUIRED",
   "required_customer_evidence": [
     "SSO/OIDC or SAML integration test and break-glass procedure",
